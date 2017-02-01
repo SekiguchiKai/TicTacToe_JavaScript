@@ -1,7 +1,12 @@
+import ScoreCalculator from './scoreCalculator.js';
+
+const scoreCalculator = new ScoreCalculator(3, 3, 3, 30, -30);
+
 export default class MiniMax {
 
     // playerはplayerオブジェクト
-    calcMiniMax(board, depth, playerSignal, alpha, veta) {
+    calcMiniMax(depth, board, playerSignal, alpha, beta) {
+        console.log('calcMiniMaxメソッドが呼ばれました');
 
         let capableMovesArray = this.makeCapableMoveArray(board);
         let score;
@@ -9,10 +14,13 @@ export default class MiniMax {
         let column = -1;
 
         // 試合が終了か、深さが0の場合は、スコアを
-        if (array.length < 0 || depth == 0) {
+        if (capableMovesArray.length === 0 || depth === 0) {
+            window.alert('aaaaaa');
 
             // ここ要変更
             score = scoreCalculator.calcScore(board.getGameBoardState());
+
+
 
             return { rowVal: row, columnVal: column, bestScore: score };
         } else {
@@ -22,33 +30,41 @@ export default class MiniMax {
                 let cellRow = cell.rowVal;
                 let cellColumn = cell.columnVal;
 
-                board.addMoves(cellRow, cellColumn, playerSignal);
+                board.addMove(cellRow, cellColumn, playerSignal);
 
-                if (playerSignal == '×') {
-                    score = calcMinMax(depth - 1, board, '○', alpha, beta).bestScore;
+
+                if (playerSignal === '×') {
+                    score = this.calcMiniMax(depth - 1, board, '○', alpha, beta).bestScore;
                     if (score > alpha) {
                         alpha = score;
                         column = cellColumn;
                         row = cellRow;
                     }
-                } else if (playerMove == '○') {
-                    score = calcMinMax(depth - 1, board, '×', alpha, beta).bestScore;
+                } else if (playerSignal === '○') {
+                    window.alert('c');
+                    let obj = this.calcMiniMax(depth - 1, board, '×', alpha, beta);
+
+                    score = obj.bestScore;
+
+
+                    // score = this.calcMinMax(depth - 1, board, '×', alpha, beta).bestScore;
                     if (score < beta) {
                         beta = score;
                         column = cellColumn;
                         row = cellRow;
                     }
                 }
-
-                board.putAdd(cellRow, cellColumn, ' ');
+                window.alert('b');
+                board.addMove(cellRow, cellColumn, ' ');
 
                 if (alpha >= beta) break;
             }
 
             if (playerSignal === '×') {
+                window.alert('aa');
                 return { rowVal: row, columnVal: column, bestScore: alpha };
             }
-
+            window.alert('aaa');
             return { rowVal: row, columnVal: column, bestScore: beta };
         }
 
@@ -56,16 +72,16 @@ export default class MiniMax {
 
     makeCapableMoveArray(board) {
         let capableMovesArray = [];
+        console.log('makeCapableMoveArrayメソッドが呼ばれました');
 
         for (let row = 0; row < board.getRowSize(); row++) {
             for (let column = 0; column < board.getColumnSize(); column++) {
                 if (board.getMove(row, column) == ' ') {
                     let cellObj = { rowVal: row, columnVal: column };
-                    capableMovesArray.add(cellObj);
+                    capableMovesArray.push(cellObj);
                 }
             }
         }
-
         return capableMovesArray;
     }
 

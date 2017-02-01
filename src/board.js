@@ -24,8 +24,8 @@ export default class Board {
         return this.columnSize;
     }
 
-    addMove(row, column, hand) {
-        this.gameBoard[row][column] = hand;
+    addMove(row, column, move) {
+        this.gameBoard[row][column] = move;
     }
     getMove(row, column) {
         return this.gameBoard[row][column];

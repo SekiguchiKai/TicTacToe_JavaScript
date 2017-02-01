@@ -1,6 +1,8 @@
-// view js
 import Board from './board.js';
+import Cpu from './cpu.js';
+
 const board = new Board(3, 3);
+const cpu = new Cpu('cpu', '×', board);
 
 let idArray = ['0-0', '0-1', '0-2', '1-0', '1-1', '1-2', '2-0', '2-1', '2-2'];
 
@@ -15,9 +17,12 @@ for (let id of idArray) {
 
         board.addMove(row, column, '○');
         e.textContent = board.getMove(row, column);
+
+        let depth = 2;
+
+        cpu.doMove(depth, board);
+
+
     });
 
 }
-
-
-
