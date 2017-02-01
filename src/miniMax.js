@@ -15,7 +15,6 @@ export default class MiniMax {
 
         // 試合が終了か、深さが0の場合は、スコアを
         if (capableMovesArray.length === 0 || depth === 0) {
-            window.alert('aaaaaa');
 
             // ここ要変更
             score = scoreCalculator.calcScore(board.getGameBoardState());
@@ -41,30 +40,21 @@ export default class MiniMax {
                         row = cellRow;
                     }
                 } else if (playerSignal === '○') {
-                    window.alert('c');
-                    let obj = this.calcMiniMax(depth - 1, board, '×', alpha, beta);
-
-                    score = obj.bestScore;
-
-
-                    // score = this.calcMinMax(depth - 1, board, '×', alpha, beta).bestScore;
+                    score = this.calcMiniMax(depth - 1, board, '×', alpha, beta).bestScore;
                     if (score < beta) {
                         beta = score;
                         column = cellColumn;
                         row = cellRow;
                     }
                 }
-                window.alert('b');
                 board.addMove(cellRow, cellColumn, ' ');
 
                 if (alpha >= beta) break;
             }
 
             if (playerSignal === '×') {
-                window.alert('aa');
                 return { rowVal: row, columnVal: column, bestScore: alpha };
             }
-            window.alert('aaa');
             return { rowVal: row, columnVal: column, bestScore: beta };
         }
 

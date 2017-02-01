@@ -16,12 +16,9 @@ export default class Cpu {
         console.log('doMoveメソッドが呼び出されました');
 
         let cellObj = miniMax.calcMiniMax(depth, board, '○', Number.MIN_VALUE, Number.MAX_VALUE);
-        window.alert('miniMaxを完了しました');
 
-        board.addMoves(cellObj.rowVal, cellObj.columnVal, '×');
+        board.addMove(cellObj.rowVal, cellObj.columnVal, '×');
 
-
-        // board.addMoves(1, 1, '×');
         let e = document.getElementById(cellObj.rowVal + '-' + cellObj.columnVal);
         e.textContent = '×';
     }

@@ -11,7 +11,7 @@ export default class ScoreCalculator {
     }
 
     calcScore(gameBoard) {
-        window.alert('calcScoreメソッドが呼ばれました');
+        console.log('calcScoreメソッドが呼ばれました');
         let totalScore = 0;
 
         let arraySize = this.judgeCriteriaSequence;
@@ -21,13 +21,10 @@ export default class ScoreCalculator {
 
         totalScore += this.calcColumn(movesArray, gameBoard);
         totalScore += this.calcLeftSlanting(movesArray, gameBoard);
-        window.alert('calcRightSlanting2');
         totalScore += this.calcRightSlanting(movesArray, gameBoard);
-        window.alert('calcRightSlanting3');
 
         // ここを変更予定
         //  Counter.resetCount();
-        window.alert('計算終了');
         return totalScore;
     }
 
@@ -50,7 +47,7 @@ export default class ScoreCalculator {
     calcColumn(movesArray, gameBoard) {
         let score = 0;
 
-        for (let column = 0; column < 3; column++) {
+        for (let column = 0; column < this.columnSize; column++) {
             for (let row = 0; row < this.rowMax; row++) {
                 for (let i = 0; i < movesArray.length; i++) {
                     movesArray[i] = gameBoard[row + i][column];
@@ -187,8 +184,8 @@ export default class ScoreCalculator {
     calcLineScore(movesArray, maxPoint, minPoint) {
         console.log('calcLineScoreが呼ばれました');
 
-        var score = 0;
-        var perTernPoint = 10;
+        let score = 0;
+        let perTernPoint = 10;
 
         for (let moves of movesArray) {
 
@@ -203,9 +200,9 @@ export default class ScoreCalculator {
         const finalMinPoint = -100000;
 
         // 勝敗がつくときには、点数の差を大きくする
-        if (score == maxPoint) {
+        if (score === maxPoint) {
             score = finalMaxPoint;
-        } else if (score == minPoint) {
+        } else if (score === minPoint) {
             score = finalMinPoint;
         }
 
