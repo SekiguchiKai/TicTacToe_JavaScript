@@ -21,18 +21,19 @@ export default class Judge {
         return '未決';
     }
 
+
     judgeWin(gameBoard) {
-        return this.judgeRow(gameBoard, Moves.CIRCLE)
-            || this.judgeColumn(gameBoard, Moves.CIRCLE)
-            || this.judgeLeftSlanting(gameBoard, Moves.CIRCLE)
-            || this.judgeRightSlanting(gameBoard, Moves.CIRCLE);
+        return this.judgeRow(gameBoard, '○')
+            || this.judgeColumn(gameBoard, '○')
+            || this.judgeLeftSlanting(gameBoard, '○')
+            || this.judgeRightSlanting(gameBoard, '○');
     }
 
     judgeLose(gameBoard) {
-        return this.judgeRow(gameBoard, Moves.CROSS)
-            || this.judgeColumn(gameBoard, Moves.CROSS)
-            || this.judgeLeftSlanting(gameBoard, Moves.CROSS)
-            || this.judgeRightSlanting(gameBoard, Moves.CROSS);
+        return this.judgeRow(gameBoard, '×')
+            || this.judgeColumn(gameBoard, '×')
+            || this.judgeLeftSlanting(gameBoard, '×')
+            || this.judgeRightSlanting(gameBoard, '×');
     }
 
     judgeDraw(gameBoard) {
@@ -42,7 +43,7 @@ export default class Judge {
                     return false;
                 } else if (this.judgeLose(gameBoard)) {
                     return false;
-                } else if (gameBoard[row][column] == Moves.EMPTY) {
+                } else if (gameBoard[row][column] === ' ') {
                     return false;
                 }
             }
@@ -51,7 +52,7 @@ export default class Judge {
     }
 
     judgeRow(gameBoard, moves) {
-        for (let row = 0; row < rowSize; row++) {
+        for (let row = 0; row < this.rowSize; row++) {
             for (let column = 0; column < this.columnMax; column++) {
                 if (this.checkARow(gameBoard, moves, row, column)) {
                     return true;
@@ -71,7 +72,7 @@ export default class Judge {
     }
 
     judgeColumn(gameBoard, moves) {
-        for (let column = 0; column < columnSize; column++) {
+        for (let column = 0; column < this.columnSize; column++) {
             for (let row = 0; row < this.rowMax; row++) {
                 if (this.checkAColumn(gameBoard, moves, row, column)) {
                     return true;
@@ -81,7 +82,7 @@ export default class Judge {
         return false;
     }
 
-    pcheckAColumn(gameBoard, moves, row, column) {
+    checkAColumn(gameBoard, moves, row, column) {
         for (let difference = 0; difference < this.judgeCriteriaSequence; difference++) {
             if (gameBoard[row + difference][column] != moves) {
                 return false;
@@ -96,7 +97,7 @@ export default class Judge {
         // centerAxis
         let column = 0;
 
-        for (let row = 0; row < rowMax; row++) {
+        for (let row = 0; row < this.rowMax; row++) {
             // 1回あたりの5連
             let oneTermCheck = this.checkOneTermLeftSlanting(gameBoard, moves, row, column);
             if (oneTermCheck) {
@@ -131,7 +132,7 @@ export default class Judge {
         let column = 0;
 
         // for文1回で、1つの連を表す
-        for (let row = rowStart; row < rowMax; row++) {
+        for (let row = rowStart; row < this.rowMax; row++) {
             let oneTermCheck = checkOneTermLeftSlanting(gameBoard, moves, row, column);
             if (oneTermCheck) {
                 return true;
@@ -144,11 +145,11 @@ export default class Judge {
 
 
     leftSlantingColumnShift(gameBoard, moves, columnStart) {
-        letrow = 0;
+        let row = 0;
 
         // for文1回で、1つの連を表す
-        for (letcolumn = columnStart; column < columnMax; column++) {
-            let oneTermCheck = checkOneTermLeftSlanting(gameBoard, moves, row, column);
+        for (let column = columnStart; column < this.columnMax; column++) {
+            let oneTermCheck = this.checkOneTermLeftSlanting(gameBoard, moves, row, column);
             if (oneTermCheck) {
                 return true;
             }
@@ -160,7 +161,7 @@ export default class Judge {
 
     checkOneTermLeftSlanting(gameBoard, moves, row, column) {
 
-        for (letdifference = 0; difference < this.judgeCriteriaSequence; difference++) {
+        for (let difference = 0; difference < this.judgeCriteriaSequence; difference++) {
             if (gameBoard[row + difference][column + difference] != moves) {
                 return false;
             }
@@ -172,9 +173,9 @@ export default class Judge {
     judgeRightSlanting(gameBoard, moves) {
 
         // centerAxis
-        letcolumn = columnSize - 1;
+        let column = this.columnSize - 1;
 
-        for (letrow = 0; row < rowMax; row++) {
+        for (let row = 0; row < this.rowMax; row++) {
             // 1回あたりの5連
             let oneTermCheck = this.checkOneTermRightSlanting(gameBoard, moves, row, column);
             if (oneTermCheck) {
@@ -184,15 +185,15 @@ export default class Judge {
         }
 
         // rowシフト
-        for (letrowStart = 1; rowStart < this.judgeCriteriaSequence; rowStart++) {
+        for (let rowStart = 1; rowStart < this.judgeCriteriaSequence; rowStart++) {
             let rowShiftCheck = this.rightSlantingRowShift(gameBoard, moves, rowStart);
             if (rowShiftCheck) {
                 return true;
             }
         }
         // columnシフト
-        const letstart = gameBoard.length - 1;
-        for (letcolumnStart = start; columnStart > this.rowSize - this.judgeCriteriaSequence - 1; columnStart--) {
+        const start = gameBoard.length - 1;
+        for (let columnStart = start; columnStart > this.rowSize - this.judgeCriteriaSequence - 1; columnStart--) {
             let columnShiftCheck = this.rightSlantingColumnShift(gameBoard, moves, columnStart);
             if (columnShiftCheck) {
                 return true;
@@ -204,9 +205,9 @@ export default class Judge {
 
 
     rightSlantingRowShift(gameBoard, moves, rowStart) {
-        const letcolumn = columnSize - 1;
+        const column = this.columnSize - 1;
 
-        for (letrow = rowStart; row < rowMax; row++) {
+        for (let row = rowStart; row < this.rowMax; row++) {
             // 1回あたりの5連
             let oneTermCheck = this.checkOneTermRightSlanting(gameBoard, moves, row, column);
             if (oneTermCheck) {
@@ -218,10 +219,10 @@ export default class Judge {
     }
 
     rightSlantingColumnShift(gameBoard, moves, columnStart) {
-        letrow = 0;
+        let row = 0;
 
-        const letcolumnEnd = this.judgeCriteriaSequence - 2;
-        for (letcolumn = columnStart; column > columnEnd; column--) {
+        const columnEnd = this.judgeCriteriaSequence - 2;
+        for (let column = columnStart; column > columnEnd; column--) {
             // 1回あたりの5連
             let oneTermCheck = this.checkOneTermRightSlanting(gameBoard, moves, row, column);
             if (oneTermCheck) {
@@ -234,7 +235,7 @@ export default class Judge {
 
     checkOneTermRightSlanting(gameBoard, moves, row, column) {
 
-        for (letdifference = 0; difference < this.judgeCriteriaSequence; difference++) {
+        for (let difference = 0; difference < this.judgeCriteriaSequence; difference++) {
             if (gameBoard[row + difference][column - difference] != moves) {
                 return false;
             }

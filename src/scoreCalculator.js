@@ -1,3 +1,6 @@
+
+import Counter from './counter.js';
+
 export default class ScoreCalculator {
 
     constructor(rowSize, columnSize, judgeCriteriaSequence, maxPoint, minPoint) {
@@ -20,11 +23,13 @@ export default class ScoreCalculator {
         totalScore += this.calcRow(movesArray, gameBoard);
 
         totalScore += this.calcColumn(movesArray, gameBoard);
+
         totalScore += this.calcLeftSlanting(movesArray, gameBoard);
+
         totalScore += this.calcRightSlanting(movesArray, gameBoard);
 
         // ここを変更予定
-        //  Counter.resetCount();
+        Counter.resetCount();
         return totalScore;
     }
 
@@ -185,7 +190,9 @@ export default class ScoreCalculator {
         console.log('calcLineScoreが呼ばれました');
 
         let score = 0;
-        let perTernPoint = 10;
+        const perTernPoint = 10;
+
+        console.log(movesArray);
 
         for (let moves of movesArray) {
 
@@ -196,22 +203,22 @@ export default class ScoreCalculator {
             }
         }
 
+        let counter = Counter.getCount();
+        const correctionValue = 100;
+
+        const counterCorrectionValue = counter * correctionValue;
+
         const finalMaxPoint = 100000;
         const finalMinPoint = -100000;
 
         // 勝敗がつくときには、点数の差を大きくする
-        if (score === maxPoint) {
-            score = finalMaxPoint;
-        } else if (score === minPoint) {
-            score = finalMinPoint;
+        if (score == maxPoint) {
+            score = finalMaxPoint - counterCorrectionValue;
+        } else if (score == minPoint) {
+            score = finalMinPoint + counterCorrectionValue;
         }
+        Counter.upCount();
 
         return score;
     }
-
-
-
-
-
 }
-

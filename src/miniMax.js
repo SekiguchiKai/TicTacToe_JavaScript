@@ -19,15 +19,15 @@ export default class MiniMax {
             // ここ要変更
             score = scoreCalculator.calcScore(board.getGameBoardState());
 
-
+            console.log('1段目');
 
             return { rowVal: row, columnVal: column, bestScore: score };
         } else {
             // CPUの点数であるαの方が、βよりも大きい場合、それ以上探索しなくても良い(その時のαが最大なので)ので、探索を打ち切る
             for (let cell of capableMovesArray) {
 
-                let cellRow = cell.rowVal;
-                let cellColumn = cell.columnVal;
+                let cellRow = cell.rowValue;
+                let cellColumn = cell.columnValue;
 
                 board.addMove(cellRow, cellColumn, playerSignal);
 
@@ -53,8 +53,10 @@ export default class MiniMax {
             }
 
             if (playerSignal === '×') {
+                console.log('2段目');
                 return { rowVal: row, columnVal: column, bestScore: alpha };
             }
+            console.log('3段目');
             return { rowVal: row, columnVal: column, bestScore: beta };
         }
 
@@ -66,8 +68,8 @@ export default class MiniMax {
 
         for (let row = 0; row < board.getRowSize(); row++) {
             for (let column = 0; column < board.getColumnSize(); column++) {
-                if (board.getMove(row, column) == ' ') {
-                    let cellObj = { rowVal: row, columnVal: column };
+                if (board.getMove(row, column) === ' ') {
+                    let cellObj = { rowValue: row, columnValue: column };
                     capableMovesArray.push(cellObj);
                 }
             }

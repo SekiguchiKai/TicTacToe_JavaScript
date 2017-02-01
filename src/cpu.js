@@ -15,7 +15,9 @@ export default class Cpu {
         // e.textContent = '×';
         console.log('doMoveメソッドが呼び出されました');
 
-        let cellObj = miniMax.calcMiniMax(depth, board, '○', Number.MIN_VALUE, Number.MAX_VALUE);
+        let cellObj = miniMax.calcMiniMax(depth, board, '×', Number.MIN_VALUE, Number.MAX_VALUE);
+
+        console.log(cellObj);
 
         board.addMove(cellObj.rowVal, cellObj.columnVal, '×');
 
