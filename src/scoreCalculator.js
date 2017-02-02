@@ -2,60 +2,188 @@ import Counter from './counter.js';
 
 export default class ScoreCalculator {
 
-    calcScore(gameBoard) {
+    constructor(rowSize, columnSize, judgeCriteriaSequence, maxPoint, minPoint) {
+        this.rowSize = rowSize;
+        this.columnSize = columnSize;
+        this.judgeCriteriaSequence = judgeCriteriaSequence;
+        this.rowMax = this.rowSize - this.judgeCriteriaSequence + 1;
+        this.columnMax = this.columnSize - this.judgeCriteriaSequence + 1;
+        this.maxPoint = maxPoint;
+        this.minPoint = minPoint;
+    }
 
+    calcScore(gameBoard) {
+        console.log('calcScoreメソッドが呼ばれました');
         let totalScore = 0;
 
-        const arraySize = 3;
-
+        let arraySize = this.judgeCriteriaSequence;
         let movesArray = new Array(arraySize);
 
-        const maxPoint = 30;
-        const minPoint = -30;
+        totalScore += this.calcRow(movesArray, gameBoard);
 
+        totalScore += this.calcColumn(movesArray, gameBoard);
 
-        const maxLength = 3;
+        totalScore += this.calcLeftSlanting(movesArray, gameBoard);
 
+        totalScore += this.calcRightSlanting(movesArray, gameBoard);
 
-        // row
-        for (let row = 0; row < maxLength; row++) {
-            for (let column = 0; column < maxLength; column++) {
-                movesArray[column] = gameBoard[row][column];
+        // ここを変更予定
+        Counter.resetCount();
+        console.log('今回の最終合計点は' + totalScore);
+        console.log('その時のゲーム盤は' + gameBoard);
+        return totalScore;
+    }
+
+    calcRow(movesArray, gameBoard) {
+        console.log('calcRowが呼ばれました');
+        let score = 0;
+
+        for (let row = 0; row < this.rowSize; row++) {
+            for (let column = 0; column < this.columnMax; column++) {
+                for (let i = 0; i < movesArray.length; i++) {
+                    movesArray[i] = gameBoard[row][column + i];
+                }
+                score += this.calcLineScore(movesArray, this.maxPoint, this.minPoint);
             }
-            totalScore += this.calcLineScore(movesArray, maxPoint, minPoint);
         }
+        return score;
+    }
 
-        // column
-        for (let column = 0; column < maxLength; column++) {
-            for (let row = 0; row < maxLength; row++) {
-                movesArray[row] = gameBoard[row][column];
+
+    calcColumn(movesArray, gameBoard) {
+        let score = 0;
+
+        for (let column = 0; column < this.columnSize; column++) {
+            for (let row = 0; row < this.rowMax; row++) {
+                for (let i = 0; i < movesArray.length; i++) {
+                    movesArray[i] = gameBoard[row + i][column];
+                }
+                score += this.calcLineScore(movesArray, this.maxPoint, this.minPoint);
             }
-            totalScore += this.calcLineScore(movesArray, maxPoint, minPoint);
+        }
+        return score;
+    }
+
+
+    calcLeftSlanting(movesArray, gameBoard) {
+        let score = 0;
+
+        for (let index = 0; index < this.rowMax; index++) {
+
+            for (let i = 0; i < movesArray.length; i++) {
+                movesArray[i] = gameBoard[index + i][index + i];
+            }
+            score += this.calcLineScore(movesArray, this.maxPoint, this.minPoint);
+        }
+        score += this.calcLeftSlantingRowSlide(movesArray, gameBoard);
+
+        score += this.calcLeftSlantingColumnSlide(movesArray, gameBoard);
+
+
+        return score;
+    }
+
+    calcLeftSlantingRowSlide(movesArray, gameBoard) {
+        let column = 0;
+        let score = 0;
+
+
+        // for文1回で、1つの連を表す
+        for (let row = 1; row < this.rowMax; row++) {
+            score = this.calcLeftSlantingSlideHelper(gameBoard, movesArray, row, column);
+        }
+        return score;
+    }
+
+
+    calcLeftSlantingColumnSlide(movesArray, gameBoard) {
+
+        let row = 0;
+        let score = 0;
+
+        // for文1回で、1つの連を表す
+        for (let column = 1; column < this.columnMax; column++) {
+            score = this.calcLeftSlantingSlideHelper(gameBoard, movesArray, row, column);
+        }
+        return score;
+    }
+
+
+    calcLeftSlantingSlideHelper(gameBoard, movesArray, row, column) {
+
+
+        let score = 0;
+
+        for (let difference = 0; difference < this.judgeCriteriaSequence; difference++) {
+            movesArray[difference] = gameBoard[row + difference][column + difference];
         }
 
+        score += this.calcLineScore(movesArray, this.maxPoint, this.minPoint);
 
-        // 左斜め
-        for (let idx = 0; idx < maxLength; idx++) {
-            movesArray[idx] = gameBoard[idx][idx];
-        }
-        totalScore += this.calcLineScore(movesArray, maxPoint, minPoint);
+        return score;
+    }
 
 
-        // 右斜め
-        let column = 2;
+    calcRightSlanting(movesArray, gameBoard) {
+        let score = 0;
 
-        for (let row = 0; row < maxLength; row++) {
-            movesArray[row] = gameBoard[row][column];
+        let columnLastIndex = this.columnSize - 1;
+        let column = columnLastIndex;
+
+        // for文1回で、1つの連を表す
+        for (let row = 0; row < this.rowMax; row++) {
+            for (let i = 0; i < movesArray.length; i++) {
+                movesArray[i] = gameBoard[row + i][column - i];
+            }
+            score += this.calcLineScore(movesArray, this.maxPoint, this.minPoint);
 
             column--;
         }
 
-        totalScore += this.calcLineScore(movesArray, maxPoint, minPoint);
+        score += this.calcRightSlantingRowSlide(gameBoard, movesArray);
+
+        score += this.calcRightSlantingColumnSlide(gameBoard, movesArray);
+
+        return score;
+    }
 
 
-        Counter.resetCount();
+    calcRightSlantingRowSlide(gameBoard, movesArray) {
+        let column = this.columnSize - 1;
 
-        return totalScore;
+        let score = 0;
+
+        // for文1回で、1つの連を表す
+        for (let row = 1; row < this.rowMax; row++) {
+            score = this.calcRightSlantingSlideHelper(gameBoard, movesArray, row, column);
+        }
+        return score;
+    }
+
+
+    calcRightSlantingColumnSlide(fgameBoard, movesArray) {
+        let localColumnMax = this.columnSize - 1;
+        let row = 0;
+
+        let score = 0;
+
+        // for文1回で、1つの連を表す
+        for (let column = this.judgeCriteriaSequence - 1; column < localColumnMax; column++) {
+            score = this.calcRightSlantingSlideHelper(gameBoard, movesArray, row, column);
+        }
+        return score;
+    }
+
+
+    calcRightSlantingSlideHelper(gameBoard, movesArray, row, column) {
+        let score = 0;
+
+        for (let difference = 0; difference < this.judgeCriteriaSequence; difference++) {
+            movesArray[difference] = gameBoard[row + difference][column - difference];
+        }
+        score += this.calcLineScore(movesArray, this.maxPoint, this.minPoint);
+
+        return score;
     }
 
 

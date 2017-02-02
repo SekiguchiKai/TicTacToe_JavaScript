@@ -26,6 +26,7 @@ for (let id of idArray) {
             console.log('result:' + result);
             if (result !== '未決') {
                 window.alert(result);
+                document.getElementById('table').innerHTML = '<p style="font-size:40px;">君の<span style="color:red;">' + result + '</span>だ</p>';
             }
 
             e.textContent = board.getMove(row, column);
@@ -39,6 +40,7 @@ for (let id of idArray) {
 
             if (result2 !== '未決') {
                 window.alert(result2);
+                document.getElementById('table').innerHTML = '<p style="font-size:40px;">君の<span style="color:red;">' + result2 + '</span>だ</p>';
             }
 
         } else {
