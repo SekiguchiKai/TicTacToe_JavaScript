@@ -10,7 +10,6 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "eslint": "^3.14.1",
     "webpack": "^2.2.0"
   }
 }
