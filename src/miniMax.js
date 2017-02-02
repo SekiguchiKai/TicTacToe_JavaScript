@@ -9,6 +9,7 @@ export default class MiniMax {
         console.log('calcMiniMaxメソッドが呼ばれました');
 
         let capableMovesArray = this.makeCapableMoveArray(board);
+
         let score;
         let row = -1;
         let column = -1;
@@ -26,38 +27,39 @@ export default class MiniMax {
             // CPUの点数であるαの方が、βよりも大きい場合、それ以上探索しなくても良い(その時のαが最大なので)ので、探索を打ち切る
             for (let cell of capableMovesArray) {
 
-                let cellRow = cell.rowValue;
-                let cellColumn = cell.columnValue;
-
-                board.addMove(cellRow, cellColumn, playerSignal);
-
+                board.addMove(cell.rowValue, cell.columnValue, playerSignal);
 
                 if (playerSignal === '×') {
                     score = this.calcMiniMax(depth - 1, board, '○', alpha, beta).bestScore;
                     if (score > alpha) {
                         alpha = score;
-                        column = cellColumn;
-                        row = cellRow;
+                        row = cell.rowValue;
+                        column = cell.columnValue;
+
                     }
                 } else if (playerSignal === '○') {
                     score = this.calcMiniMax(depth - 1, board, '×', alpha, beta).bestScore;
                     if (score < beta) {
                         beta = score;
-                        column = cellColumn;
-                        row = cellRow;
+                        row = cell.rowValue;
+                        column = cell.columnValue;
                     }
                 }
-                board.addMove(cellRow, cellColumn, ' ');
+                board.addMove(cell.rowValue, cell.columnValue, ' ');
 
                 if (alpha >= beta) break;
             }
 
-            if (playerSignal === '×') {
-                console.log('2段目');
-                return { rowVal: row, columnVal: column, bestScore: alpha };
-            }
-            console.log('3段目');
-            return { rowVal: row, columnVal: column, bestScore: beta };
+            return (playerSignal === '×') ? { rowVal: row, columnVal: column, bestScore: alpha } : { rowVal: row, columnVal: column, bestScore: beta };
+
+            // if (playerSignal === '×') {
+            //     console.log('2段目');
+            //     console.log('2段目のbestScoreは' + alpha);
+            //     return { rowVal: row, columnVal: column, bestScore: alpha };
+            // }
+            // console.log('3段目');
+            // console.log('3段目のbestScoreは' + beta);
+            // return { rowVal: row, columnVal: column, bestScore: beta };
         }
 
     }
@@ -74,6 +76,7 @@ export default class MiniMax {
                 }
             }
         }
+        console.log('capableMovesArray:' + JSON.stringify(capableMovesArray));
         return capableMovesArray;
     }
 

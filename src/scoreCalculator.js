@@ -30,6 +30,8 @@ export default class ScoreCalculator {
 
         // ここを変更予定
         Counter.resetCount();
+        console.log('今回の最終合計点は' + totalScore);
+        console.log('その時のゲーム盤は' + gameBoard);
         return totalScore;
     }
 
@@ -117,7 +119,7 @@ export default class ScoreCalculator {
             movesArray[difference] = gameBoard[row + difference][column + difference];
         }
 
-        score += this.calcLineScore(movesArray, maxPoint, minPoint);
+        score += this.calcLineScore(movesArray, this.maxPoint, this.minPoint);
 
         return score;
     }
@@ -212,12 +214,18 @@ export default class ScoreCalculator {
         const finalMinPoint = -100000;
 
         // 勝敗がつくときには、点数の差を大きくする
-        if (score == maxPoint) {
-            score = finalMaxPoint - counterCorrectionValue;
-        } else if (score == minPoint) {
-            score = finalMinPoint + counterCorrectionValue;
-        }
+        // if (score == maxPoint) {
+        //     score = finalMaxPoint - counterCorrectionValue;
+        // } else if (score == minPoint) {
+        //     score = finalMinPoint + counterCorrectionValue;
+        // }
         Counter.upCount();
+
+        if (score == maxPoint) {
+            score = finalMaxPoint;
+        } else if (score == minPoint) {
+            score = finalMinPoint;
+        }
 
         return score;
     }
