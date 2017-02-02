@@ -9,8 +9,6 @@ const judge = new Judge(3, 3, 3);
 let idArray = ['0-0', '0-1', '0-2', '1-0', '1-1', '1-2', '2-0', '2-1', '2-2'];
 
 for (let id of idArray) {
-
-
     let e = document.getElementById(id);
     e.addEventListener('click', () => {
         let rowColumn = id.split('-');
@@ -20,7 +18,7 @@ for (let id of idArray) {
         let cellMove = board.getMove(row, column);
 
         if (cellMove === ' ') {
-            board.addMove(row, column, '○');
+            board.putMove(row, column, '○');
 
             let result = judge.judgeResult(board);
             console.log('result:' + result);
