@@ -23,6 +23,8 @@ for (let id of idArray) {
 
         cpu.doMove(depth, board);
 
+        judge.judgeResult(board);
+
 
     });
 

@@ -10,17 +10,25 @@ export default class MiniMax {
 
         let capableMovesArray = this.makeCapableMoveArray(board);
 
+
+        console.log('前');
         let score;
         let row = -1;
         let column = -1;
 
+        console.log('後');
+
         // 試合が終了か、深さが0の場合は、スコアを
         if (capableMovesArray.length === 0 || depth === 0) {
+
+            console.log('---capableMovesArray.length---' + capableMovesArray.length);
+            console.log('---depth---' + depth);
+
 
             // ここ要変更
             score = scoreCalculator.calcScore(board.getGameBoardState());
 
-            console.log('1段目');
+            // console.log('1段目');
 
             return { rowVal: row, columnVal: column, bestScore: score };
         } else {
