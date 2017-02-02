@@ -11,9 +11,6 @@ let idArray = ['0-0', '0-1', '0-2', '1-0', '1-1', '1-2', '2-0', '2-1', '2-2'];
 for (let id of idArray) {
 
 
-    // if (judge.judgeResult(board) != '未決') { break; };
-
-
     let e = document.getElementById(id);
     e.addEventListener('click', () => {
         let rowColumn = id.split('-');
@@ -30,7 +27,6 @@ for (let id of idArray) {
             if (result !== '未決') {
                 window.alert(result);
             }
-
 
             e.textContent = board.getMove(row, column);
 
