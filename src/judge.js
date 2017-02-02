@@ -12,10 +12,13 @@ export default class Judge {
         let gameBoard = board.getGameBoardState();
 
         if (this.judgeWin(gameBoard)) {
+            window.alert('勝ち');
             return '勝ち';
         } else if (this.judgeLose(gameBoard)) {
+            window.alert('負け');
             return '負け';
         } else if (this.judgeDraw(gameBoard)) {
+            window.alert('引き分け');
             return '引き分け';
         }
         return '未決';
