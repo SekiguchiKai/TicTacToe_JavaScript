@@ -24,13 +24,27 @@ for (let id of idArray) {
 
         if (cellMove === ' ') {
             board.addMove(row, column, '○');
+
+            let result = judge.judgeResult(board);
+            console.log('result:' + result);
+            if (result !== '未決') {
+                window.alert(result);
+            }
+
+
             e.textContent = board.getMove(row, column);
 
             let depth = 2;
 
             cpu.doMove(depth, board);
 
-            judge.judgeResult(board);
+            let result2 = judge.judgeResult(board);
+            console.log('result:' + result2);
+
+            if (result2 !== '未決') {
+                window.alert(result2);
+            }
+
         } else {
             window.alert('石はすでに置いてある! 他のところを選んで!');
         }

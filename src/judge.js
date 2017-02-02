@@ -12,13 +12,10 @@ export default class Judge {
         let gameBoard = board.getGameBoardState();
 
         if (this.judgeWin(gameBoard)) {
-            window.alert('勝ち');
             return '勝ち';
         } else if (this.judgeLose(gameBoard)) {
-            window.alert('負け');
             return '負け';
         } else if (this.judgeDraw(gameBoard)) {
-            window.alert('引き分け');
             return '引き分け';
         }
         return '未決';
@@ -42,11 +39,7 @@ export default class Judge {
     judgeDraw(gameBoard) {
         for (let row = 0; row < this.rowSize; row++) {
             for (let column = 0; column < this.columnSize; column++) {
-                if (this.judgeWin(gameBoard)) {
-                    return false;
-                } else if (this.judgeLose(gameBoard)) {
-                    return false;
-                } else if (gameBoard[row][column] === ' ') {
+                if (gameBoard[row][column] === ' ') {
                     return false;
                 }
             }
