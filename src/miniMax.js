@@ -10,7 +10,6 @@ export default class MiniMax {
 
         let capableMovesArray = this.makeCapableMoveArray(board);
 
-
         console.log('前');
         let score;
         let row = -1;
@@ -28,8 +27,7 @@ export default class MiniMax {
             // ここ要変更
             score = scoreCalculator.calcScore(board.getGameBoardState());
 
-            // console.log('1段目');
-
+            console.log('1段目');
             return { rowVal: row, columnVal: column, bestScore: score };
         } else {
             // CPUの点数であるαの方が、βよりも大きい場合、それ以上探索しなくても良い(その時のαが最大なので)ので、探索を打ち切る
@@ -59,15 +57,6 @@ export default class MiniMax {
             }
 
             return (playerSignal === '×') ? { rowVal: row, columnVal: column, bestScore: alpha } : { rowVal: row, columnVal: column, bestScore: beta };
-
-            // if (playerSignal === '×') {
-            //     console.log('2段目');
-            //     console.log('2段目のbestScoreは' + alpha);
-            //     return { rowVal: row, columnVal: column, bestScore: alpha };
-            // }
-            // console.log('3段目');
-            // console.log('3段目のbestScoreは' + beta);
-            // return { rowVal: row, columnVal: column, bestScore: beta };
         }
 
     }

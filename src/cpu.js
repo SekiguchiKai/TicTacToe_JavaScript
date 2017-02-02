@@ -7,7 +7,7 @@ export default class Cpu {
 
         console.log('doMoveメソッドが呼び出されました');
 
-        let cellObj = miniMax.calcMiniMax(5, board, '×', Number.MIN_VALUE, Number.MAX_VALUE);
+        let cellObj = miniMax.calcMiniMax(3, board, '×', -999999999, 999999999);
 
         console.log(cellObj);
 
