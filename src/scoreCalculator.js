@@ -8,14 +8,14 @@ export default class ScoreCalculator {
     calcScore(gameBoard) {
         let totalScore = 0;
 
-        totalScore += this.calcLineScore(gameBoard, 0, 0, 0, 1, 0, 2);  // row 0
-        totalScore += this.calcLineScore(gameBoard, 1, 0, 1, 1, 1, 2);  // row 1
-        totalScore += this.calcLineScore(gameBoard, 2, 0, 2, 1, 2, 2);  // row 2
-        totalScore += this.calcLineScore(gameBoard, 0, 0, 1, 0, 2, 0);  // col 0
-        totalScore += this.calcLineScore(gameBoard, 0, 1, 1, 1, 2, 1);  // col 1
-        totalScore += this.calcLineScore(gameBoard, 0, 2, 1, 2, 2, 2);  // col 2
-        totalScore += this.calcLineScore(gameBoard, 0, 0, 1, 1, 2, 2);  // diagonal
-        totalScore += this.calcLineScore(gameBoard, 0, 2, 1, 1, 2, 0);  // alternate diagonal
+        totalScore += this.calcLineScore(gameBoard, 0, 0, 0, 1, 0, 2);
+        totalScore += this.calcLineScore(gameBoard, 1, 0, 1, 1, 1, 2);
+        totalScore += this.calcLineScore(gameBoard, 2, 0, 2, 1, 2, 2);
+        totalScore += this.calcLineScore(gameBoard, 0, 0, 1, 0, 2, 0);
+        totalScore += this.calcLineScore(gameBoard, 0, 1, 1, 1, 2, 1);
+        totalScore += this.calcLineScore(gameBoard, 0, 2, 1, 2, 2, 2);
+        totalScore += this.calcLineScore(gameBoard, 0, 0, 1, 1, 2, 2);
+        totalScore += this.calcLineScore(gameBoard, 0, 2, 1, 1, 2, 0);
         return totalScore;
 
     }
