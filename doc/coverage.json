@@ -1,0 +1,106 @@
+{
+  "coverage": "0%",
+  "expectCount": 63,
+  "actualCount": 0,
+  "files": {
+    "src/board.js": {
+      "expectCount": 10,
+      "actualCount": 0,
+      "undocumentLines": [
+        1,
+        27,
+        5,
+        3,
+        6,
+        23,
+        34,
+        30,
+        19,
+        4
+      ]
+    },
+    "src/counter.js": {
+      "expectCount": 4,
+      "actualCount": 0,
+      "undocumentLines": [
+        3,
+        10,
+        13,
+        6
+      ]
+    },
+    "src/cpu.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        4,
+        6
+      ]
+    },
+    "src/judge.js": {
+      "expectCount": 23,
+      "actualCount": 0,
+      "undocumentLines": [
+        1,
+        81,
+        61,
+        158,
+        232,
+        8,
+        5,
+        3,
+        70,
+        6,
+        39,
+        91,
+        32,
+        11,
+        169,
+        50,
+        25,
+        143,
+        127,
+        217,
+        203,
+        7,
+        4
+      ]
+    },
+    "src/miniMax.js": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        5,
+        8,
+        64
+      ]
+    },
+    "src/scoreCalculator.js": {
+      "expectCount": 21,
+      "actualCount": 0,
+      "undocumentLines": [
+        3,
+        53,
+        68,
+        99,
+        86,
+        112,
+        190,
+        127,
+        164,
+        151,
+        178,
+        37,
+        15,
+        10,
+        7,
+        5,
+        8,
+        11,
+        12,
+        9,
+        6
+      ]
+    }
+  }
+}

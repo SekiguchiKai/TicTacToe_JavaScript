@@ -8,7 +8,6 @@ const judge = new Judge(3, 3, 3);
 
 let idArray = ['0-0', '0-1', '0-2', '1-0', '1-1', '1-2', '2-0', '2-1', '2-2'];
 
-
 for (let id of idArray) {
     let e = document.getElementById(id);
     e.addEventListener('click', () => {
@@ -16,19 +15,44 @@ for (let id of idArray) {
         let row = Number(rowColumn[0]);
         let column = Number(rowColumn[1]);
 
-        board.addMove(row, column, '○');
-        e.textContent = board.getMove(row, column);
+        let cellMove = board.getMove(row, column);
 
-        let depth = 2;
+        if (cellMove === ' ') {
+            board.putMove(row, column, '○');
 
-        cpu.doMove(depth, board);
+            let result = judge.judgeResult(board);
+            console.log('result:' + result);
 
-        judge.judgeResult(board);
+            if (result === '引き分け') {
+                window.alert(result);
+                document.getElementById('table').innerHTML = '<p style="font-size:40px;"><span style="color:red;">' + result + '</span>だ</p>';
+            } else if (result !== '未決') {
+                window.alert(result);
+                document.getElementById('table').innerHTML = '<p style="font-size:40px;">君の<span style="color:red;">' + result + '</span>だ</p>';
+            }
 
+            e.innerHTML = '<span style="font-size:70px; color:white;">' + board.getMove(row, column) + '</span>';
 
+            let depth = 3;
+
+            cpu.doMove(depth, board);
+
+            let result2 = judge.judgeResult(board);
+            console.log('result:' + result2);
+
+            if (result === '引き分け') {
+                window.alert(result);
+                document.getElementById('table').innerHTML = '<p style="font-size:40px;"><span style="color:red;">' + result2 + '</span>だ</p>';
+            } else if (result2 !== '未決') {
+                window.alert(result2);
+                document.getElementById('table').innerHTML = '<p style="font-size:40px;">君の<span style="color:red;">' + result2 + '</span>だ</p>';
+            }
+
+        } else {
+            window.alert('石はすでに置いてある! 他のところを選んで!');
+        }
     });
 
 }
-
 
 
