@@ -13,8 +13,9 @@ TicTacToeGame.
  
 ### run
 1. clone
-2. Hit the command ```npm run build```at Application root directory.
-3. ``` open resources/index.html ```.
+2. Hit the command ```npm install``at Application root directory.
+3. Hit the command ```npm run build```at Application root directory.
+4. ``` open resources/index.html ```.
  
 ### After run
 1. Start the game.
