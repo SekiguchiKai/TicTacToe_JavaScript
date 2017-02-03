@@ -43,16 +43,36 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/judge.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">export default class Judge {
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">// &#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x3092;private&#x5316;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x51E6;&#x7406;
+let _rowSize = new WeakMap();
+let _columnSize = new WeakMap();
+let _judgeCriteriaSequence = new WeakMap();
+let _rowMax = new WeakMap();
+let _columnMax = new WeakMap();
 
+/**
+ * &#x52DD;&#x6557;&#x3092;&#x5BE9;&#x5224;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x30AF;&#x30E9;&#x30B9;
+ */
+export default class Judge {
+
+    /**
+    * &#x30B3;&#x30F3;&#x30B9;&#x30C8;&#x30E9;&#x30AF;&#x30BF;
+    * @param {rowSize} row&#x306E;&#x30B5;&#x30A4;&#x30BA;
+    * @param {columnSize} column&#x306E;&#x30B5;&#x30A4;&#x30BA;
+    * @param {judgeCriteriaSequence} &#x52DD;&#x6557;&#x306E;&#x57FA;&#x6E96;&#x3068;&#x306A;&#x308B;&#x6570;&#xFF08;&#x4F55;&#x500B;&#x540C;&#x3058;&#x6253;&#x3061;&#x624B;&#x304C;&#x4E00;&#x5217;&#x306B;&#x63C3;&#x3048;&#x3070;&#x52DD;&#x6557;&#x304C;&#x6C7A;&#x5B9A;&#x3059;&#x308B;&#x304B;&#xFF09;
+    */
     constructor(rowSize, columnSize, judgeCriteriaSequence) {
-        this.rowSize = rowSize;
-        this.columnSize = columnSize;
-        this.judgeCriteriaSequence = judgeCriteriaSequence;
-        this.rowMax = this.rowSize - this.judgeCriteriaSequence + 1;
-        this.columnMax = this.columnSize - this.judgeCriteriaSequence + 1;
+        _rowSize.set(this, rowSize);
+        _columnSize.set(this, columnSize);
+        _judgeCriteriaSequence.set(this, judgeCriteriaSequence);
+        _rowMax.set(this, _rowSize.get(this) - _judgeCriteriaSequence.get(this) + 1);
+        _columnMax.set(this, _columnSize.get(this) - _judgeCriteriaSequence.get(this) + 1);
     }
-
+    /**
+     * &#x52DD;&#x6557;&#x306F;&#x3064;&#x3044;&#x3066;&#x3044;&#x308B;&#x304B;&#x3092;&#x78BA;&#x8A8D;&#x3057;&#x3001;&#x305D;&#x306E;&#x7D50;&#x679C;&#x3092;&#x8FD4;&#x3059;&#x305F;&#x3081;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;
+     * @param {board} Board&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;
+     * @return {boolean} &#x52DD;&#x6557;&#x306E;&#x7D50;&#x679C;
+     */
     judgeResult(board) {
         let gameBoard = board.getGameBoardState();
 
@@ -66,14 +86,24 @@
         return &apos;&#x672A;&#x6C7A;&apos;;
     }
 
-
+    /**
+     * &#x30E6;&#x30FC;&#x30B6;&#x30FC;&#x304C;&#x52DD;&#x5229;&#x3057;&#x305F;&#x304B;&#x3069;&#x3046;&#x304B;&#x3092;&#x78BA;&#x8A8D;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;
+     * &#x7E26;&#x3001;&#x6A2A;&#x3001;&#x5DE6;&#x659C;&#x3081;&#x3001;&#x53F3;&#x659C;&#x3081;&#x3092;&#x8D70;&#x67FB;&#x3059;&#x308B;
+     * @param {gameBoard} &#x30B2;&#x30FC;&#x30E0;&#x76E4;
+     * @return {boolean} &#x30E6;&#x30FC;&#x30B6;&#x30FC;&#x304C;&#x52DD;&#x5229;&#x3057;&#x305F;&#x304B;&#x3069;&#x3046;&#x304B;&#x306E;&#x771F;&#x507D;&#x5024;
+     */
     judgeWin(gameBoard) {
         return this.judgeRow(gameBoard, &apos;&#x25CB;&apos;)
             || this.judgeColumn(gameBoard, &apos;&#x25CB;&apos;)
             || this.judgeLeftSlanting(gameBoard, &apos;&#x25CB;&apos;)
             || this.judgeRightSlanting(gameBoard, &apos;&#x25CB;&apos;);
     }
-
+    /**
+     * &#x30E6;&#x30FC;&#x30B6;&#x30FC;&#x304C;&#x6557;&#x5317;&#x3057;&#x305F;&#x304B;&#x3069;&#x3046;&#x304B;&#x3092;&#x78BA;&#x8A8D;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;
+     * &#x7E26;&#x3001;&#x6A2A;&#x3001;&#x5DE6;&#x659C;&#x3081;&#x3001;&#x53F3;&#x659C;&#x3081;&#x3092;&#x8D70;&#x67FB;&#x3059;&#x308B;
+     * @param {gameBoard} &#x30B2;&#x30FC;&#x30E0;&#x76E4;
+     * @return {boolean} &#x30E6;&#x30FC;&#x30B6;&#x30FC;&#x304C;&#x6557;&#x5317;&#x3057;&#x305F;&#x304B;&#x3069;&#x3046;&#x304B;&#x306E;&#x771F;&#x507D;&#x5024;
+     */
     judgeLose(gameBoard) {
         return this.judgeRow(gameBoard, &apos;&#xD7;&apos;)
             || this.judgeColumn(gameBoard, &apos;&#xD7;&apos;)
@@ -81,9 +111,14 @@
             || this.judgeRightSlanting(gameBoard, &apos;&#xD7;&apos;);
     }
 
+    /**
+     * &#x5F15;&#x304D;&#x5206;&#x3051;&#x304B;&#x3069;&#x3046;&#x304B;&#x3092;&#x78BA;&#x8A8D;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;
+     * @param {gameBoard} &#x30B2;&#x30FC;&#x30E0;&#x76E4;
+     * @return {boolean} &#x5F15;&#x304D;&#x5206;&#x3051;&#x304B;&#x3069;&#x3046;&#x304B;&#x306E;&#x771F;&#x507D;&#x5024;
+     */
     judgeDraw(gameBoard) {
-        for (let row = 0; row &lt; this.rowSize; row++) {
-            for (let column = 0; column &lt; this.columnSize; column++) {
+        for (let row = 0; row &lt; _rowSize.get(this); row++) {
+            for (let column = 0; column &lt; _columnSize.get(this); column++) {
                 if (gameBoard[row][column] === &apos; &apos;) {
                     return false;
                 }
@@ -91,10 +126,15 @@
         }
         return true;
     }
-
+    /**
+     * row(&#x6A2A;&#x306E;&#x30E9;&#x30A4;&#x30F3;)&#x304C;&#x5F15;&#x6570;&#x3067;&#x6307;&#x5B9A;&#x3055;&#x308C;&#x305F;&#x6253;&#x3061;&#x624B;&#x3067;5&#x9023;&#x304C;&#x9054;&#x6210;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x304B;&#x78BA;&#x8A8D;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;
+     * @param {gameBoard} &#x30B2;&#x30FC;&#x30E0;&#x76E4;
+     * @param {moves} &#x6253;&#x3061;&#x624B;
+     * @return {boolean} &#x52DD;&#x6557;&#x304C;&#x6C7A;&#x5B9A;&#x3057;&#x305F;&#x304B;&#x771F;&#x507D;&#x5024;
+     */
     judgeRow(gameBoard, moves) {
-        for (let row = 0; row &lt; this.rowSize; row++) {
-            for (let column = 0; column &lt; this.columnMax; column++) {
+        for (let row = 0; row &lt; _rowSize.get(this); row++) {
+            for (let column = 0; column &lt; _columnMax.get(this); column++) {
                 if (this.checkARow(gameBoard, moves, row, column)) {
                     return true;
                 }
@@ -103,18 +143,29 @@
         return false;
     }
 
+    /**
+     * row&#x306B;&#x304A;&#x3044;&#x3066;&#x6307;&#x5B9A;&#x3055;&#x308C;&#x305F;&#x6253;&#x3061;&#x624B;&#x304C;&#x3001;&#x30B2;&#x30FC;&#x30E0;&#x76E4;&#x4E0A;&#x306E;&#x6307;&#x5B9A;&#x3055;&#x308C;&#x305F;&#x7BC4;&#x56F2;&#x5185;&#x3067;&#x52DD;&#x6557;&#x3092;&#x6C7A;&#x5B9A;&#x3059;&#x308B;&#x6570;&#x5206;&#x9023;&#x7D9A;&#x3057;&#x3066;&#x3044;&#x308B;&#x304B;&#x306E;&#x771F;&#x507D;&#x5024;&#x3092;&#x8FD4;&#x3059;&#x30E1;&#x30BD;&#x30C3;&#x30C9;
+     * @param {gameBoard} &#x30B2;&#x30FC;&#x30E0;&#x76E4;
+     * @param {moves} &#x6253;&#x3061;&#x624B;
+     * @return {boolean} &#x6307;&#x5B9A;&#x3055;&#x308C;&#x305F;&#x6253;&#x3061;&#x624B;&#x304C;&#x3001;&#x30B2;&#x30FC;&#x30E0;&#x76E4;&#x4E0A;&#x306E;&#x6307;&#x5B9A;&#x3055;&#x308C;&#x305F;&#x7BC4;&#x56F2;&#x5185;&#x3067;&#x52DD;&#x6557;&#x3092;&#x6C7A;&#x5B9A;&#x3059;&#x308B;&#x6570;&#x5206;&#x9023;&#x7D9A;&#x3057;&#x3066;&#x3044;&#x308B;&#x304B;&#x306E;&#x771F;&#x507D;&#x5024;
+     */
     checkARow(gameBoard, moves, row, column) {
-        for (let difference = 0; difference &lt; this.judgeCriteriaSequence; difference++) {
+        for (let difference = 0; difference &lt; _judgeCriteriaSequence.get(this); difference++) {
             if (gameBoard[row][column + difference] != moves) {
                 return false;
             }
         }
         return true;
     }
-
+    /**
+     * column(&#x7E26;&#x306E;&#x30E9;&#x30A4;&#x30F3;)&#x304C;&#x5F15;&#x6570;&#x3067;&#x6307;&#x5B9A;&#x3055;&#x308C;&#x305F;Move&#x3067;5&#x9023;&#x304C;&#x9054;&#x6210;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x304B;&#x78BA;&#x8A8D;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;
+     * @param {gameBoard} &#x30B2;&#x30FC;&#x30E0;&#x76E4;
+     * @param {moves} &#x6253;&#x3061;&#x624B;
+     * @return {boolean} &#x52DD;&#x6557;&#x304C;&#x6C7A;&#x5B9A;&#x3057;&#x305F;&#x304B;&#x771F;&#x507D;&#x5024;
+     */
     judgeColumn(gameBoard, moves) {
-        for (let column = 0; column &lt; this.columnSize; column++) {
-            for (let row = 0; row &lt; this.rowMax; row++) {
+        for (let column = 0; column &lt; _columnSize.get(this); column++) {
+            for (let row = 0; row &lt; _rowMax.get(this); row++) {
                 if (this.checkAColumn(gameBoard, moves, row, column)) {
                     return true;
                 }
@@ -122,9 +173,16 @@
         }
         return false;
     }
-
+    /**
+     * column&#x306B;&#x304A;&#x3044;&#x3066;&#x6307;&#x5B9A;&#x3055;&#x308C;&#x305F;&#x6253;&#x3061;&#x624B;&#x304C;&#x3001;&#x30B2;&#x30FC;&#x30E0;&#x76E4;&#x4E0A;&#x306E;&#x6307;&#x5B9A;&#x3055;&#x308C;&#x305F;&#x7BC4;&#x56F2;&#x5185;&#x3067;&#x52DD;&#x6557;&#x3092;&#x6C7A;&#x5B9A;&#x3059;&#x308B;&#x6570;&#x5206;&#x9023;&#x7D9A;&#x3057;&#x3066;&#x3044;&#x308B;&#x304B;&#x306E;&#x771F;&#x507D;&#x5024;&#x3092;&#x8FD4;&#x3059;&#x30E1;&#x30BD;&#x30C3;&#x30C9;
+     * @param {gameBoard} &#x30B2;&#x30FC;&#x30E0;&#x76E4;
+     * @param {moves} &#x6253;&#x3061;&#x624B;
+     * @param {row}       row&#x306E;&#x30A4;&#x30F3;&#x30C7;&#x30C3;&#x30AF;&#x30B9;
+     * @param {column}    column&#x306E;&#x30A4;&#x30F3;&#x30C7;&#x30C3;&#x30AF;&#x30B9;
+     * @return {boolean} &#x6307;&#x5B9A;&#x3055;&#x308C;&#x305F;&#x6253;&#x3061;&#x624B;&#x304C;&#x3001;&#x30B2;&#x30FC;&#x30E0;&#x76E4;&#x4E0A;&#x306E;&#x6307;&#x5B9A;&#x3055;&#x308C;&#x305F;&#x7BC4;&#x56F2;&#x5185;&#x3067;&#x52DD;&#x6557;&#x3092;&#x6C7A;&#x5B9A;&#x3059;&#x308B;&#x6570;&#x5206;&#x9023;&#x7D9A;&#x3057;&#x3066;&#x3044;&#x308B;&#x304B;&#x306E;&#x771F;&#x507D;&#x5024;
+     */
     checkAColumn(gameBoard, moves, row, column) {
-        for (let difference = 0; difference &lt; this.judgeCriteriaSequence; difference++) {
+        for (let difference = 0; difference &lt; _judgeCriteriaSequence.get(this); difference++) {
             if (gameBoard[row + difference][column] != moves) {
                 return false;
             }
@@ -132,13 +190,18 @@
         return true;
     }
 
-
+    /**
+     * &#x5DE6;&#x659C;&#x3081;&#x306E;&#x30E9;&#x30A4;&#x30F3;&#x306B;&#x304A;&#x3044;&#x3066;&#x3001;&#x5F15;&#x6570;&#x3067;&#x53D7;&#x3051;&#x53D6;&#x3063;&#x305F;&#x6253;&#x3061;&#x624B;&#x304C;5&#x9023;&#x63C3;&#x3063;&#x3066;&#x3044;&#x308B;&#x304B;&#x3069;&#x3046;&#x304B;&#x306E;&#x771F;&#x507D;&#x5024;&#x3092;&#x78BA;&#x8A8D;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;
+     * @param {gameBoard} &#x30B2;&#x30FC;&#x30E0;&#x76E4;
+     * @param {moves} &#x6253;&#x3061;&#x624B;
+     * @return {boolean} &#x53F3;&#x659C;&#x3081;&#x306E;&#x30E9;&#x30A4;&#x30F3;&#x306B;&#x304A;&#x3044;&#x3066;&#x3001;&#x5F15;&#x6570;&#x3067;&#x53D7;&#x3051;&#x53D6;&#x3063;&#x305F;&#x6253;&#x3061;&#x624B;&#x304C;5&#x9023;&#x63C3;&#x3063;&#x3066;&#x3044;&#x308B;&#x304B;&#x3069;&#x3046;&#x304B;&#x306E;&#x771F;&#x507D;&#x5024;&#x3092;&#x78BA;&#x8A8D;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;
+     */
     judgeLeftSlanting(gameBoard, moves) {
 
         // centerAxis
         let column = 0;
 
-        for (let row = 0; row &lt; this.rowMax; row++) {
+        for (let row = 0; row &lt; _rowMax.get(this); row++) {
             // 1&#x56DE;&#x3042;&#x305F;&#x308A;&#x306E;5&#x9023;
             let oneTermCheck = this.checkOneTermLeftSlanting(gameBoard, moves, row, column);
             if (oneTermCheck) {
@@ -149,7 +212,7 @@
 
 
         // row&#x30B7;&#x30D5;&#x30C8;
-        for (let rowStart = 1; rowStart &lt; this.judgeCriteriaSequence; rowStart++) {
+        for (let rowStart = 1; rowStart &lt; _judgeCriteriaSequence.get(this); rowStart++) {
             let rowShiftCheck = this.leftSlantingRowShift(gameBoard, moves, rowStart);
             if (rowShiftCheck) {
                 return true;
@@ -157,7 +220,7 @@
         }
 
         // column&#x30B7;&#x30D5;&#x30C8;
-        for (let columnStart = 0; columnStart &lt; this.columnMax; columnStart++) {
+        for (let columnStart = 0; columnStart &lt; _columnMax.get(this); columnStart++) {
             let columnShiftCheck = this.leftSlantingColumnShift(gameBoard, moves, columnStart);
             if (columnShiftCheck) {
                 return true;
@@ -168,12 +231,18 @@
         return false;
     }
 
-
+    /**
+     * &#x5DE6;&#x30E9;&#x30A4;&#x30F3;&#x306E;ROW&#x304C;&#x30B9;&#x30E9;&#x30A4;&#x30C9;&#x3057;&#x305F;&#x6642;&#x306E;&#x5BE9;&#x67FB;&#x3092;&#x884C;&#x3046;&#x305F;&#x3081;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;
+     *
+     * @param {gameBoard} &#x30B2;&#x30FC;&#x30E0;&#x76E4;
+     * @param {moves}     &#x691C;&#x67FB;&#x5BFE;&#x8C61;&#x306E;&#x30D7;&#x30EC;&#x30FC;&#x30E4;&#x30FC;&#x306E;&#x6253;&#x3061;&#x624B;
+     * @return  {boolean} &#x52DD;&#x6557;&#x304C;&#x6C7A;&#x5B9A;&#x3057;&#x305F;&#x304B;&#x771F;&#x507D;&#x5024;
+     */
     leftSlantingRowShift(gameBoard, moves, rowStart) {
         let column = 0;
 
         // for&#x6587;1&#x56DE;&#x3067;&#x3001;1&#x3064;&#x306E;&#x9023;&#x3092;&#x8868;&#x3059;
-        for (let row = rowStart; row &lt; this.rowMax; row++) {
+        for (let row = rowStart; row &lt; _rowMax.get(this); row++) {
             let oneTermCheck = checkOneTermLeftSlanting(gameBoard, moves, row, column);
             if (oneTermCheck) {
                 return true;
@@ -185,11 +254,18 @@
     }
 
 
+    /**
+      * &#x5DE6;&#x30E9;&#x30A4;&#x30F3;&#x306E;ROW&#x304C;&#x30B9;&#x30E9;&#x30A4;&#x30C9;&#x3057;&#x305F;&#x6642;&#x306E;&#x5BE9;&#x67FB;&#x3092;&#x884C;&#x3046;&#x305F;&#x3081;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;
+      *
+      * @param {gameBoard} &#x30B2;&#x30FC;&#x30E0;&#x76E4;
+      * @param {moves}     &#x691C;&#x67FB;&#x5BFE;&#x8C61;&#x306E;&#x30D7;&#x30EC;&#x30FC;&#x30E4;&#x30FC;&#x306E;&#x6253;&#x3061;&#x624B;
+      * @return  {boolean} &#x52DD;&#x6557;&#x304C;&#x6C7A;&#x5B9A;&#x3057;&#x305F;&#x304B;&#x771F;&#x507D;&#x5024;
+      */
     leftSlantingColumnShift(gameBoard, moves, columnStart) {
         let row = 0;
 
         // for&#x6587;1&#x56DE;&#x3067;&#x3001;1&#x3064;&#x306E;&#x9023;&#x3092;&#x8868;&#x3059;
-        for (let column = columnStart; column &lt; this.columnMax; column++) {
+        for (let column = columnStart; column &lt; _columnMax.get(this); column++) {
             let oneTermCheck = this.checkOneTermLeftSlanting(gameBoard, moves, row, column);
             if (oneTermCheck) {
                 return true;
@@ -199,10 +275,18 @@
         }
         return false;
     }
-
+    /**
+      * &#x5DE6;&#x659C;&#x3081;&#x306E;&#x30E9;&#x30A4;&#x30F3;&#x306E;1&#x56DE;&#x3042;&#x305F;&#x308A;&#x304A;&#x3044;&#x3066;&#x3001;&#x5F15;&#x6570;&#x3067;&#x53D7;&#x3051;&#x53D6;&#x3063;&#x305F;&#x6253;&#x3061;&#x624B;&#x304C;5&#x9023;&#x63C3;&#x3063;&#x3066;&#x3044;&#x308B;&#x304B;&#x3069;&#x3046;&#x304B;&#x306E;&#x771F;&#x507D;&#x5024;&#x3092;&#x78BA;&#x8A8D;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;
+      *
+      * @param {gameBoard} &#x30B2;&#x30FC;&#x30E0;&#x76E4;
+      * @param {moves}     &#x6253;&#x3061;&#x624B;
+      * @param {row}      row&#x306E;&#x30A4;&#x30F3;&#x30C7;&#x30C3;&#x30AF;&#x30B9;
+      * @param {column}    column&#x306E;&#x30A4;&#x30F3;&#x30C7;&#x30C3;&#x30AF;&#x30B9;
+      * @return {boolean}  1&#x56DE;&#x3042;&#x305F;&#x308A;&#x304A;&#x3044;&#x3066;&#x3001;&#x5F15;&#x6570;&#x3067;&#x53D7;&#x3051;&#x53D6;&#x3063;&#x305F;&#x6253;&#x3061;&#x624B;&#x304C;5&#x9023;&#x63C3;&#x3063;&#x3066;&#x3044;&#x308B;&#x304B;&#x3069;&#x3046;&#x304B;&#x306E;&#x771F;&#x507D;&#x5024;
+      */
     checkOneTermLeftSlanting(gameBoard, moves, row, column) {
 
-        for (let difference = 0; difference &lt; this.judgeCriteriaSequence; difference++) {
+        for (let difference = 0; difference &lt; _judgeCriteriaSequence.get(this); difference++) {
             if (gameBoard[row + difference][column + difference] != moves) {
                 return false;
             }
@@ -210,13 +294,19 @@
         return true;
 
     }
-
+    /**
+      * &#x53F3;&#x659C;&#x3081;&#x306E;&#x30E9;&#x30A4;&#x30F3;&#x306B;&#x304A;&#x3044;&#x3066;&#x3001;&#x5F15;&#x6570;&#x3067;&#x53D7;&#x3051;&#x53D6;&#x3063;&#x305F;&#x6253;&#x3061;&#x624B;&#x304C;5&#x9023;&#x63C3;&#x3063;&#x3066;&#x3044;&#x308B;&#x304B;&#x3069;&#x3046;&#x304B;&#x306E;&#x771F;&#x507D;&#x5024;&#x3092;&#x78BA;&#x8A8D;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;
+      *
+      * @param {gameBoard} &#x30B2;&#x30FC;&#x30E0;&#x76E4;
+      * @param {moves}     &#x6253;&#x3061;&#x624B;
+      * @return {boolean} &#x53F3;&#x659C;&#x3081;&#x306E;&#x30E9;&#x30A4;&#x30F3;&#x306B;&#x304A;&#x3044;&#x3066;&#x3001;&#x5F15;&#x6570;&#x3067;&#x53D7;&#x3051;&#x53D6;&#x3063;&#x305F;&#x6253;&#x3061;&#x624B;&#x304C;5&#x9023;&#x63C3;&#x3063;&#x3066;&#x3044;&#x308B;&#x304B;&#x3069;&#x3046;&#x304B;&#x306E;&#x771F;&#x507D;&#x5024;&#x3092;&#x78BA;&#x8A8D;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;
+      */
     judgeRightSlanting(gameBoard, moves) {
 
         // centerAxis
-        let column = this.columnSize - 1;
+        let column = _columnSize.get(this) - 1;
 
-        for (let row = 0; row &lt; this.rowMax; row++) {
+        for (let row = 0; row &lt; _rowMax.get(this); row++) {
             // 1&#x56DE;&#x3042;&#x305F;&#x308A;&#x306E;5&#x9023;
             let oneTermCheck = this.checkOneTermRightSlanting(gameBoard, moves, row, column);
             if (oneTermCheck) {
@@ -226,7 +316,7 @@
         }
 
         // row&#x30B7;&#x30D5;&#x30C8;
-        for (let rowStart = 1; rowStart &lt; this.judgeCriteriaSequence; rowStart++) {
+        for (let rowStart = 1; rowStart &lt; _judgeCriteriaSequence.get(this); rowStart++) {
             let rowShiftCheck = this.rightSlantingRowShift(gameBoard, moves, rowStart);
             if (rowShiftCheck) {
                 return true;
@@ -234,7 +324,7 @@
         }
         // column&#x30B7;&#x30D5;&#x30C8;
         const start = gameBoard.length - 1;
-        for (let columnStart = start; columnStart &gt; this.rowSize - this.judgeCriteriaSequence - 1; columnStart--) {
+        for (let columnStart = start; columnStart &gt; _rowSize.get(this) - _judgeCriteriaSequence.get(this) - 1; columnStart--) {
             let columnShiftCheck = this.rightSlantingColumnShift(gameBoard, moves, columnStart);
             if (columnShiftCheck) {
                 return true;
@@ -244,11 +334,18 @@
         return false;
     }
 
-
+    /**
+      * &#x53F3;&#x659C;&#x3081;&#x306E;&#x30E9;&#x30A4;&#x30F3;&#x304C;row&#x306B;&#x304A;&#x3044;&#x3066;&#x30B7;&#x30D5;&#x30C8;&#x3059;&#x308B;&#x6642;(row1~row4)&#x3001;&#x5F15;&#x6570;&#x3067;&#x53D7;&#x3051;&#x53D6;&#x3063;&#x305F;&#x6253;&#x3061;&#x624B;&#x304C;5&#x9023;&#x63C3;&#x3063;&#x3066;&#x3044;&#x308B;&#x304B;&#x3069;&#x3046;&#x304B;&#x306E;&#x771F;&#x507D;&#x5024;&#x3092;&#x78BA;&#x8A8D;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;
+      *
+      * @param {gameBoard} &#x30B2;&#x30FC;&#x30E0;&#x76E4;
+      * @param {moves}     &#x6253;&#x3061;&#x624B;
+      * @param {rowStart}  row&#x306E;&#x8ABF;&#x67FB;&#x958B;&#x59CB;&#x5024;
+      * @return {boolean} &#x53F3;&#x659C;&#x3081;&#x306E;&#x30E9;&#x30A4;&#x30F3;&#x304C;row&#x306B;&#x304A;&#x3044;&#x3066;&#x30B7;&#x30D5;&#x30C8;&#x3059;&#x308B;&#x6642;(row1~row4)&#x3001;&#x5F15;&#x6570;&#x3067;&#x53D7;&#x3051;&#x53D6;&#x3063;&#x305F;&#x6253;&#x3061;&#x624B;&#x304C;5&#x9023;&#x63C3;&#x3063;&#x3066;&#x3044;&#x308B;&#x304B;&#x3069;&#x3046;&#x304B;&#x306E;&#x771F;&#x507D;&#x5024;
+      */
     rightSlantingRowShift(gameBoard, moves, rowStart) {
-        const column = this.columnSize - 1;
+        const column = _columnSize.get(this) - 1;
 
-        for (let row = rowStart; row &lt; this.rowMax; row++) {
+        for (let row = rowStart; row &lt; _rowMax.get(this); row++) {
             // 1&#x56DE;&#x3042;&#x305F;&#x308A;&#x306E;5&#x9023;
             let oneTermCheck = this.checkOneTermRightSlanting(gameBoard, moves, row, column);
             if (oneTermCheck) {
@@ -258,11 +355,18 @@
         }
         return false;
     }
-
+    /**
+      * &#x53F3;&#x659C;&#x3081;&#x306E;&#x30E9;&#x30A4;&#x30F3;&#x304C;row&#x306B;&#x304A;&#x3044;&#x3066;&#x30B7;&#x30D5;&#x30C8;&#x3059;&#x308B;&#x6642;(row1~row4)&#x3001;&#x5F15;&#x6570;&#x3067;&#x53D7;&#x3051;&#x53D6;&#x3063;&#x305F;&#x6253;&#x3061;&#x624B;&#x304C;5&#x9023;&#x63C3;&#x3063;&#x3066;&#x3044;&#x308B;&#x304B;&#x3069;&#x3046;&#x304B;&#x306E;&#x771F;&#x507D;&#x5024;&#x3092;&#x78BA;&#x8A8D;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;
+      *
+      * @param {gameBoard}   &#x30B2;&#x30FC;&#x30E0;&#x76E4;
+      * @param {moves}       &#x6253;&#x3061;&#x624B;
+      * @param {columnStart} row&#x306E;&#x8ABF;&#x67FB;&#x958B;&#x59CB;&#x5024;
+      * @return {boolean} &#x53F3;&#x659C;&#x3081;&#x306E;&#x30E9;&#x30A4;&#x30F3;&#x304C;row&#x306B;&#x304A;&#x3044;&#x3066;&#x30B7;&#x30D5;&#x30C8;&#x3059;&#x308B;&#x6642;(row1~row4)&#x3001;&#x5F15;&#x6570;&#x3067;&#x53D7;&#x3051;&#x53D6;&#x3063;&#x305F;&#x6253;&#x3061;&#x624B;&#x304C;5&#x9023;&#x63C3;&#x3063;&#x3066;&#x3044;&#x308B;&#x304B;&#x3069;&#x3046;&#x304B;&#x306E;&#x771F;&#x507D;&#x5024;
+      */
     rightSlantingColumnShift(gameBoard, moves, columnStart) {
         let row = 0;
 
-        const columnEnd = this.judgeCriteriaSequence - 2;
+        const columnEnd = _judgeCriteriaSequence.get(this) - 2;
         for (let column = columnStart; column &gt; columnEnd; column--) {
             // 1&#x56DE;&#x3042;&#x305F;&#x308A;&#x306E;5&#x9023;
             let oneTermCheck = this.checkOneTermRightSlanting(gameBoard, moves, row, column);
@@ -273,10 +377,18 @@
         }
         return false;
     }
-
+    /**
+      * &#x53F3;&#x659C;&#x3081;&#x306E;&#x30E9;&#x30A4;&#x30F3;1&#x56DE;&#x3042;&#x305F;&#x308A;&#x304A;&#x3044;&#x3066;&#x3001;&#x5F15;&#x6570;&#x3067;&#x53D7;&#x3051;&#x53D6;&#x3063;&#x305F;&#x6253;&#x3061;&#x624B;&#x304C;5&#x9023;&#x63C3;&#x3063;&#x3066;&#x3044;&#x308B;&#x304B;&#x3069;&#x3046;&#x304B;&#x306E;&#x771F;&#x507D;&#x5024;&#x3092;&#x78BA;&#x8A8D;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;
+      *
+      * @param {gameBoard} &#x30B2;&#x30FC;&#x30E0;&#x76E4;
+      * @param {moves}     &#x6253;&#x3061;&#x624B;
+      * @param {row}       row&#x306E;&#x30A4;&#x30F3;&#x30C7;&#x30C3;&#x30AF;&#x30B9;
+      * @param {column}    column&#x306E;&#x30A4;&#x30F3;&#x30C7;&#x30C3;&#x30AF;&#x30B9;
+      * @return {boolean} 1&#x56DE;&#x3042;&#x305F;&#x308A;&#x304A;&#x3044;&#x3066;&#x3001;&#x5F15;&#x6570;&#x3067;&#x53D7;&#x3051;&#x53D6;&#x3063;&#x305F;&#x6253;&#x3061;&#x624B;&#x304C;5&#x9023;&#x63C3;&#x3063;&#x3066;&#x3044;&#x308B;&#x304B;&#x3069;&#x3046;&#x304B;&#x306E;&#x771F;&#x507D;&#x5024;
+      */
     checkOneTermRightSlanting(gameBoard, moves, row, column) {
 
-        for (let difference = 0; difference &lt; this.judgeCriteriaSequence; difference++) {
+        for (let difference = 0; difference &lt; _judgeCriteriaSequence.get(this); difference++) {
             if (gameBoard[row + difference][column - difference] != moves) {
                 return false;
             }

@@ -1,28 +1,28 @@
 {
   "type": "File",
   "start": 0,
-  "end": 208,
+  "end": 393,
   "loc": {
     "start": {
       "line": 1,
       "column": 0
     },
     "end": {
-      "line": 16,
+      "line": 28,
       "column": 1
     }
   },
   "program": {
     "type": "Program",
     "start": 0,
-    "end": 208,
+    "end": 393,
     "loc": {
       "start": {
         "line": 1,
         "column": 0
       },
       "end": {
-        "line": 16,
+        "line": 28,
         "column": 1
       }
     },
@@ -96,95 +96,114 @@
             }
           }
         ],
-        "kind": "let"
+        "kind": "let",
+        "trailingComments": [
+          {
+            "type": "CommentBlock",
+            "value": "*\n * カウンターを表すためのクラス\n ",
+            "start": 15,
+            "end": 40,
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 0
+              },
+              "end": {
+                "line": 4,
+                "column": 3
+              }
+            }
+          }
+        ]
       },
       {
         "type": "ExportDefaultDeclaration",
-        "start": 16,
-        "end": 208,
+        "start": 41,
+        "end": 393,
         "loc": {
           "start": {
-            "line": 3,
+            "line": 5,
             "column": 0
           },
           "end": {
-            "line": 16,
+            "line": 28,
             "column": 1
           }
         },
         "declaration": {
           "type": "ClassDeclaration",
-          "start": 31,
-          "end": 208,
+          "start": 56,
+          "end": 393,
           "loc": {
             "start": {
-              "line": 3,
+              "line": 5,
               "column": 15
             },
             "end": {
-              "line": 16,
+              "line": 28,
               "column": 1
             }
           },
           "id": {
             "type": "Identifier",
-            "start": 37,
-            "end": 44,
+            "start": 62,
+            "end": 69,
             "loc": {
               "start": {
-                "line": 3,
+                "line": 5,
                 "column": 21
               },
               "end": {
-                "line": 3,
+                "line": 5,
                 "column": 28
               },
               "identifierName": "Counter"
             },
-            "name": "Counter"
+            "name": "Counter",
+            "leadingComments": null
           },
           "superClass": null,
           "body": {
             "type": "ClassBody",
-            "start": 45,
-            "end": 208,
+            "start": 70,
+            "end": 393,
             "loc": {
               "start": {
-                "line": 3,
+                "line": 5,
                 "column": 29
               },
               "end": {
-                "line": 16,
+                "line": 28,
                 "column": 1
               }
             },
             "body": [
               {
                 "type": "ClassMethod",
-                "start": 53,
-                "end": 94,
+                "start": 118,
+                "end": 159,
                 "loc": {
                   "start": {
-                    "line": 6,
+                    "line": 10,
                     "column": 4
                   },
                   "end": {
-                    "line": 8,
+                    "line": 12,
                     "column": 5
                   }
                 },
                 "computed": false,
                 "key": {
                   "type": "Identifier",
-                  "start": 60,
-                  "end": 67,
+                  "start": 125,
+                  "end": 132,
                   "loc": {
                     "start": {
-                      "line": 6,
+                      "line": 10,
                       "column": 11
                     },
                     "end": {
-                      "line": 6,
+                      "line": 10,
                       "column": 18
                     },
                     "identifierName": "upCount"
@@ -200,44 +219,44 @@
                 "params": [],
                 "body": {
                   "type": "BlockStatement",
-                  "start": 70,
-                  "end": 94,
+                  "start": 135,
+                  "end": 159,
                   "loc": {
                     "start": {
-                      "line": 6,
+                      "line": 10,
                       "column": 21
                     },
                     "end": {
-                      "line": 8,
+                      "line": 12,
                       "column": 5
                     }
                   },
                   "body": [
                     {
                       "type": "ExpressionStatement",
-                      "start": 80,
-                      "end": 88,
+                      "start": 145,
+                      "end": 153,
                       "loc": {
                         "start": {
-                          "line": 7,
+                          "line": 11,
                           "column": 8
                         },
                         "end": {
-                          "line": 7,
+                          "line": 11,
                           "column": 16
                         }
                       },
                       "expression": {
                         "type": "UpdateExpression",
-                        "start": 80,
-                        "end": 87,
+                        "start": 145,
+                        "end": 152,
                         "loc": {
                           "start": {
-                            "line": 7,
+                            "line": 11,
                             "column": 8
                           },
                           "end": {
-                            "line": 7,
+                            "line": 11,
                             "column": 15
                           }
                         },
@@ -245,15 +264,15 @@
                         "prefix": false,
                         "argument": {
                           "type": "Identifier",
-                          "start": 80,
-                          "end": 85,
+                          "start": 145,
+                          "end": 150,
                           "loc": {
                             "start": {
-                              "line": 7,
+                              "line": 11,
                               "column": 8
                             },
                             "end": {
-                              "line": 7,
+                              "line": 11,
                               "column": 13
                             },
                             "identifierName": "count"
@@ -263,35 +282,72 @@
                       }
                     }
                   ],
-                  "directives": []
-                }
+                  "directives": [],
+                  "trailingComments": null
+                },
+                "leadingComments": [
+                  {
+                    "type": "CommentBlock",
+                    "value": "*\n     * カウンターを1上げるためのメソッド\n     ",
+                    "start": 77,
+                    "end": 113,
+                    "loc": {
+                      "start": {
+                        "line": 7,
+                        "column": 4
+                      },
+                      "end": {
+                        "line": 9,
+                        "column": 7
+                      }
+                    }
+                  }
+                ],
+                "trailingComments": [
+                  {
+                    "type": "CommentBlock",
+                    "value": "*\n     * カウンターを取得するためのメソッド\n     * @return {number} 現在のカウンターの値\n     ",
+                    "start": 165,
+                    "end": 236,
+                    "loc": {
+                      "start": {
+                        "line": 14,
+                        "column": 4
+                      },
+                      "end": {
+                        "line": 17,
+                        "column": 7
+                      }
+                    }
+                  }
+                ]
               },
               {
                 "type": "ClassMethod",
-                "start": 100,
-                "end": 147,
+                "start": 241,
+                "end": 288,
                 "loc": {
                   "start": {
-                    "line": 10,
+                    "line": 18,
                     "column": 4
                   },
                   "end": {
-                    "line": 12,
+                    "line": 20,
                     "column": 5
                   }
                 },
                 "computed": false,
                 "key": {
                   "type": "Identifier",
-                  "start": 107,
-                  "end": 115,
+                  "start": 248,
+                  "end": 256,
                   "loc": {
                     "start": {
-                      "line": 10,
+                      "line": 18,
                       "column": 11
                     },
                     "end": {
-                      "line": 10,
+                      "line": 18,
                       "column": 19
                     },
                     "identifierName": "getCount"
@@ -307,44 +363,44 @@
                 "params": [],
                 "body": {
                   "type": "BlockStatement",
-                  "start": 118,
-                  "end": 147,
+                  "start": 259,
+                  "end": 288,
                   "loc": {
                     "start": {
-                      "line": 10,
+                      "line": 18,
                       "column": 22
                     },
                     "end": {
-                      "line": 12,
+                      "line": 20,
                       "column": 5
                     }
                   },
                   "body": [
                     {
                       "type": "ReturnStatement",
-                      "start": 128,
-                      "end": 141,
+                      "start": 269,
+                      "end": 282,
                       "loc": {
                         "start": {
-                          "line": 11,
+                          "line": 19,
                           "column": 8
                         },
                         "end": {
-                          "line": 11,
+                          "line": 19,
                           "column": 21
                         }
                       },
                       "argument": {
                         "type": "Identifier",
-                        "start": 135,
-                        "end": 140,
+                        "start": 276,
+                        "end": 281,
                         "loc": {
                           "start": {
-                            "line": 11,
+                            "line": 19,
                             "column": 15
                           },
                           "end": {
-                            "line": 11,
+                            "line": 19,
                             "column": 20
                           },
                           "identifierName": "count"
@@ -353,35 +409,72 @@
                       }
                     }
                   ],
-                  "directives": []
-                }
+                  "directives": [],
+                  "trailingComments": null
+                },
+                "leadingComments": [
+                  {
+                    "type": "CommentBlock",
+                    "value": "*\n     * カウンターを取得するためのメソッド\n     * @return {number} 現在のカウンターの値\n     ",
+                    "start": 165,
+                    "end": 236,
+                    "loc": {
+                      "start": {
+                        "line": 14,
+                        "column": 4
+                      },
+                      "end": {
+                        "line": 17,
+                        "column": 7
+                      }
+                    }
+                  }
+                ],
+                "trailingComments": [
+                  {
+                    "type": "CommentBlock",
+                    "value": "*\n     * カウンターをリセットするためのメソッド\n     ",
+                    "start": 294,
+                    "end": 332,
+                    "loc": {
+                      "start": {
+                        "line": 22,
+                        "column": 4
+                      },
+                      "end": {
+                        "line": 24,
+                        "column": 7
+                      }
+                    }
+                  }
+                ]
               },
               {
                 "type": "ClassMethod",
-                "start": 152,
-                "end": 206,
+                "start": 337,
+                "end": 391,
                 "loc": {
                   "start": {
-                    "line": 13,
+                    "line": 25,
                     "column": 4
                   },
                   "end": {
-                    "line": 15,
+                    "line": 27,
                     "column": 5
                   }
                 },
                 "computed": false,
                 "key": {
                   "type": "Identifier",
-                  "start": 159,
-                  "end": 169,
+                  "start": 344,
+                  "end": 354,
                   "loc": {
                     "start": {
-                      "line": 13,
+                      "line": 25,
                       "column": 11
                     },
                     "end": {
-                      "line": 13,
+                      "line": 25,
                       "column": 21
                     },
                     "identifierName": "resetCount"
@@ -397,73 +490,73 @@
                 "params": [],
                 "body": {
                   "type": "BlockStatement",
-                  "start": 172,
-                  "end": 206,
+                  "start": 357,
+                  "end": 391,
                   "loc": {
                     "start": {
-                      "line": 13,
+                      "line": 25,
                       "column": 24
                     },
                     "end": {
-                      "line": 15,
+                      "line": 27,
                       "column": 5
                     }
                   },
                   "body": [
                     {
                       "type": "ExpressionStatement",
-                      "start": 182,
-                      "end": 200,
+                      "start": 367,
+                      "end": 385,
                       "loc": {
                         "start": {
-                          "line": 14,
+                          "line": 26,
                           "column": 8
                         },
                         "end": {
-                          "line": 14,
+                          "line": 26,
                           "column": 26
                         }
                       },
                       "expression": {
                         "type": "AssignmentExpression",
-                        "start": 182,
-                        "end": 199,
+                        "start": 367,
+                        "end": 384,
                         "loc": {
                           "start": {
-                            "line": 14,
+                            "line": 26,
                             "column": 8
                           },
                           "end": {
-                            "line": 14,
+                            "line": 26,
                             "column": 25
                           }
                         },
                         "operator": "=",
                         "left": {
                           "type": "MemberExpression",
-                          "start": 182,
-                          "end": 195,
+                          "start": 367,
+                          "end": 380,
                           "loc": {
                             "start": {
-                              "line": 14,
+                              "line": 26,
                               "column": 8
                             },
                             "end": {
-                              "line": 14,
+                              "line": 26,
                               "column": 21
                             }
                           },
                           "object": {
                             "type": "Identifier",
-                            "start": 182,
-                            "end": 189,
+                            "start": 367,
+                            "end": 374,
                             "loc": {
                               "start": {
-                                "line": 14,
+                                "line": 26,
                                 "column": 8
                               },
                               "end": {
-                                "line": 14,
+                                "line": 26,
                                 "column": 15
                               },
                               "identifierName": "Counter"
@@ -472,15 +565,15 @@
                           },
                           "property": {
                             "type": "Identifier",
-                            "start": 190,
-                            "end": 195,
+                            "start": 375,
+                            "end": 380,
                             "loc": {
                               "start": {
-                                "line": 14,
+                                "line": 26,
                                 "column": 16
                               },
                               "end": {
-                                "line": 14,
+                                "line": 26,
                                 "column": 21
                               },
                               "identifierName": "count"
@@ -491,15 +584,15 @@
                         },
                         "right": {
                           "type": "NumericLiteral",
-                          "start": 198,
-                          "end": 199,
+                          "start": 383,
+                          "end": 384,
                           "loc": {
                             "start": {
-                              "line": 14,
+                              "line": 26,
                               "column": 24
                             },
                             "end": {
-                              "line": 14,
+                              "line": 26,
                               "column": 25
                             }
                           },
@@ -513,18 +606,136 @@
                     }
                   ],
                   "directives": []
-                }
+                },
+                "leadingComments": [
+                  {
+                    "type": "CommentBlock",
+                    "value": "*\n     * カウンターをリセットするためのメソッド\n     ",
+                    "start": 294,
+                    "end": 332,
+                    "loc": {
+                      "start": {
+                        "line": 22,
+                        "column": 4
+                      },
+                      "end": {
+                        "line": 24,
+                        "column": 7
+                      }
+                    }
+                  }
+                ]
               }
             ]
           },
-          "leadingComments": [],
+          "leadingComments": [
+            {
+              "type": "CommentBlock",
+              "value": "*\n * カウンターを表すためのクラス\n ",
+              "start": 15,
+              "end": 40,
+              "loc": {
+                "start": {
+                  "line": 2,
+                  "column": 0
+                },
+                "end": {
+                  "line": 4,
+                  "column": 3
+                }
+              }
+            }
+          ],
           "trailingComments": []
-        }
+        },
+        "leadingComments": [
+          {
+            "type": "CommentBlock",
+            "value": "*\n * カウンターを表すためのクラス\n ",
+            "start": 15,
+            "end": 40,
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 0
+              },
+              "end": {
+                "line": 4,
+                "column": 3
+              }
+            }
+          }
+        ]
       }
     ],
     "directives": []
   },
-  "comments": [],
+  "comments": [
+    {
+      "type": "CommentBlock",
+      "value": "*\n * カウンターを表すためのクラス\n ",
+      "start": 15,
+      "end": 40,
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 0
+        },
+        "end": {
+          "line": 4,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n     * カウンターを1上げるためのメソッド\n     ",
+      "start": 77,
+      "end": 113,
+      "loc": {
+        "start": {
+          "line": 7,
+          "column": 4
+        },
+        "end": {
+          "line": 9,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n     * カウンターを取得するためのメソッド\n     * @return {number} 現在のカウンターの値\n     ",
+      "start": 165,
+      "end": 236,
+      "loc": {
+        "start": {
+          "line": 14,
+          "column": 4
+        },
+        "end": {
+          "line": 17,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n     * カウンターをリセットするためのメソッド\n     ",
+      "start": 294,
+      "end": 332,
+      "loc": {
+        "start": {
+          "line": 22,
+          "column": 4
+        },
+        "end": {
+          "line": 24,
+          "column": 7
+        }
+      }
+    }
+  ],
   "tokens": [
     {
       "type": {
@@ -661,6 +872,22 @@
       }
     },
     {
+      "type": "CommentBlock",
+      "value": "*\n * カウンターを表すためのクラス\n ",
+      "start": 15,
+      "end": 40,
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 0
+        },
+        "end": {
+          "line": 4,
+          "column": 3
+        }
+      }
+    },
+    {
       "type": {
         "label": "export",
         "keyword": "export",
@@ -675,15 +902,15 @@
         "updateContext": null
       },
       "value": "export",
-      "start": 16,
-      "end": 22,
+      "start": 41,
+      "end": 47,
       "loc": {
         "start": {
-          "line": 3,
+          "line": 5,
           "column": 0
         },
         "end": {
-          "line": 3,
+          "line": 5,
           "column": 6
         }
       }
@@ -703,15 +930,15 @@
         "updateContext": null
       },
       "value": "default",
-      "start": 23,
-      "end": 30,
+      "start": 48,
+      "end": 55,
       "loc": {
         "start": {
-          "line": 3,
+          "line": 5,
           "column": 7
         },
         "end": {
-          "line": 3,
+          "line": 5,
           "column": 14
         }
       }
@@ -731,15 +958,15 @@
         "updateContext": null
       },
       "value": "class",
-      "start": 31,
-      "end": 36,
+      "start": 56,
+      "end": 61,
       "loc": {
         "start": {
-          "line": 3,
+          "line": 5,
           "column": 15
         },
         "end": {
-          "line": 3,
+          "line": 5,
           "column": 20
         }
       }
@@ -757,143 +984,16 @@
         "binop": null
       },
       "value": "Counter",
-      "start": 37,
-      "end": 44,
-      "loc": {
-        "start": {
-          "line": 3,
-          "column": 21
-        },
-        "end": {
-          "line": 3,
-          "column": 28
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "{",
-        "beforeExpr": true,
-        "startsExpr": true,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null
-      },
-      "start": 45,
-      "end": 46,
-      "loc": {
-        "start": {
-          "line": 3,
-          "column": 29
-        },
-        "end": {
-          "line": 3,
-          "column": 30
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "name",
-        "beforeExpr": false,
-        "startsExpr": true,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null
-      },
-      "value": "static",
-      "start": 53,
-      "end": 59,
-      "loc": {
-        "start": {
-          "line": 6,
-          "column": 4
-        },
-        "end": {
-          "line": 6,
-          "column": 10
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "name",
-        "beforeExpr": false,
-        "startsExpr": true,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null
-      },
-      "value": "upCount",
-      "start": 60,
-      "end": 67,
-      "loc": {
-        "start": {
-          "line": 6,
-          "column": 11
-        },
-        "end": {
-          "line": 6,
-          "column": 18
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "(",
-        "beforeExpr": true,
-        "startsExpr": true,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null
-      },
-      "start": 67,
-      "end": 68,
-      "loc": {
-        "start": {
-          "line": 6,
-          "column": 18
-        },
-        "end": {
-          "line": 6,
-          "column": 19
-        }
-      }
-    },
-    {
-      "type": {
-        "label": ")",
-        "beforeExpr": false,
-        "startsExpr": false,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null
-      },
-      "start": 68,
+      "start": 62,
       "end": 69,
       "loc": {
         "start": {
-          "line": 6,
-          "column": 19
+          "line": 5,
+          "column": 21
         },
         "end": {
-          "line": 6,
-          "column": 20
+          "line": 5,
+          "column": 28
         }
       }
     },
@@ -913,115 +1013,28 @@
       "end": 71,
       "loc": {
         "start": {
-          "line": 6,
-          "column": 21
+          "line": 5,
+          "column": 29
         },
         "end": {
-          "line": 6,
-          "column": 22
+          "line": 5,
+          "column": 30
         }
       }
     },
     {
-      "type": {
-        "label": "name",
-        "beforeExpr": false,
-        "startsExpr": true,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null
-      },
-      "value": "count",
-      "start": 80,
-      "end": 85,
+      "type": "CommentBlock",
+      "value": "*\n     * カウンターを1上げるためのメソッド\n     ",
+      "start": 77,
+      "end": 113,
       "loc": {
         "start": {
           "line": 7,
-          "column": 8
-        },
-        "end": {
-          "line": 7,
-          "column": 13
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "++/--",
-        "beforeExpr": false,
-        "startsExpr": true,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": true,
-        "postfix": true,
-        "binop": null
-      },
-      "value": "++",
-      "start": 85,
-      "end": 87,
-      "loc": {
-        "start": {
-          "line": 7,
-          "column": 13
-        },
-        "end": {
-          "line": 7,
-          "column": 15
-        }
-      }
-    },
-    {
-      "type": {
-        "label": ";",
-        "beforeExpr": true,
-        "startsExpr": false,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null,
-        "updateContext": null
-      },
-      "start": 87,
-      "end": 88,
-      "loc": {
-        "start": {
-          "line": 7,
-          "column": 15
-        },
-        "end": {
-          "line": 7,
-          "column": 16
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "}",
-        "beforeExpr": false,
-        "startsExpr": false,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null
-      },
-      "start": 93,
-      "end": 94,
-      "loc": {
-        "start": {
-          "line": 8,
           "column": 4
         },
         "end": {
-          "line": 8,
-          "column": 5
+          "line": 9,
+          "column": 7
         }
       }
     },
@@ -1038,8 +1051,8 @@
         "binop": null
       },
       "value": "static",
-      "start": 100,
-      "end": 106,
+      "start": 118,
+      "end": 124,
       "loc": {
         "start": {
           "line": 10,
@@ -1063,9 +1076,9 @@
         "postfix": false,
         "binop": null
       },
-      "value": "getCount",
-      "start": 107,
-      "end": 115,
+      "value": "upCount",
+      "start": 125,
+      "end": 132,
       "loc": {
         "start": {
           "line": 10,
@@ -1073,6 +1086,252 @@
         },
         "end": {
           "line": 10,
+          "column": 18
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "(",
+        "beforeExpr": true,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 132,
+      "end": 133,
+      "loc": {
+        "start": {
+          "line": 10,
+          "column": 18
+        },
+        "end": {
+          "line": 10,
+          "column": 19
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ")",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 133,
+      "end": 134,
+      "loc": {
+        "start": {
+          "line": 10,
+          "column": 19
+        },
+        "end": {
+          "line": 10,
+          "column": 20
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "{",
+        "beforeExpr": true,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 135,
+      "end": 136,
+      "loc": {
+        "start": {
+          "line": 10,
+          "column": 21
+        },
+        "end": {
+          "line": 10,
+          "column": 22
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "count",
+      "start": 145,
+      "end": 150,
+      "loc": {
+        "start": {
+          "line": 11,
+          "column": 8
+        },
+        "end": {
+          "line": 11,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "++/--",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": true,
+        "postfix": true,
+        "binop": null
+      },
+      "value": "++",
+      "start": 150,
+      "end": 152,
+      "loc": {
+        "start": {
+          "line": 11,
+          "column": 13
+        },
+        "end": {
+          "line": 11,
+          "column": 15
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ";",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 152,
+      "end": 153,
+      "loc": {
+        "start": {
+          "line": 11,
+          "column": 15
+        },
+        "end": {
+          "line": 11,
+          "column": 16
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "}",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 158,
+      "end": 159,
+      "loc": {
+        "start": {
+          "line": 12,
+          "column": 4
+        },
+        "end": {
+          "line": 12,
+          "column": 5
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n     * カウンターを取得するためのメソッド\n     * @return {number} 現在のカウンターの値\n     ",
+      "start": 165,
+      "end": 236,
+      "loc": {
+        "start": {
+          "line": 14,
+          "column": 4
+        },
+        "end": {
+          "line": 17,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "static",
+      "start": 241,
+      "end": 247,
+      "loc": {
+        "start": {
+          "line": 18,
+          "column": 4
+        },
+        "end": {
+          "line": 18,
+          "column": 10
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "getCount",
+      "start": 248,
+      "end": 256,
+      "loc": {
+        "start": {
+          "line": 18,
+          "column": 11
+        },
+        "end": {
+          "line": 18,
           "column": 19
         }
       }
@@ -1089,15 +1348,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 115,
-      "end": 116,
+      "start": 256,
+      "end": 257,
       "loc": {
         "start": {
-          "line": 10,
+          "line": 18,
           "column": 19
         },
         "end": {
-          "line": 10,
+          "line": 18,
           "column": 20
         }
       }
@@ -1114,15 +1373,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 116,
-      "end": 117,
+      "start": 257,
+      "end": 258,
       "loc": {
         "start": {
-          "line": 10,
+          "line": 18,
           "column": 20
         },
         "end": {
-          "line": 10,
+          "line": 18,
           "column": 21
         }
       }
@@ -1139,15 +1398,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 118,
-      "end": 119,
+      "start": 259,
+      "end": 260,
       "loc": {
         "start": {
-          "line": 10,
+          "line": 18,
           "column": 22
         },
         "end": {
-          "line": 10,
+          "line": 18,
           "column": 23
         }
       }
@@ -1167,15 +1426,15 @@
         "updateContext": null
       },
       "value": "return",
-      "start": 128,
-      "end": 134,
+      "start": 269,
+      "end": 275,
       "loc": {
         "start": {
-          "line": 11,
+          "line": 19,
           "column": 8
         },
         "end": {
-          "line": 11,
+          "line": 19,
           "column": 14
         }
       }
@@ -1193,15 +1452,15 @@
         "binop": null
       },
       "value": "count",
-      "start": 135,
-      "end": 140,
+      "start": 276,
+      "end": 281,
       "loc": {
         "start": {
-          "line": 11,
+          "line": 19,
           "column": 15
         },
         "end": {
-          "line": 11,
+          "line": 19,
           "column": 20
         }
       }
@@ -1219,15 +1478,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 140,
-      "end": 141,
+      "start": 281,
+      "end": 282,
       "loc": {
         "start": {
-          "line": 11,
+          "line": 19,
           "column": 20
         },
         "end": {
-          "line": 11,
+          "line": 19,
           "column": 21
         }
       }
@@ -1244,16 +1503,32 @@
         "postfix": false,
         "binop": null
       },
-      "start": 146,
-      "end": 147,
+      "start": 287,
+      "end": 288,
       "loc": {
         "start": {
-          "line": 12,
+          "line": 20,
           "column": 4
         },
         "end": {
-          "line": 12,
+          "line": 20,
           "column": 5
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n     * カウンターをリセットするためのメソッド\n     ",
+      "start": 294,
+      "end": 332,
+      "loc": {
+        "start": {
+          "line": 22,
+          "column": 4
+        },
+        "end": {
+          "line": 24,
+          "column": 7
         }
       }
     },
@@ -1270,15 +1545,15 @@
         "binop": null
       },
       "value": "static",
-      "start": 152,
-      "end": 158,
+      "start": 337,
+      "end": 343,
       "loc": {
         "start": {
-          "line": 13,
+          "line": 25,
           "column": 4
         },
         "end": {
-          "line": 13,
+          "line": 25,
           "column": 10
         }
       }
@@ -1296,15 +1571,15 @@
         "binop": null
       },
       "value": "resetCount",
-      "start": 159,
-      "end": 169,
+      "start": 344,
+      "end": 354,
       "loc": {
         "start": {
-          "line": 13,
+          "line": 25,
           "column": 11
         },
         "end": {
-          "line": 13,
+          "line": 25,
           "column": 21
         }
       }
@@ -1321,15 +1596,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 169,
-      "end": 170,
+      "start": 354,
+      "end": 355,
       "loc": {
         "start": {
-          "line": 13,
+          "line": 25,
           "column": 21
         },
         "end": {
-          "line": 13,
+          "line": 25,
           "column": 22
         }
       }
@@ -1346,15 +1621,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 170,
-      "end": 171,
+      "start": 355,
+      "end": 356,
       "loc": {
         "start": {
-          "line": 13,
+          "line": 25,
           "column": 22
         },
         "end": {
-          "line": 13,
+          "line": 25,
           "column": 23
         }
       }
@@ -1371,15 +1646,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 172,
-      "end": 173,
+      "start": 357,
+      "end": 358,
       "loc": {
         "start": {
-          "line": 13,
+          "line": 25,
           "column": 24
         },
         "end": {
-          "line": 13,
+          "line": 25,
           "column": 25
         }
       }
@@ -1397,15 +1672,15 @@
         "binop": null
       },
       "value": "Counter",
-      "start": 182,
-      "end": 189,
+      "start": 367,
+      "end": 374,
       "loc": {
         "start": {
-          "line": 14,
+          "line": 26,
           "column": 8
         },
         "end": {
-          "line": 14,
+          "line": 26,
           "column": 15
         }
       }
@@ -1423,15 +1698,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 189,
-      "end": 190,
+      "start": 374,
+      "end": 375,
       "loc": {
         "start": {
-          "line": 14,
+          "line": 26,
           "column": 15
         },
         "end": {
-          "line": 14,
+          "line": 26,
           "column": 16
         }
       }
@@ -1449,15 +1724,15 @@
         "binop": null
       },
       "value": "count",
-      "start": 190,
-      "end": 195,
+      "start": 375,
+      "end": 380,
       "loc": {
         "start": {
-          "line": 14,
+          "line": 26,
           "column": 16
         },
         "end": {
-          "line": 14,
+          "line": 26,
           "column": 21
         }
       }
@@ -1476,15 +1751,15 @@
         "updateContext": null
       },
       "value": "=",
-      "start": 196,
-      "end": 197,
+      "start": 381,
+      "end": 382,
       "loc": {
         "start": {
-          "line": 14,
+          "line": 26,
           "column": 22
         },
         "end": {
-          "line": 14,
+          "line": 26,
           "column": 23
         }
       }
@@ -1503,15 +1778,15 @@
         "updateContext": null
       },
       "value": 0,
-      "start": 198,
-      "end": 199,
+      "start": 383,
+      "end": 384,
       "loc": {
         "start": {
-          "line": 14,
+          "line": 26,
           "column": 24
         },
         "end": {
-          "line": 14,
+          "line": 26,
           "column": 25
         }
       }
@@ -1529,15 +1804,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 199,
-      "end": 200,
+      "start": 384,
+      "end": 385,
       "loc": {
         "start": {
-          "line": 14,
+          "line": 26,
           "column": 25
         },
         "end": {
-          "line": 14,
+          "line": 26,
           "column": 26
         }
       }
@@ -1554,15 +1829,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 205,
-      "end": 206,
+      "start": 390,
+      "end": 391,
       "loc": {
         "start": {
-          "line": 15,
+          "line": 27,
           "column": 4
         },
         "end": {
-          "line": 15,
+          "line": 27,
           "column": 5
         }
       }
@@ -1579,15 +1854,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 207,
-      "end": 208,
+      "start": 392,
+      "end": 393,
       "loc": {
         "start": {
-          "line": 16,
+          "line": 28,
           "column": 0
         },
         "end": {
-          "line": 16,
+          "line": 28,
           "column": 1
         }
       }
@@ -1605,15 +1880,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 208,
-      "end": 208,
+      "start": 393,
+      "end": 393,
       "loc": {
         "start": {
-          "line": 16,
+          "line": 28,
           "column": 1
         },
         "end": {
-          "line": 16,
+          "line": 28,
           "column": 1
         }
       }

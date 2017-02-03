@@ -44,17 +44,29 @@
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/counter.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">let count = 1;
-
+/**
+ * &#x30AB;&#x30A6;&#x30F3;&#x30BF;&#x30FC;&#x3092;&#x8868;&#x3059;&#x305F;&#x3081;&#x306E;&#x30AF;&#x30E9;&#x30B9;
+ */
 export default class Counter {
 
-
+    /**
+     * &#x30AB;&#x30A6;&#x30F3;&#x30BF;&#x30FC;&#x3092;1&#x4E0A;&#x3052;&#x308B;&#x305F;&#x3081;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;
+     */
     static upCount() {
         count++;
     }
 
+    /**
+     * &#x30AB;&#x30A6;&#x30F3;&#x30BF;&#x30FC;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;
+     * @return {number} &#x73FE;&#x5728;&#x306E;&#x30AB;&#x30A6;&#x30F3;&#x30BF;&#x30FC;&#x306E;&#x5024;
+     */
     static getCount() {
         return count;
     }
+
+    /**
+     * &#x30AB;&#x30A6;&#x30F3;&#x30BF;&#x30FC;&#x3092;&#x30EA;&#x30BB;&#x30C3;&#x30C8;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;
+     */
     static resetCount() {
         Counter.count = 0;
     }

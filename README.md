@@ -26,7 +26,7 @@ TicTacToeGame.
 2. The player will be winner who arrange three moves in a continuous on the game board.
  
 ## Specifications of each classes.
- Please read JavaDocument under ```doc``` directory.
+ Please read JavaDocument by hitting  ```open ./doc/index.html``` .
  
 ## Licence
   [MIT](https://github.com/tcnksm/tool/blob/master/LICENCE)

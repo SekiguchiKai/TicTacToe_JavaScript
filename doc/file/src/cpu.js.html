@@ -46,20 +46,28 @@
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import MiniMax from &apos;./miniMax.js&apos;;
 let miniMax = new MiniMax();
 
+/**
+ * CPU&#x306E;&#x30D7;&#x30EC;&#x30FC;&#x30E4;&#x30FC;&#x3092;&#x8868;&#x3059;&#x305F;&#x3081;&#x306E;&#x30AF;&#x30E9;&#x30B9;
+ */
 export default class Cpu {
 
+    /**
+     * &#x6253;&#x3061;&#x624B;&#x3092;&#x6253;&#x3064;&#x305F;&#x3081;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;
+     * @param {depth} &#x8AAD;&#x307F;&#x306E;&#x6DF1;&#x3055;
+     * @param {board} Board&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;
+     */
     doMove(depth, board) {
 
         console.log(&apos;doMove&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x304C;&#x547C;&#x3073;&#x51FA;&#x3055;&#x308C;&#x307E;&#x3057;&#x305F;&apos;);
 
-        let cellObj = miniMax.calcMiniMax(3, board, &apos;&#xD7;&apos;, -9999999999, 9999999999);
+        let cellObj = miniMax.calcMiniMax(depth, board, &apos;&#xD7;&apos;, -9999999999, 9999999999);
 
         console.log(cellObj);
 
-        board.addMove(cellObj.rowVal, cellObj.columnVal, &apos;&#xD7;&apos;);
+        board.putMove(cellObj.rowVal, cellObj.columnVal, &apos;&#xD7;&apos;);
 
         let e = document.getElementById(cellObj.rowVal + &apos;-&apos; + cellObj.columnVal);
-        e.textContent = &apos;&#xD7;&apos;;
+        e.innerHTML = &apos;&lt;span style=&quot;font-size:100px; color:white;&quot;&gt;&#xD7;&lt;/span&gt;&apos;;
     }
 }</code></pre>
 
