@@ -10,10 +10,8 @@ export default class ScoreCalculator {
 
         let totalScore = 0;
         const arraySize = 3;
-        let movesArray = new Array(arraySize);
+        const movesArray = new Array(arraySize);
 
-        const maxPoint = 30;
-        const minPoint = -30;
         const maxLength = 3;
 
 
