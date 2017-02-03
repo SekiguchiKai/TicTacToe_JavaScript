@@ -1,19 +1,18 @@
 import Counter from './counter.js';
 
 export default class ScoreCalculator {
-
+    /**
+     * 得点の計算を行うためのメソッド
+     * @param {gameBoard} ゲーム盤
+     */
     calcScore(gameBoard) {
 
         let totalScore = 0;
-
         const arraySize = 3;
-
         let movesArray = new Array(arraySize);
 
         const maxPoint = 30;
         const minPoint = -30;
-
-
         const maxLength = 3;
 
 
@@ -51,14 +50,18 @@ export default class ScoreCalculator {
         }
 
         totalScore += this.calcLineScore(movesArray, maxPoint, minPoint);
-
-
         Counter.resetCount();
 
         return totalScore;
     }
 
 
+    /**
+     * 1ラインの得点を計算するためのメソッッド
+     * @param {movesArray} 打ち手を格納するための配列
+     * @param {maxPoint} 補正前の最高得点
+     * @param {minPoint} 補正前の最低得点
+     */
     calcLineScore(movesArray, maxPoint, minPoint) {
         console.log('calcLineScoreが呼ばれました');
 
