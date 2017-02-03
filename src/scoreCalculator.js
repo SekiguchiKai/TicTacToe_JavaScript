@@ -6,39 +6,72 @@ export default class ScoreCalculator {
      * @param {gameBoard} ゲーム盤
      */
     calcScore(gameBoard) {
+
         let totalScore = 0;
+        const arraySize = 3;
+        let movesArray = new Array(arraySize);
 
-        totalScore += this.calcLineScore(gameBoard, 0, 0, 0, 1, 0, 2);
-        totalScore += this.calcLineScore(gameBoard, 1, 0, 1, 1, 1, 2);
-        totalScore += this.calcLineScore(gameBoard, 2, 0, 2, 1, 2, 2);
-        totalScore += this.calcLineScore(gameBoard, 0, 0, 1, 0, 2, 0);
-        totalScore += this.calcLineScore(gameBoard, 0, 1, 1, 1, 2, 1);
-        totalScore += this.calcLineScore(gameBoard, 0, 2, 1, 2, 2, 2);
-        totalScore += this.calcLineScore(gameBoard, 0, 0, 1, 1, 2, 2);
-        totalScore += this.calcLineScore(gameBoard, 0, 2, 1, 1, 2, 0);
+        const maxPoint = 30;
+        const minPoint = -30;
+        const maxLength = 3;
+
+
+        // row
+        for (let row = 0; row < maxLength; row++) {
+            for (let column = 0; column < maxLength; column++) {
+                movesArray[column] = gameBoard[row][column];
+            }
+            totalScore += this.calcLineScore(movesArray);
+        }
+
+        // column
+        for (let column = 0; column < maxLength; column++) {
+            for (let row = 0; row < maxLength; row++) {
+                movesArray[row] = gameBoard[row][column];
+            }
+            totalScore += this.calcLineScore(movesArray);
+        }
+
+
+        // 左斜め
+        for (let idx = 0; idx < maxLength; idx++) {
+            movesArray[idx] = gameBoard[idx][idx];
+        }
+        totalScore += this.calcLineScore(movesArray);
+
+
+        // 右斜め
+        let column = 2;
+
+        for (let row = 0; row < maxLength; row++) {
+            movesArray[row] = gameBoard[row][column];
+
+            column--;
+        }
+
+        totalScore += this.calcLineScore(movesArray);
+        Counter.resetCount();
+
         return totalScore;
-
     }
 
 
     /**
      * 1ラインの得点を計算するためのメソッッド
      * @param {movesArray} 打ち手を格納するための配列
-     * @param {maxPoint} 補正前の最高得点
-     * @param {minPoint} 補正前の最低得点
      */
-    calcLineScore(gameBoard, row1, col1, row2, col2, row3, col3) {
+    calcLineScore(movesArray) {
         let score = 0;
 
         // 1つ目
-        if (gameBoard[row1][col1] === '×') {
+        if (movesArray[0] === '×') {
             score = 1;
-        } else if (gameBoard[row1][col1] === '○') {
+        } else if (movesArray[0] === '○') {
             score = -1;
         }
 
         // 2つ目
-        if (gameBoard[row2][col2] === '×') {
+        if (movesArray[1] === '×') {
             if (score === 1) {
                 score = 10;
             } else if (score === -1) {
@@ -46,7 +79,7 @@ export default class ScoreCalculator {
             } else {
                 score = 1;
             }
-        } else if (gameBoard[row2][col2] === '○') {
+        } else if (movesArray[1] === '○') {
             if (score === -1) {
                 score = -10;
             } else if (score === 1) {
@@ -57,7 +90,7 @@ export default class ScoreCalculator {
         }
 
         // 3つ目
-        if (gameBoard[row3][col3] === '×') {
+        if (movesArray[2] === '×') {
             if (score > 0) {
                 score *= 10;
             } else if (score < 0) {
@@ -65,7 +98,7 @@ export default class ScoreCalculator {
             } else {
                 score = 1;
             }
-        } else if (gameBoard[row3][col3] === '○') {
+        } else if (movesArray[2] === '○') {
             if (score < 0) {
                 score *= 10;
             } else if (score > 1) {
