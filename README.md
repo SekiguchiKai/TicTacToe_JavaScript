@@ -28,5 +28,6 @@ TicTacToeGame.
 ## Specifications of each classes.
  Please read JavaDocument by hitting  ```open ./doc/index.html``` .
  
+ 
 ## Licence
   [MIT](https://github.com/tcnksm/tool/blob/master/LICENCE)
