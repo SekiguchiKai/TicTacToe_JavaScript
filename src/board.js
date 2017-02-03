@@ -73,7 +73,7 @@ export default class Board {
       * @return {string} 打ち手
       */
     getGameBoardState() {
-        return _gameBoard.get(this);
+        return _gameBoard.get(this).concat();
     }
 
 }
