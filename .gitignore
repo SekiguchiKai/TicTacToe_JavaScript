@@ -5,3 +5,5 @@
 *.log
 .eslintrc.json
 .esdoc.json
+doc
+webpack.config.js
