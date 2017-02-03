@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">src/scoreCalculator.js | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/board.js~Board.html">Board</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/counter.js~Counter.html">Counter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/cpu.js~Cpu.html">Cpu</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/judge.js~Judge.html">Judge</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/miniMax.js~MiniMax.html">MiniMax</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/scoreCalculator.js~ScoreCalculator.html">ScoreCalculator</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/scoreCalculator.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Counter from &apos;./counter.js&apos;;
+
+export default class ScoreCalculator {
+
+    constructor(rowSize, columnSize, judgeCriteriaSequence, maxPoint, minPoint) {
+        this.rowSize = rowSize;
+        this.columnSize = columnSize;
+        this.judgeCriteriaSequence = judgeCriteriaSequence;
+        this.rowMax = this.rowSize - this.judgeCriteriaSequence + 1;
+        this.columnMax = this.columnSize - this.judgeCriteriaSequence + 1;
+        this.maxPoint = maxPoint;
+        this.minPoint = minPoint;
+    }
+
+    calcScore(gameBoard) {
+        console.log(&apos;calcScore&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x304C;&#x547C;&#x3070;&#x308C;&#x307E;&#x3057;&#x305F;&apos;);
+        let totalScore = 0;
+
+        let arraySize = this.judgeCriteriaSequence;
+        let movesArray = new Array(arraySize);
+
+        totalScore += this.calcRow(movesArray, gameBoard);
+
+        totalScore += this.calcColumn(movesArray, gameBoard);
+
+        totalScore += this.calcLeftSlanting(movesArray, gameBoard);
+
+        totalScore += this.calcRightSlanting(movesArray, gameBoard);
+
+        // &#x3053;&#x3053;&#x3092;&#x5909;&#x66F4;&#x4E88;&#x5B9A;
+        Counter.resetCount();
+        console.log(&apos;&#x4ECA;&#x56DE;&#x306E;&#x6700;&#x7D42;&#x5408;&#x8A08;&#x70B9;&#x306F;&apos; + totalScore);
+        console.log(&apos;&#x305D;&#x306E;&#x6642;&#x306E;&#x30B2;&#x30FC;&#x30E0;&#x76E4;&#x306F;&apos; + gameBoard);
+        return totalScore;
+    }
+
+    calcRow(movesArray, gameBoard) {
+        console.log(&apos;calcRow&#x304C;&#x547C;&#x3070;&#x308C;&#x307E;&#x3057;&#x305F;&apos;);
+        let score = 0;
+
+        for (let row = 0; row &lt; this.rowSize; row++) {
+            for (let column = 0; column &lt; this.columnMax; column++) {
+                for (let i = 0; i &lt; movesArray.length; i++) {
+                    movesArray[i] = gameBoard[row][column + i];
+                }
+                score += this.calcLineScore(movesArray, this.maxPoint, this.minPoint);
+            }
+        }
+        return score;
+    }
+
+
+    calcColumn(movesArray, gameBoard) {
+        let score = 0;
+
+        for (let column = 0; column &lt; this.columnSize; column++) {
+            for (let row = 0; row &lt; this.rowMax; row++) {
+                for (let i = 0; i &lt; movesArray.length; i++) {
+                    movesArray[i] = gameBoard[row + i][column];
+                }
+                score += this.calcLineScore(movesArray, this.maxPoint, this.minPoint);
+            }
+        }
+        return score;
+    }
+
+
+    calcLeftSlanting(movesArray, gameBoard) {
+        let score = 0;
+
+        for (let index = 0; index &lt; this.rowMax; index++) {
+
+            for (let i = 0; i &lt; movesArray.length; i++) {
+                movesArray[i] = gameBoard[index + i][index + i];
+            }
+            score += this.calcLineScore(movesArray, this.maxPoint, this.minPoint);
+        }
+        score += this.calcLeftSlantingRowSlide(movesArray, gameBoard);
+
+        score += this.calcLeftSlantingColumnSlide(movesArray, gameBoard);
+
+
+        return score;
+    }
+
+    calcLeftSlantingRowSlide(movesArray, gameBoard) {
+        let column = 0;
+        let score = 0;
+
+
+        // for&#x6587;1&#x56DE;&#x3067;&#x3001;1&#x3064;&#x306E;&#x9023;&#x3092;&#x8868;&#x3059;
+        for (let row = 1; row &lt; this.rowMax; row++) {
+            score = this.calcLeftSlantingSlideHelper(gameBoard, movesArray, row, column);
+        }
+        return score;
+    }
+
+
+    calcLeftSlantingColumnSlide(movesArray, gameBoard) {
+
+        let row = 0;
+        let score = 0;
+
+        // for&#x6587;1&#x56DE;&#x3067;&#x3001;1&#x3064;&#x306E;&#x9023;&#x3092;&#x8868;&#x3059;
+        for (let column = 1; column &lt; this.columnMax; column++) {
+            score = this.calcLeftSlantingSlideHelper(gameBoard, movesArray, row, column);
+        }
+        return score;
+    }
+
+
+    calcLeftSlantingSlideHelper(gameBoard, movesArray, row, column) {
+
+
+        let score = 0;
+
+        for (let difference = 0; difference &lt; this.judgeCriteriaSequence; difference++) {
+            movesArray[difference] = gameBoard[row + difference][column + difference];
+        }
+
+        score += this.calcLineScore(movesArray, this.maxPoint, this.minPoint);
+
+        return score;
+    }
+
+
+    calcRightSlanting(movesArray, gameBoard) {
+        let score = 0;
+
+        let columnLastIndex = this.columnSize - 1;
+        let column = columnLastIndex;
+
+        // for&#x6587;1&#x56DE;&#x3067;&#x3001;1&#x3064;&#x306E;&#x9023;&#x3092;&#x8868;&#x3059;
+        for (let row = 0; row &lt; this.rowMax; row++) {
+            for (let i = 0; i &lt; movesArray.length; i++) {
+                movesArray[i] = gameBoard[row + i][column - i];
+            }
+            score += this.calcLineScore(movesArray, this.maxPoint, this.minPoint);
+
+            column--;
+        }
+
+        score += this.calcRightSlantingRowSlide(gameBoard, movesArray);
+
+        score += this.calcRightSlantingColumnSlide(gameBoard, movesArray);
+
+        return score;
+    }
+
+
+    calcRightSlantingRowSlide(gameBoard, movesArray) {
+        let column = this.columnSize - 1;
+
+        let score = 0;
+
+        // for&#x6587;1&#x56DE;&#x3067;&#x3001;1&#x3064;&#x306E;&#x9023;&#x3092;&#x8868;&#x3059;
+        for (let row = 1; row &lt; this.rowMax; row++) {
+            score = this.calcRightSlantingSlideHelper(gameBoard, movesArray, row, column);
+        }
+        return score;
+    }
+
+
+    calcRightSlantingColumnSlide(fgameBoard, movesArray) {
+        let localColumnMax = this.columnSize - 1;
+        let row = 0;
+
+        let score = 0;
+
+        // for&#x6587;1&#x56DE;&#x3067;&#x3001;1&#x3064;&#x306E;&#x9023;&#x3092;&#x8868;&#x3059;
+        for (let column = this.judgeCriteriaSequence - 1; column &lt; localColumnMax; column++) {
+            score = this.calcRightSlantingSlideHelper(gameBoard, movesArray, row, column);
+        }
+        return score;
+    }
+
+
+    calcRightSlantingSlideHelper(gameBoard, movesArray, row, column) {
+        let score = 0;
+
+        for (let difference = 0; difference &lt; this.judgeCriteriaSequence; difference++) {
+            movesArray[difference] = gameBoard[row + difference][column - difference];
+        }
+        score += this.calcLineScore(movesArray, this.maxPoint, this.minPoint);
+
+        return score;
+    }
+
+
+    calcLineScore(movesArray, maxPoint, minPoint) {
+        console.log(&apos;calcLineScore&#x304C;&#x547C;&#x3070;&#x308C;&#x307E;&#x3057;&#x305F;&apos;);
+
+        let score = 0;
+        const perTernPoint = 10;
+
+        console.log(movesArray);
+
+        for (let moves of movesArray) {
+
+            if (moves === &apos;&#xD7;&apos;) {
+                score += perTernPoint;
+            } else if (moves === &apos;&#x25CB;&apos;) {
+                score -= perTernPoint;
+            }
+        }
+
+        let counter = Counter.getCount();
+        const correctionValue = 100;
+
+        const counterCorrectionValue = counter * correctionValue;
+
+        const finalMaxPoint = 100000;
+        const finalMinPoint = -100000;
+
+        // &#x52DD;&#x6557;&#x304C;&#x3064;&#x304F;&#x3068;&#x304D;&#x306B;&#x306F;&#x3001;&#x70B9;&#x6570;&#x306E;&#x5DEE;&#x3092;&#x5927;&#x304D;&#x304F;&#x3059;&#x308B;
+        // if (score == maxPoint) {
+        //     score = finalMaxPoint - counterCorrectionValue;
+        // } else if (score == minPoint) {
+        //     score = finalMinPoint + counterCorrectionValue;
+        // }
+        Counter.upCount();
+
+        if (score == maxPoint) {
+            score = finalMaxPoint;
+        } else if (score == minPoint) {
+            score = finalMinPoint;
+        }
+
+        return score;
+    }
+}</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.5.2)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

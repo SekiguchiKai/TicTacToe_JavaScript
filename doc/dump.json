@@ -1,0 +1,3039 @@
+[
+  {
+    "__docId__": 0,
+    "kind": "file",
+    "name": "src/board.js",
+    "content": "export default class Board {\n\n    constructor(rowSize, columnSize) {\n        this.rowSize = rowSize;\n        this.columnSize = columnSize;\n        this.gameBoard = new Array(3);\n        for (let row = 0; row < this.gameBoard.length; row++) {\n            this.gameBoard[row] = new Array(3);\n        }\n\n        // 二次元配列初期化\n        for (let row = 0; row < this.rowSize; row++) {\n            for (let column = 0; column < this.columnSize; column++) {\n                this.gameBoard[row][column] = ' ';\n            }\n        }\n    }\n\n    getRowSize() {\n        return this.rowSize;\n    }\n\n    getColumnSize() {\n        return this.columnSize;\n    }\n\n    addMove(row, column, move) {\n        this.gameBoard[row][column] = move;\n    }\n    getMove(row, column) {\n        return this.gameBoard[row][column];\n    }\n\n    getGameBoardState() {\n        return this.gameBoard;\n    }\n\n}\n\n\n\n",
+    "static": true,
+    "longname": "src/board.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 1,
+    "kind": "class",
+    "name": "Board",
+    "memberof": "src/board.js",
+    "static": true,
+    "longname": "src/board.js~Board",
+    "access": null,
+    "export": true,
+    "importPath": "tic_tac_toe_js/src/board.js",
+    "importStyle": "Board",
+    "description": null,
+    "lineNumber": 1,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "interface": false
+  },
+  {
+    "__docId__": 2,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/board.js~Board",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/board.js~Board#constructor",
+    "access": null,
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "rowSize",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "columnSize",
+        "types": [
+          "*"
+        ]
+      }
+    ]
+  },
+  {
+    "__docId__": 3,
+    "kind": "member",
+    "name": "rowSize",
+    "memberof": "src/board.js~Board",
+    "static": false,
+    "longname": "src/board.js~Board#rowSize",
+    "access": null,
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 4,
+    "kind": "member",
+    "name": "columnSize",
+    "memberof": "src/board.js~Board",
+    "static": false,
+    "longname": "src/board.js~Board#columnSize",
+    "access": null,
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 5,
+    "kind": "member",
+    "name": "gameBoard",
+    "memberof": "src/board.js~Board",
+    "static": false,
+    "longname": "src/board.js~Board#gameBoard",
+    "access": null,
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 6,
+    "kind": "method",
+    "name": "getRowSize",
+    "memberof": "src/board.js~Board",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/board.js~Board#getRowSize",
+    "access": null,
+    "description": null,
+    "lineNumber": 19,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 7,
+    "kind": "method",
+    "name": "getColumnSize",
+    "memberof": "src/board.js~Board",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/board.js~Board#getColumnSize",
+    "access": null,
+    "description": null,
+    "lineNumber": 23,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 8,
+    "kind": "method",
+    "name": "addMove",
+    "memberof": "src/board.js~Board",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/board.js~Board#addMove",
+    "access": null,
+    "description": null,
+    "lineNumber": 27,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "row",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "column",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "move",
+        "types": [
+          "*"
+        ]
+      }
+    ]
+  },
+  {
+    "__docId__": 9,
+    "kind": "method",
+    "name": "getMove",
+    "memberof": "src/board.js~Board",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/board.js~Board#getMove",
+    "access": null,
+    "description": null,
+    "lineNumber": 30,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "row",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "column",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 10,
+    "kind": "method",
+    "name": "getGameBoardState",
+    "memberof": "src/board.js~Board",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/board.js~Board#getGameBoardState",
+    "access": null,
+    "description": null,
+    "lineNumber": 34,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 11,
+    "kind": "file",
+    "name": "src/counter.js",
+    "content": "let count = 1;\n\nexport default class Counter {\n\n\n    static upCount() {\n        count++;\n    }\n\n    static getCount() {\n        return count;\n    }\n    static resetCount() {\n        Counter.count = 0;\n    }\n}",
+    "static": true,
+    "longname": "src/counter.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 12,
+    "kind": "variable",
+    "name": "count",
+    "memberof": "src/counter.js",
+    "static": true,
+    "longname": "src/counter.js~count",
+    "access": null,
+    "export": false,
+    "importPath": "tic_tac_toe_js/src/counter.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 1,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "number"
+      ]
+    }
+  },
+  {
+    "__docId__": 13,
+    "kind": "class",
+    "name": "Counter",
+    "memberof": "src/counter.js",
+    "static": true,
+    "longname": "src/counter.js~Counter",
+    "access": null,
+    "export": true,
+    "importPath": "tic_tac_toe_js/src/counter.js",
+    "importStyle": "Counter",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "interface": false
+  },
+  {
+    "__docId__": 14,
+    "kind": "method",
+    "name": "upCount",
+    "memberof": "src/counter.js~Counter",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/counter.js~Counter.upCount",
+    "access": null,
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": []
+  },
+  {
+    "__docId__": 15,
+    "kind": "method",
+    "name": "getCount",
+    "memberof": "src/counter.js~Counter",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/counter.js~Counter.getCount",
+    "access": null,
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 16,
+    "kind": "method",
+    "name": "resetCount",
+    "memberof": "src/counter.js~Counter",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/counter.js~Counter.resetCount",
+    "access": null,
+    "description": null,
+    "lineNumber": 13,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": []
+  },
+  {
+    "__docId__": 17,
+    "kind": "file",
+    "name": "src/cpu.js",
+    "content": "import MiniMax from './miniMax.js';\nlet miniMax = new MiniMax();\n\nexport default class Cpu {\n\n    doMove(depth, board) {\n\n        console.log('doMoveメソッドが呼び出されました');\n\n        let cellObj = miniMax.calcMiniMax(3, board, '×', -9999999999, 9999999999);\n\n        console.log(cellObj);\n\n        board.addMove(cellObj.rowVal, cellObj.columnVal, '×');\n\n        let e = document.getElementById(cellObj.rowVal + '-' + cellObj.columnVal);\n        e.textContent = '×';\n    }\n}",
+    "static": true,
+    "longname": "src/cpu.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 18,
+    "kind": "variable",
+    "name": "miniMax",
+    "memberof": "src/cpu.js",
+    "static": true,
+    "longname": "src/cpu.js~miniMax",
+    "access": null,
+    "export": false,
+    "importPath": "tic_tac_toe_js/src/cpu.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 2,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "src/miniMax.js~MiniMax"
+      ]
+    }
+  },
+  {
+    "__docId__": 19,
+    "kind": "class",
+    "name": "Cpu",
+    "memberof": "src/cpu.js",
+    "static": true,
+    "longname": "src/cpu.js~Cpu",
+    "access": null,
+    "export": true,
+    "importPath": "tic_tac_toe_js/src/cpu.js",
+    "importStyle": "Cpu",
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "interface": false
+  },
+  {
+    "__docId__": 20,
+    "kind": "method",
+    "name": "doMove",
+    "memberof": "src/cpu.js~Cpu",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/cpu.js~Cpu#doMove",
+    "access": null,
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "depth",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "board",
+        "types": [
+          "*"
+        ]
+      }
+    ]
+  },
+  {
+    "__docId__": 21,
+    "kind": "file",
+    "name": "src/index.js",
+    "content": "import Board from './board.js';\nimport Cpu from './cpu.js';\nimport Judge from './judge.js';\n\nconst board = new Board(3, 3);\nconst cpu = new Cpu('cpu', '×', board);\nconst judge = new Judge(3, 3, 3);\n\nlet idArray = ['0-0', '0-1', '0-2', '1-0', '1-1', '1-2', '2-0', '2-1', '2-2'];\n\nfor (let id of idArray) {\n\n\n    let e = document.getElementById(id);\n    e.addEventListener('click', () => {\n        let rowColumn = id.split('-');\n        let row = Number(rowColumn[0]);\n        let column = Number(rowColumn[1]);\n\n        let cellMove = board.getMove(row, column);\n\n        if (cellMove === ' ') {\n            board.addMove(row, column, '○');\n\n            let result = judge.judgeResult(board);\n            console.log('result:' + result);\n            if (result !== '未決') {\n                window.alert(result);\n                document.getElementById('table').innerHTML = '<p style=\"font-size:40px;\">君の<span style=\"color:red;\">' + result + '</span>だ</p>';\n            }\n\n            e.textContent = board.getMove(row, column);\n\n            let depth = 2;\n\n            cpu.doMove(depth, board);\n\n            let result2 = judge.judgeResult(board);\n            console.log('result:' + result2);\n\n            if (result2 !== '未決') {\n                window.alert(result2);\n                document.getElementById('table').innerHTML = '<p style=\"font-size:40px;\">君の<span style=\"color:red;\">' + result2 + '</span>だ</p>';\n            }\n\n        } else {\n            window.alert('石はすでに置いてある! 他のところを選んで!');\n        }\n    });\n\n}\n\n\n",
+    "static": true,
+    "longname": "src/index.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 22,
+    "kind": "variable",
+    "name": "board",
+    "memberof": "src/index.js",
+    "static": true,
+    "longname": "src/index.js~board",
+    "access": null,
+    "export": false,
+    "importPath": "tic_tac_toe_js/src/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "src/board.js~Board"
+      ]
+    }
+  },
+  {
+    "__docId__": 23,
+    "kind": "variable",
+    "name": "cpu",
+    "memberof": "src/index.js",
+    "static": true,
+    "longname": "src/index.js~cpu",
+    "access": null,
+    "export": false,
+    "importPath": "tic_tac_toe_js/src/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "src/cpu.js~Cpu"
+      ]
+    }
+  },
+  {
+    "__docId__": 24,
+    "kind": "variable",
+    "name": "judge",
+    "memberof": "src/index.js",
+    "static": true,
+    "longname": "src/index.js~judge",
+    "access": null,
+    "export": false,
+    "importPath": "tic_tac_toe_js/src/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 7,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "src/judge.js~Judge"
+      ]
+    }
+  },
+  {
+    "__docId__": 25,
+    "kind": "variable",
+    "name": "idArray",
+    "memberof": "src/index.js",
+    "static": true,
+    "longname": "src/index.js~idArray",
+    "access": null,
+    "export": false,
+    "importPath": "tic_tac_toe_js/src/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 9,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "string[]"
+      ]
+    }
+  },
+  {
+    "__docId__": 26,
+    "kind": "file",
+    "name": "src/judge.js",
+    "content": "export default class Judge {\n\n    constructor(rowSize, columnSize, judgeCriteriaSequence) {\n        this.rowSize = rowSize;\n        this.columnSize = columnSize;\n        this.judgeCriteriaSequence = judgeCriteriaSequence;\n        this.rowMax = this.rowSize - this.judgeCriteriaSequence + 1;\n        this.columnMax = this.columnSize - this.judgeCriteriaSequence + 1;\n    }\n\n    judgeResult(board) {\n        let gameBoard = board.getGameBoardState();\n\n        if (this.judgeWin(gameBoard)) {\n            return '勝ち';\n        } else if (this.judgeLose(gameBoard)) {\n            return '負け';\n        } else if (this.judgeDraw(gameBoard)) {\n            return '引き分け';\n        }\n        return '未決';\n    }\n\n\n    judgeWin(gameBoard) {\n        return this.judgeRow(gameBoard, '○')\n            || this.judgeColumn(gameBoard, '○')\n            || this.judgeLeftSlanting(gameBoard, '○')\n            || this.judgeRightSlanting(gameBoard, '○');\n    }\n\n    judgeLose(gameBoard) {\n        return this.judgeRow(gameBoard, '×')\n            || this.judgeColumn(gameBoard, '×')\n            || this.judgeLeftSlanting(gameBoard, '×')\n            || this.judgeRightSlanting(gameBoard, '×');\n    }\n\n    judgeDraw(gameBoard) {\n        for (let row = 0; row < this.rowSize; row++) {\n            for (let column = 0; column < this.columnSize; column++) {\n                if (gameBoard[row][column] === ' ') {\n                    return false;\n                }\n            }\n        }\n        return true;\n    }\n\n    judgeRow(gameBoard, moves) {\n        for (let row = 0; row < this.rowSize; row++) {\n            for (let column = 0; column < this.columnMax; column++) {\n                if (this.checkARow(gameBoard, moves, row, column)) {\n                    return true;\n                }\n            }\n        }\n        return false;\n    }\n\n    checkARow(gameBoard, moves, row, column) {\n        for (let difference = 0; difference < this.judgeCriteriaSequence; difference++) {\n            if (gameBoard[row][column + difference] != moves) {\n                return false;\n            }\n        }\n        return true;\n    }\n\n    judgeColumn(gameBoard, moves) {\n        for (let column = 0; column < this.columnSize; column++) {\n            for (let row = 0; row < this.rowMax; row++) {\n                if (this.checkAColumn(gameBoard, moves, row, column)) {\n                    return true;\n                }\n            }\n        }\n        return false;\n    }\n\n    checkAColumn(gameBoard, moves, row, column) {\n        for (let difference = 0; difference < this.judgeCriteriaSequence; difference++) {\n            if (gameBoard[row + difference][column] != moves) {\n                return false;\n            }\n        }\n        return true;\n    }\n\n\n    judgeLeftSlanting(gameBoard, moves) {\n\n        // centerAxis\n        let column = 0;\n\n        for (let row = 0; row < this.rowMax; row++) {\n            // 1回あたりの5連\n            let oneTermCheck = this.checkOneTermLeftSlanting(gameBoard, moves, row, column);\n            if (oneTermCheck) {\n                return true;\n            }\n            column++;\n        }\n\n\n        // rowシフト\n        for (let rowStart = 1; rowStart < this.judgeCriteriaSequence; rowStart++) {\n            let rowShiftCheck = this.leftSlantingRowShift(gameBoard, moves, rowStart);\n            if (rowShiftCheck) {\n                return true;\n            }\n        }\n\n        // columnシフト\n        for (let columnStart = 0; columnStart < this.columnMax; columnStart++) {\n            let columnShiftCheck = this.leftSlantingColumnShift(gameBoard, moves, columnStart);\n            if (columnShiftCheck) {\n                return true;\n            }\n        }\n\n\n        return false;\n    }\n\n\n    leftSlantingRowShift(gameBoard, moves, rowStart) {\n        let column = 0;\n\n        // for文1回で、1つの連を表す\n        for (let row = rowStart; row < this.rowMax; row++) {\n            let oneTermCheck = checkOneTermLeftSlanting(gameBoard, moves, row, column);\n            if (oneTermCheck) {\n                return true;\n            }\n\n            column++;\n        }\n        return false;\n    }\n\n\n    leftSlantingColumnShift(gameBoard, moves, columnStart) {\n        let row = 0;\n\n        // for文1回で、1つの連を表す\n        for (let column = columnStart; column < this.columnMax; column++) {\n            let oneTermCheck = this.checkOneTermLeftSlanting(gameBoard, moves, row, column);\n            if (oneTermCheck) {\n                return true;\n            }\n\n            row++;\n        }\n        return false;\n    }\n\n    checkOneTermLeftSlanting(gameBoard, moves, row, column) {\n\n        for (let difference = 0; difference < this.judgeCriteriaSequence; difference++) {\n            if (gameBoard[row + difference][column + difference] != moves) {\n                return false;\n            }\n        }\n        return true;\n\n    }\n\n    judgeRightSlanting(gameBoard, moves) {\n\n        // centerAxis\n        let column = this.columnSize - 1;\n\n        for (let row = 0; row < this.rowMax; row++) {\n            // 1回あたりの5連\n            let oneTermCheck = this.checkOneTermRightSlanting(gameBoard, moves, row, column);\n            if (oneTermCheck) {\n                return true;\n            }\n            column--;\n        }\n\n        // rowシフト\n        for (let rowStart = 1; rowStart < this.judgeCriteriaSequence; rowStart++) {\n            let rowShiftCheck = this.rightSlantingRowShift(gameBoard, moves, rowStart);\n            if (rowShiftCheck) {\n                return true;\n            }\n        }\n        // columnシフト\n        const start = gameBoard.length - 1;\n        for (let columnStart = start; columnStart > this.rowSize - this.judgeCriteriaSequence - 1; columnStart--) {\n            let columnShiftCheck = this.rightSlantingColumnShift(gameBoard, moves, columnStart);\n            if (columnShiftCheck) {\n                return true;\n            }\n        }\n\n        return false;\n    }\n\n\n    rightSlantingRowShift(gameBoard, moves, rowStart) {\n        const column = this.columnSize - 1;\n\n        for (let row = rowStart; row < this.rowMax; row++) {\n            // 1回あたりの5連\n            let oneTermCheck = this.checkOneTermRightSlanting(gameBoard, moves, row, column);\n            if (oneTermCheck) {\n                return true;\n            }\n            column--;\n        }\n        return false;\n    }\n\n    rightSlantingColumnShift(gameBoard, moves, columnStart) {\n        let row = 0;\n\n        const columnEnd = this.judgeCriteriaSequence - 2;\n        for (let column = columnStart; column > columnEnd; column--) {\n            // 1回あたりの5連\n            let oneTermCheck = this.checkOneTermRightSlanting(gameBoard, moves, row, column);\n            if (oneTermCheck) {\n                return true;\n            }\n            row++;\n        }\n        return false;\n    }\n\n    checkOneTermRightSlanting(gameBoard, moves, row, column) {\n\n        for (let difference = 0; difference < this.judgeCriteriaSequence; difference++) {\n            if (gameBoard[row + difference][column - difference] != moves) {\n                return false;\n            }\n        }\n        return true;\n\n    }\n\n}",
+    "static": true,
+    "longname": "src/judge.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 27,
+    "kind": "class",
+    "name": "Judge",
+    "memberof": "src/judge.js",
+    "static": true,
+    "longname": "src/judge.js~Judge",
+    "access": null,
+    "export": true,
+    "importPath": "tic_tac_toe_js/src/judge.js",
+    "importStyle": "Judge",
+    "description": null,
+    "lineNumber": 1,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "interface": false
+  },
+  {
+    "__docId__": 28,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/judge.js~Judge",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/judge.js~Judge#constructor",
+    "access": null,
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "rowSize",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "columnSize",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "judgeCriteriaSequence",
+        "types": [
+          "*"
+        ]
+      }
+    ]
+  },
+  {
+    "__docId__": 29,
+    "kind": "member",
+    "name": "rowSize",
+    "memberof": "src/judge.js~Judge",
+    "static": false,
+    "longname": "src/judge.js~Judge#rowSize",
+    "access": null,
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 30,
+    "kind": "member",
+    "name": "columnSize",
+    "memberof": "src/judge.js~Judge",
+    "static": false,
+    "longname": "src/judge.js~Judge#columnSize",
+    "access": null,
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 31,
+    "kind": "member",
+    "name": "judgeCriteriaSequence",
+    "memberof": "src/judge.js~Judge",
+    "static": false,
+    "longname": "src/judge.js~Judge#judgeCriteriaSequence",
+    "access": null,
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 32,
+    "kind": "member",
+    "name": "rowMax",
+    "memberof": "src/judge.js~Judge",
+    "static": false,
+    "longname": "src/judge.js~Judge#rowMax",
+    "access": null,
+    "description": null,
+    "lineNumber": 7,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 33,
+    "kind": "member",
+    "name": "columnMax",
+    "memberof": "src/judge.js~Judge",
+    "static": false,
+    "longname": "src/judge.js~Judge#columnMax",
+    "access": null,
+    "description": null,
+    "lineNumber": 8,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 34,
+    "kind": "method",
+    "name": "judgeResult",
+    "memberof": "src/judge.js~Judge",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/judge.js~Judge#judgeResult",
+    "access": null,
+    "description": null,
+    "lineNumber": 11,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "board",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 35,
+    "kind": "method",
+    "name": "judgeWin",
+    "memberof": "src/judge.js~Judge",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/judge.js~Judge#judgeWin",
+    "access": null,
+    "description": null,
+    "lineNumber": 25,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "gameBoard",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 36,
+    "kind": "method",
+    "name": "judgeLose",
+    "memberof": "src/judge.js~Judge",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/judge.js~Judge#judgeLose",
+    "access": null,
+    "description": null,
+    "lineNumber": 32,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "gameBoard",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 37,
+    "kind": "method",
+    "name": "judgeDraw",
+    "memberof": "src/judge.js~Judge",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/judge.js~Judge#judgeDraw",
+    "access": null,
+    "description": null,
+    "lineNumber": 39,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "gameBoard",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "boolean"
+      ]
+    }
+  },
+  {
+    "__docId__": 38,
+    "kind": "method",
+    "name": "judgeRow",
+    "memberof": "src/judge.js~Judge",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/judge.js~Judge#judgeRow",
+    "access": null,
+    "description": null,
+    "lineNumber": 50,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "gameBoard",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "moves",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "boolean"
+      ]
+    }
+  },
+  {
+    "__docId__": 39,
+    "kind": "method",
+    "name": "checkARow",
+    "memberof": "src/judge.js~Judge",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/judge.js~Judge#checkARow",
+    "access": null,
+    "description": null,
+    "lineNumber": 61,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "gameBoard",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "moves",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "row",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "column",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "boolean"
+      ]
+    }
+  },
+  {
+    "__docId__": 40,
+    "kind": "method",
+    "name": "judgeColumn",
+    "memberof": "src/judge.js~Judge",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/judge.js~Judge#judgeColumn",
+    "access": null,
+    "description": null,
+    "lineNumber": 70,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "gameBoard",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "moves",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "boolean"
+      ]
+    }
+  },
+  {
+    "__docId__": 41,
+    "kind": "method",
+    "name": "checkAColumn",
+    "memberof": "src/judge.js~Judge",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/judge.js~Judge#checkAColumn",
+    "access": null,
+    "description": null,
+    "lineNumber": 81,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "gameBoard",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "moves",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "row",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "column",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "boolean"
+      ]
+    }
+  },
+  {
+    "__docId__": 42,
+    "kind": "method",
+    "name": "judgeLeftSlanting",
+    "memberof": "src/judge.js~Judge",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/judge.js~Judge#judgeLeftSlanting",
+    "access": null,
+    "description": null,
+    "lineNumber": 91,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "gameBoard",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "moves",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "boolean"
+      ]
+    }
+  },
+  {
+    "__docId__": 43,
+    "kind": "method",
+    "name": "leftSlantingRowShift",
+    "memberof": "src/judge.js~Judge",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/judge.js~Judge#leftSlantingRowShift",
+    "access": null,
+    "description": null,
+    "lineNumber": 127,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "gameBoard",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "moves",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "rowStart",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "boolean"
+      ]
+    }
+  },
+  {
+    "__docId__": 44,
+    "kind": "method",
+    "name": "leftSlantingColumnShift",
+    "memberof": "src/judge.js~Judge",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/judge.js~Judge#leftSlantingColumnShift",
+    "access": null,
+    "description": null,
+    "lineNumber": 143,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "gameBoard",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "moves",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "columnStart",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "boolean"
+      ]
+    }
+  },
+  {
+    "__docId__": 45,
+    "kind": "method",
+    "name": "checkOneTermLeftSlanting",
+    "memberof": "src/judge.js~Judge",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/judge.js~Judge#checkOneTermLeftSlanting",
+    "access": null,
+    "description": null,
+    "lineNumber": 158,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "gameBoard",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "moves",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "row",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "column",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "boolean"
+      ]
+    }
+  },
+  {
+    "__docId__": 46,
+    "kind": "method",
+    "name": "judgeRightSlanting",
+    "memberof": "src/judge.js~Judge",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/judge.js~Judge#judgeRightSlanting",
+    "access": null,
+    "description": null,
+    "lineNumber": 169,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "gameBoard",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "moves",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "boolean"
+      ]
+    }
+  },
+  {
+    "__docId__": 47,
+    "kind": "method",
+    "name": "rightSlantingRowShift",
+    "memberof": "src/judge.js~Judge",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/judge.js~Judge#rightSlantingRowShift",
+    "access": null,
+    "description": null,
+    "lineNumber": 203,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "gameBoard",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "moves",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "rowStart",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "boolean"
+      ]
+    }
+  },
+  {
+    "__docId__": 48,
+    "kind": "method",
+    "name": "rightSlantingColumnShift",
+    "memberof": "src/judge.js~Judge",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/judge.js~Judge#rightSlantingColumnShift",
+    "access": null,
+    "description": null,
+    "lineNumber": 217,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "gameBoard",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "moves",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "columnStart",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "boolean"
+      ]
+    }
+  },
+  {
+    "__docId__": 49,
+    "kind": "method",
+    "name": "checkOneTermRightSlanting",
+    "memberof": "src/judge.js~Judge",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/judge.js~Judge#checkOneTermRightSlanting",
+    "access": null,
+    "description": null,
+    "lineNumber": 232,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "gameBoard",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "moves",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "row",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "column",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "boolean"
+      ]
+    }
+  },
+  {
+    "__docId__": 50,
+    "kind": "file",
+    "name": "src/miniMax.js",
+    "content": "import ScoreCalculator from './scoreCalculator.js';\n\nconst scoreCalculator = new ScoreCalculator(3, 3, 3, 30, -30);\n\nexport default class MiniMax {\n\n    // playerはplayerオブジェクト\n    calcMiniMax(depth, board, playerSignal, alpha, beta) {\n        console.log('calcMiniMaxメソッドが呼ばれました');\n\n        let capableMovesArray = this.makeCapableMoveArray(board);\n\n        console.log('前');\n        let score;\n        let row = -1;\n        let column = -1;\n\n        console.log('後');\n\n        // 試合が終了か、深さが0の場合は、スコアを\n        if (capableMovesArray.length === 0 || depth === 0) {\n\n            console.log('---capableMovesArray.length---' + capableMovesArray.length);\n            console.log('---depth---' + depth);\n\n\n            // ここ要変更\n            score = scoreCalculator.calcScore(board.getGameBoardState());\n\n            console.log('1段目');\n            return { rowVal: row, columnVal: column, bestScore: score };\n        } else {\n            // CPUの点数であるαの方が、βよりも大きい場合、それ以上探索しなくても良い(その時のαが最大なので)ので、探索を打ち切る\n            for (let cell of capableMovesArray) {\n\n                board.addMove(cell.rowValue, cell.columnValue, playerSignal);\n\n                if (playerSignal === '×') {\n                    score = this.calcMiniMax(depth - 1, board, '○', alpha, beta).bestScore;\n                    if (score > alpha) {\n                        alpha = score;\n                        row = cell.rowValue;\n                        column = cell.columnValue;\n\n                    }\n                } else if (playerSignal === '○') {\n                    score = this.calcMiniMax(depth - 1, board, '×', alpha, beta).bestScore;\n                    if (score < beta) {\n                        beta = score;\n                        row = cell.rowValue;\n                        column = cell.columnValue;\n                    }\n                }\n                board.addMove(cell.rowValue, cell.columnValue, ' ');\n\n                if (alpha >= beta) break;\n            }\n\n            return (playerSignal === '×') ? { rowVal: row, columnVal: column, bestScore: alpha } : { rowVal: row, columnVal: column, bestScore: beta };\n        }\n\n    }\n\n    makeCapableMoveArray(board) {\n        let capableMovesArray = [];\n        console.log('makeCapableMoveArrayメソッドが呼ばれました');\n\n        for (let row = 0; row < board.getRowSize(); row++) {\n            for (let column = 0; column < board.getColumnSize(); column++) {\n                if (board.getMove(row, column) === ' ') {\n                    let cellObj = { rowValue: row, columnValue: column };\n                    capableMovesArray.push(cellObj);\n                }\n            }\n        }\n        console.log('capableMovesArray:' + JSON.stringify(capableMovesArray));\n        return capableMovesArray;\n    }\n\n}",
+    "static": true,
+    "longname": "src/miniMax.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 51,
+    "kind": "variable",
+    "name": "scoreCalculator",
+    "memberof": "src/miniMax.js",
+    "static": true,
+    "longname": "src/miniMax.js~scoreCalculator",
+    "access": null,
+    "export": false,
+    "importPath": "tic_tac_toe_js/src/miniMax.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "src/scoreCalculator.js~ScoreCalculator"
+      ]
+    }
+  },
+  {
+    "__docId__": 52,
+    "kind": "class",
+    "name": "MiniMax",
+    "memberof": "src/miniMax.js",
+    "static": true,
+    "longname": "src/miniMax.js~MiniMax",
+    "access": null,
+    "export": true,
+    "importPath": "tic_tac_toe_js/src/miniMax.js",
+    "importStyle": "MiniMax",
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "interface": false
+  },
+  {
+    "__docId__": 53,
+    "kind": "method",
+    "name": "calcMiniMax",
+    "memberof": "src/miniMax.js~MiniMax",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/miniMax.js~MiniMax#calcMiniMax",
+    "access": null,
+    "description": null,
+    "lineNumber": 8,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "depth",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "board",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "playerSignal",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "alpha",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "beta",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 54,
+    "kind": "method",
+    "name": "makeCapableMoveArray",
+    "memberof": "src/miniMax.js~MiniMax",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/miniMax.js~MiniMax#makeCapableMoveArray",
+    "access": null,
+    "description": null,
+    "lineNumber": 64,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "board",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 55,
+    "kind": "file",
+    "name": "src/scoreCalculator.js",
+    "content": "import Counter from './counter.js';\n\nexport default class ScoreCalculator {\n\n    constructor(rowSize, columnSize, judgeCriteriaSequence, maxPoint, minPoint) {\n        this.rowSize = rowSize;\n        this.columnSize = columnSize;\n        this.judgeCriteriaSequence = judgeCriteriaSequence;\n        this.rowMax = this.rowSize - this.judgeCriteriaSequence + 1;\n        this.columnMax = this.columnSize - this.judgeCriteriaSequence + 1;\n        this.maxPoint = maxPoint;\n        this.minPoint = minPoint;\n    }\n\n    calcScore(gameBoard) {\n        console.log('calcScoreメソッドが呼ばれました');\n        let totalScore = 0;\n\n        let arraySize = this.judgeCriteriaSequence;\n        let movesArray = new Array(arraySize);\n\n        totalScore += this.calcRow(movesArray, gameBoard);\n\n        totalScore += this.calcColumn(movesArray, gameBoard);\n\n        totalScore += this.calcLeftSlanting(movesArray, gameBoard);\n\n        totalScore += this.calcRightSlanting(movesArray, gameBoard);\n\n        // ここを変更予定\n        Counter.resetCount();\n        console.log('今回の最終合計点は' + totalScore);\n        console.log('その時のゲーム盤は' + gameBoard);\n        return totalScore;\n    }\n\n    calcRow(movesArray, gameBoard) {\n        console.log('calcRowが呼ばれました');\n        let score = 0;\n\n        for (let row = 0; row < this.rowSize; row++) {\n            for (let column = 0; column < this.columnMax; column++) {\n                for (let i = 0; i < movesArray.length; i++) {\n                    movesArray[i] = gameBoard[row][column + i];\n                }\n                score += this.calcLineScore(movesArray, this.maxPoint, this.minPoint);\n            }\n        }\n        return score;\n    }\n\n\n    calcColumn(movesArray, gameBoard) {\n        let score = 0;\n\n        for (let column = 0; column < this.columnSize; column++) {\n            for (let row = 0; row < this.rowMax; row++) {\n                for (let i = 0; i < movesArray.length; i++) {\n                    movesArray[i] = gameBoard[row + i][column];\n                }\n                score += this.calcLineScore(movesArray, this.maxPoint, this.minPoint);\n            }\n        }\n        return score;\n    }\n\n\n    calcLeftSlanting(movesArray, gameBoard) {\n        let score = 0;\n\n        for (let index = 0; index < this.rowMax; index++) {\n\n            for (let i = 0; i < movesArray.length; i++) {\n                movesArray[i] = gameBoard[index + i][index + i];\n            }\n            score += this.calcLineScore(movesArray, this.maxPoint, this.minPoint);\n        }\n        score += this.calcLeftSlantingRowSlide(movesArray, gameBoard);\n\n        score += this.calcLeftSlantingColumnSlide(movesArray, gameBoard);\n\n\n        return score;\n    }\n\n    calcLeftSlantingRowSlide(movesArray, gameBoard) {\n        let column = 0;\n        let score = 0;\n\n\n        // for文1回で、1つの連を表す\n        for (let row = 1; row < this.rowMax; row++) {\n            score = this.calcLeftSlantingSlideHelper(gameBoard, movesArray, row, column);\n        }\n        return score;\n    }\n\n\n    calcLeftSlantingColumnSlide(movesArray, gameBoard) {\n\n        let row = 0;\n        let score = 0;\n\n        // for文1回で、1つの連を表す\n        for (let column = 1; column < this.columnMax; column++) {\n            score = this.calcLeftSlantingSlideHelper(gameBoard, movesArray, row, column);\n        }\n        return score;\n    }\n\n\n    calcLeftSlantingSlideHelper(gameBoard, movesArray, row, column) {\n\n\n        let score = 0;\n\n        for (let difference = 0; difference < this.judgeCriteriaSequence; difference++) {\n            movesArray[difference] = gameBoard[row + difference][column + difference];\n        }\n\n        score += this.calcLineScore(movesArray, this.maxPoint, this.minPoint);\n\n        return score;\n    }\n\n\n    calcRightSlanting(movesArray, gameBoard) {\n        let score = 0;\n\n        let columnLastIndex = this.columnSize - 1;\n        let column = columnLastIndex;\n\n        // for文1回で、1つの連を表す\n        for (let row = 0; row < this.rowMax; row++) {\n            for (let i = 0; i < movesArray.length; i++) {\n                movesArray[i] = gameBoard[row + i][column - i];\n            }\n            score += this.calcLineScore(movesArray, this.maxPoint, this.minPoint);\n\n            column--;\n        }\n\n        score += this.calcRightSlantingRowSlide(gameBoard, movesArray);\n\n        score += this.calcRightSlantingColumnSlide(gameBoard, movesArray);\n\n        return score;\n    }\n\n\n    calcRightSlantingRowSlide(gameBoard, movesArray) {\n        let column = this.columnSize - 1;\n\n        let score = 0;\n\n        // for文1回で、1つの連を表す\n        for (let row = 1; row < this.rowMax; row++) {\n            score = this.calcRightSlantingSlideHelper(gameBoard, movesArray, row, column);\n        }\n        return score;\n    }\n\n\n    calcRightSlantingColumnSlide(fgameBoard, movesArray) {\n        let localColumnMax = this.columnSize - 1;\n        let row = 0;\n\n        let score = 0;\n\n        // for文1回で、1つの連を表す\n        for (let column = this.judgeCriteriaSequence - 1; column < localColumnMax; column++) {\n            score = this.calcRightSlantingSlideHelper(gameBoard, movesArray, row, column);\n        }\n        return score;\n    }\n\n\n    calcRightSlantingSlideHelper(gameBoard, movesArray, row, column) {\n        let score = 0;\n\n        for (let difference = 0; difference < this.judgeCriteriaSequence; difference++) {\n            movesArray[difference] = gameBoard[row + difference][column - difference];\n        }\n        score += this.calcLineScore(movesArray, this.maxPoint, this.minPoint);\n\n        return score;\n    }\n\n\n    calcLineScore(movesArray, maxPoint, minPoint) {\n        console.log('calcLineScoreが呼ばれました');\n\n        let score = 0;\n        const perTernPoint = 10;\n\n        console.log(movesArray);\n\n        for (let moves of movesArray) {\n\n            if (moves === '×') {\n                score += perTernPoint;\n            } else if (moves === '○') {\n                score -= perTernPoint;\n            }\n        }\n\n        let counter = Counter.getCount();\n        const correctionValue = 100;\n\n        const counterCorrectionValue = counter * correctionValue;\n\n        const finalMaxPoint = 100000;\n        const finalMinPoint = -100000;\n\n        // 勝敗がつくときには、点数の差を大きくする\n        // if (score == maxPoint) {\n        //     score = finalMaxPoint - counterCorrectionValue;\n        // } else if (score == minPoint) {\n        //     score = finalMinPoint + counterCorrectionValue;\n        // }\n        Counter.upCount();\n\n        if (score == maxPoint) {\n            score = finalMaxPoint;\n        } else if (score == minPoint) {\n            score = finalMinPoint;\n        }\n\n        return score;\n    }\n}",
+    "static": true,
+    "longname": "src/scoreCalculator.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 56,
+    "kind": "class",
+    "name": "ScoreCalculator",
+    "memberof": "src/scoreCalculator.js",
+    "static": true,
+    "longname": "src/scoreCalculator.js~ScoreCalculator",
+    "access": null,
+    "export": true,
+    "importPath": "tic_tac_toe_js/src/scoreCalculator.js",
+    "importStyle": "ScoreCalculator",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "interface": false
+  },
+  {
+    "__docId__": 57,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/scoreCalculator.js~ScoreCalculator",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/scoreCalculator.js~ScoreCalculator#constructor",
+    "access": null,
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "rowSize",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "columnSize",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "judgeCriteriaSequence",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "maxPoint",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "minPoint",
+        "types": [
+          "*"
+        ]
+      }
+    ]
+  },
+  {
+    "__docId__": 58,
+    "kind": "member",
+    "name": "rowSize",
+    "memberof": "src/scoreCalculator.js~ScoreCalculator",
+    "static": false,
+    "longname": "src/scoreCalculator.js~ScoreCalculator#rowSize",
+    "access": null,
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 59,
+    "kind": "member",
+    "name": "columnSize",
+    "memberof": "src/scoreCalculator.js~ScoreCalculator",
+    "static": false,
+    "longname": "src/scoreCalculator.js~ScoreCalculator#columnSize",
+    "access": null,
+    "description": null,
+    "lineNumber": 7,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 60,
+    "kind": "member",
+    "name": "judgeCriteriaSequence",
+    "memberof": "src/scoreCalculator.js~ScoreCalculator",
+    "static": false,
+    "longname": "src/scoreCalculator.js~ScoreCalculator#judgeCriteriaSequence",
+    "access": null,
+    "description": null,
+    "lineNumber": 8,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 61,
+    "kind": "member",
+    "name": "rowMax",
+    "memberof": "src/scoreCalculator.js~ScoreCalculator",
+    "static": false,
+    "longname": "src/scoreCalculator.js~ScoreCalculator#rowMax",
+    "access": null,
+    "description": null,
+    "lineNumber": 9,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 62,
+    "kind": "member",
+    "name": "columnMax",
+    "memberof": "src/scoreCalculator.js~ScoreCalculator",
+    "static": false,
+    "longname": "src/scoreCalculator.js~ScoreCalculator#columnMax",
+    "access": null,
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 63,
+    "kind": "member",
+    "name": "maxPoint",
+    "memberof": "src/scoreCalculator.js~ScoreCalculator",
+    "static": false,
+    "longname": "src/scoreCalculator.js~ScoreCalculator#maxPoint",
+    "access": null,
+    "description": null,
+    "lineNumber": 11,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 64,
+    "kind": "member",
+    "name": "minPoint",
+    "memberof": "src/scoreCalculator.js~ScoreCalculator",
+    "static": false,
+    "longname": "src/scoreCalculator.js~ScoreCalculator#minPoint",
+    "access": null,
+    "description": null,
+    "lineNumber": 12,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 65,
+    "kind": "method",
+    "name": "calcScore",
+    "memberof": "src/scoreCalculator.js~ScoreCalculator",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/scoreCalculator.js~ScoreCalculator#calcScore",
+    "access": null,
+    "description": null,
+    "lineNumber": 15,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "gameBoard",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 66,
+    "kind": "method",
+    "name": "calcRow",
+    "memberof": "src/scoreCalculator.js~ScoreCalculator",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/scoreCalculator.js~ScoreCalculator#calcRow",
+    "access": null,
+    "description": null,
+    "lineNumber": 37,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "movesArray",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "gameBoard",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 67,
+    "kind": "method",
+    "name": "calcColumn",
+    "memberof": "src/scoreCalculator.js~ScoreCalculator",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/scoreCalculator.js~ScoreCalculator#calcColumn",
+    "access": null,
+    "description": null,
+    "lineNumber": 53,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "movesArray",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "gameBoard",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 68,
+    "kind": "method",
+    "name": "calcLeftSlanting",
+    "memberof": "src/scoreCalculator.js~ScoreCalculator",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/scoreCalculator.js~ScoreCalculator#calcLeftSlanting",
+    "access": null,
+    "description": null,
+    "lineNumber": 68,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "movesArray",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "gameBoard",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 69,
+    "kind": "method",
+    "name": "calcLeftSlantingRowSlide",
+    "memberof": "src/scoreCalculator.js~ScoreCalculator",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/scoreCalculator.js~ScoreCalculator#calcLeftSlantingRowSlide",
+    "access": null,
+    "description": null,
+    "lineNumber": 86,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "movesArray",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "gameBoard",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 70,
+    "kind": "method",
+    "name": "calcLeftSlantingColumnSlide",
+    "memberof": "src/scoreCalculator.js~ScoreCalculator",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/scoreCalculator.js~ScoreCalculator#calcLeftSlantingColumnSlide",
+    "access": null,
+    "description": null,
+    "lineNumber": 99,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "movesArray",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "gameBoard",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 71,
+    "kind": "method",
+    "name": "calcLeftSlantingSlideHelper",
+    "memberof": "src/scoreCalculator.js~ScoreCalculator",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/scoreCalculator.js~ScoreCalculator#calcLeftSlantingSlideHelper",
+    "access": null,
+    "description": null,
+    "lineNumber": 112,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "gameBoard",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "movesArray",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "row",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "column",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 72,
+    "kind": "method",
+    "name": "calcRightSlanting",
+    "memberof": "src/scoreCalculator.js~ScoreCalculator",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/scoreCalculator.js~ScoreCalculator#calcRightSlanting",
+    "access": null,
+    "description": null,
+    "lineNumber": 127,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "movesArray",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "gameBoard",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 73,
+    "kind": "method",
+    "name": "calcRightSlantingRowSlide",
+    "memberof": "src/scoreCalculator.js~ScoreCalculator",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/scoreCalculator.js~ScoreCalculator#calcRightSlantingRowSlide",
+    "access": null,
+    "description": null,
+    "lineNumber": 151,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "gameBoard",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "movesArray",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 74,
+    "kind": "method",
+    "name": "calcRightSlantingColumnSlide",
+    "memberof": "src/scoreCalculator.js~ScoreCalculator",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/scoreCalculator.js~ScoreCalculator#calcRightSlantingColumnSlide",
+    "access": null,
+    "description": null,
+    "lineNumber": 164,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "fgameBoard",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "movesArray",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 75,
+    "kind": "method",
+    "name": "calcRightSlantingSlideHelper",
+    "memberof": "src/scoreCalculator.js~ScoreCalculator",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/scoreCalculator.js~ScoreCalculator#calcRightSlantingSlideHelper",
+    "access": null,
+    "description": null,
+    "lineNumber": 178,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "gameBoard",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "movesArray",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "row",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "column",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 76,
+    "kind": "method",
+    "name": "calcLineScore",
+    "memberof": "src/scoreCalculator.js~ScoreCalculator",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/scoreCalculator.js~ScoreCalculator#calcLineScore",
+    "access": null,
+    "description": null,
+    "lineNumber": 190,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "movesArray",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "maxPoint",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "minPoint",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 78,
+    "kind": "external",
+    "name": "Infinity",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Infinity",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 79,
+    "kind": "external",
+    "name": "NaN",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~NaN",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 80,
+    "kind": "external",
+    "name": "undefined",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~undefined",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 81,
+    "kind": "external",
+    "name": "null",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~null",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 82,
+    "kind": "external",
+    "name": "Object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Object",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 83,
+    "kind": "external",
+    "name": "object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~object",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 84,
+    "kind": "external",
+    "name": "Function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Function",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 85,
+    "kind": "external",
+    "name": "function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~function",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 86,
+    "kind": "external",
+    "name": "Boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Boolean",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 87,
+    "kind": "external",
+    "name": "boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~boolean",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 88,
+    "kind": "external",
+    "name": "Symbol",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Symbol",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 89,
+    "kind": "external",
+    "name": "Error",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Error",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 90,
+    "kind": "external",
+    "name": "EvalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~EvalError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 91,
+    "kind": "external",
+    "name": "InternalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~InternalError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 92,
+    "kind": "external",
+    "name": "RangeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~RangeError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 93,
+    "kind": "external",
+    "name": "ReferenceError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~ReferenceError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 94,
+    "kind": "external",
+    "name": "SyntaxError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~SyntaxError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 95,
+    "kind": "external",
+    "name": "TypeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~TypeError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 96,
+    "kind": "external",
+    "name": "URIError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~URIError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 97,
+    "kind": "external",
+    "name": "Number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Number",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 98,
+    "kind": "external",
+    "name": "number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~number",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 99,
+    "kind": "external",
+    "name": "Date",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Date",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 100,
+    "kind": "external",
+    "name": "String",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~String",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 101,
+    "kind": "external",
+    "name": "string",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~string",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 102,
+    "kind": "external",
+    "name": "RegExp",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~RegExp",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 103,
+    "kind": "external",
+    "name": "Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 104,
+    "kind": "external",
+    "name": "Int8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Int8Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 105,
+    "kind": "external",
+    "name": "Uint8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint8Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 106,
+    "kind": "external",
+    "name": "Uint8ClampedArray",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint8ClampedArray",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 107,
+    "kind": "external",
+    "name": "Int16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Int16Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 108,
+    "kind": "external",
+    "name": "Uint16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint16Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 109,
+    "kind": "external",
+    "name": "Int32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Int32Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 110,
+    "kind": "external",
+    "name": "Uint32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint32Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 111,
+    "kind": "external",
+    "name": "Float32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Float32Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 112,
+    "kind": "external",
+    "name": "Float64Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Float64Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 113,
+    "kind": "external",
+    "name": "Map",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Map",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 114,
+    "kind": "external",
+    "name": "Set",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Set",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 115,
+    "kind": "external",
+    "name": "WeakMap",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~WeakMap",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 116,
+    "kind": "external",
+    "name": "WeakSet",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~WeakSet",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 117,
+    "kind": "external",
+    "name": "ArrayBuffer",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~ArrayBuffer",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 118,
+    "kind": "external",
+    "name": "DataView",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~DataView",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 119,
+    "kind": "external",
+    "name": "JSON",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~JSON",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 120,
+    "kind": "external",
+    "name": "Promise",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Promise",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 121,
+    "kind": "external",
+    "name": "Generator",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Generator",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 122,
+    "kind": "external",
+    "name": "GeneratorFunction",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~GeneratorFunction",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 123,
+    "kind": "external",
+    "name": "Reflect",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Reflect",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 124,
+    "kind": "external",
+    "name": "Proxy",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Proxy",
+    "access": null,
+    "description": "",
+    "lineNumber": 193,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 126,
+    "kind": "external",
+    "name": "CanvasRenderingContext2D",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/WebAPIExternal.js~CanvasRenderingContext2D",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 127,
+    "kind": "external",
+    "name": "DocumentFragment",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/WebAPIExternal.js~DocumentFragment",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 128,
+    "kind": "external",
+    "name": "Element",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/Element",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/WebAPIExternal.js~Element",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 129,
+    "kind": "external",
+    "name": "Event",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/Event",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/WebAPIExternal.js~Event",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 130,
+    "kind": "external",
+    "name": "Node",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/Node",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/WebAPIExternal.js~Node",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 131,
+    "kind": "external",
+    "name": "NodeList",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/NodeList",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/WebAPIExternal.js~NodeList",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 132,
+    "kind": "external",
+    "name": "XMLHttpRequest",
+    "externalLink": "https://developer.mozilla.org/en/docs/Web/API/XMLHttpRequest",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/WebAPIExternal.js~XMLHttpRequest",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 133,
+    "kind": "external",
+    "name": "AudioContext",
+    "externalLink": "https://developer.mozilla.org/en/docs/Web/API/AudioContext",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/WebAPIExternal.js~AudioContext",
+    "access": null,
+    "description": "",
+    "lineNumber": 34,
+    "builtinExternal": true
+  }
+]
