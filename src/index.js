@@ -22,12 +22,16 @@ for (let id of idArray) {
 
             let result = judge.judgeResult(board);
             console.log('result:' + result);
-            if (result !== '未決') {
+
+            if (result === '引き分け') {
+                window.alert(result);
+                document.getElementById('table').innerHTML = '<p style="font-size:40px;"><span style="color:red;">' + result + '</span>だ</p>';
+            } else if (result !== '未決') {
                 window.alert(result);
                 document.getElementById('table').innerHTML = '<p style="font-size:40px;">君の<span style="color:red;">' + result + '</span>だ</p>';
             }
 
-            e.textContent = board.getMove(row, column);
+            e.innerHTML = '<span style="font-size:70px; color:white;">' + board.getMove(row, column) + '</span>';
 
             let depth = 2;
 
@@ -36,7 +40,10 @@ for (let id of idArray) {
             let result2 = judge.judgeResult(board);
             console.log('result:' + result2);
 
-            if (result2 !== '未決') {
+            if (result === '引き分け') {
+                window.alert(result);
+                document.getElementById('table').innerHTML = '<p style="font-size:40px;"><span style="color:red;">' + result2 + '</span>だ</p>';
+            } else if (result2 !== '未決') {
                 window.alert(result2);
                 document.getElementById('table').innerHTML = '<p style="font-size:40px;">君の<span style="color:red;">' + result2 + '</span>だ</p>';
             }

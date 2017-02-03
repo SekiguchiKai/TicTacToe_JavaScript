@@ -22,6 +22,6 @@ export default class Cpu {
         board.putMove(cellObj.rowVal, cellObj.columnVal, '×');
 
         let e = document.getElementById(cellObj.rowVal + '-' + cellObj.columnVal);
-        e.textContent = '×';
+        e.innerHTML = '<span style="font-size:100px; color:white;">×</span>';
     }
 }
