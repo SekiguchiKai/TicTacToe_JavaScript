@@ -43,13 +43,13 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import MiniMax from &apos;<span><a href="file/src/miniMax.js.html#lineNumber5">tic_tac_toe_js/src/miniMax.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import MiniMax from &apos;<span><a href="file/src/miniMax.js.html#lineNumber8">tic_tac_toe_js/src/miniMax.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/src/miniMax.js.html#lineNumber5">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/miniMax.js.html#lineNumber8">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -69,7 +69,8 @@
 
   
   
-  
+  <div class="description" data-ice="description"><p>&#x30DF;&#x30CB;&#x30DE;&#x30C3;&#x30AF;&#x30B9;&#x30A2;&#x30EB;&#x30B4;&#x30EA;&#x30BA;&#x30E0;&#x3092;&#x8868;&#x3057;&#x305F;&#x30AF;&#x30E9;&#x30B9;</p>
+</div>
   
 
   
@@ -102,13 +103,24 @@
         <p>
           
           
-          <span data-ice="name"><span><a href="class/src/miniMax.js~MiniMax.html#instance-method-calcMiniMax">calcMiniMax</a></span></span><span data-ice="signature">(depth: <span>*</span>, board: <span>*</span>, playerSignal: <span>*</span>, alpha: <span>*</span>, beta: <span>*</span>): <span>*</span></span>
+          <span data-ice="name"><span><a href="class/src/miniMax.js~MiniMax.html#instance-method-calcMiniMax">calcMiniMax</a></span></span><span data-ice="signature">(&#x63A2;&#x7D22;&#x306E;&#x6DF1;&#x3055;: <span>depth</span>, Board&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;: <span>board</span>, Player&#x306E;&#x6253;&#x3061;&#x624B;: <span>playerSignal</span>, &#x3B1;: <span>alpha</span>, &#x3B2;: <span>beta</span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>&#x30DF;&#x30CB;&#x30DE;&#x30C3;&#x30AF;&#x30B9;&#x30A2;&#x30EB;&#x30B4;&#x30EA;&#x30BA;&#x30E0;&#x3B1;&#x3B2;&#x6CD5;&#x3092;&#x7528;&#x3044;&#x3001;&#x5F15;&#x6570;&#x3067;&#x6E21;&#x3055;&#x308C;&#x305F;&#x6253;&#x3061;&#x624B;&#x306E;&#x30D7;&#x30EC;&#x30A4;&#x30E4;&#x30FC;&#x306B;&#x53D6;&#x3063;&#x3066;&#x6700;&#x9069;&#x306A;&#x70B9;&#x6570;&#x3068;&#x30B2;&#x30FC;&#x30E0;&#x76E4;&#x306E;&#x5834;&#x6240;&#x3092;&#x8FD4;&#x3059;&#x30E1;&#x30BD;&#x30C3;&#x30C9;
+CPU&#x306E;&#x5834;&#x5408;&#x306F;&#x3001;&#x6700;&#x5927;&#x306E;&#x70B9;&#x6570;&#x3068;&#x305D;&#x306E;&#x70B9;&#x6570;&#x3092;&#x53D6;&#x308A;&#x5F97;&#x308B;&#x30B2;&#x30FC;&#x30E0;&#x76E4;&#x306E;&#x5834;&#x6240;&#x3092;&#x8FD4;&#x3057;&#x3001;USER&#x306E;&#x5834;&#x5408;&#x306F;&#x3001;&#x70B9;&#x6570;&#x3068;&#x305D;&#x306E;&#x70B9;&#x6570;&#x3092;&#x53D6;&#x308A;&#x5F97;&#x308B;&#x30B2;&#x30FC;&#x30E0;&#x76E4;&#x306E;&#x5834;&#x6240;&#x3092;&#x8FD4;&#x3059;</p>
+<p></p><p>
+&#x3053;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x30A2;&#x30EB;&#x30B4;&#x30EA;&#x30BA;&#x30E0;
+&#x3010;CPU&#x306E;&#x5834;&#x5408;&#x3011;
+&#x73FE;&#x5728;&#x306E;&#x30B2;&#x30FC;&#x30E0;&#x6728;&#x306E;&#x6DF1;&#x3055;&#x306E;1&#x500B;&#x4E0B;&#x306E;&#x968E;&#x5C64;&#x306E;&#x70B9;&#x6570;&#x3092;MinMax&#x3067;&#x53D6;&#x5F97;&#x3059;&#x308B;
+&#x305D;&#x306E;&#x53D6;&#x5F97;&#x3057;&#x305F;&#x70B9;&#x6570;&#x304C;&#x73FE;&#x5728;&#x4FDD;&#x6301;&#x3057;&#x3066;&#x3044;&#x308B;&#x4E00;&#x756A;&#x9AD8;&#x3044;&#x70B9;&#x6570;&#xFF08;&#x30D9;&#x30B9;&#x30C8;&#x30B9;&#x30B3;&#x30A2;&#xFF09;&#x3088;&#x308A;&#x3082;&#x9AD8;&#x3044;&#x5834;&#x5408;&#x306F;&#x3001;&#x305D;&#x306E;&#x70B9;&#x6570;&#x304C;&#x4FDD;&#x6301;&#x3055;&#x308C;&#x308B;&#x30D9;&#x30B9;&#x30C8;&#x30B9;&#x30B3;&#x30A2;&#x3068;&#x306A;&#x308B;</p>
+<p></p><p>
+&#x3010;USER&#x306E;&#x5834;&#x5408;&#x3011;
+&#x73FE;&#x5728;&#x306E;&#x30B2;&#x30FC;&#x30E0;&#x6728;&#x306E;&#x6DF1;&#x3055;&#x306E;1&#x500B;&#x4E0B;&#x306E;&#x968E;&#x5C64;&#x306E;&#x70B9;&#x6570;&#x3092;MinMax&#x3067;&#x53D6;&#x5F97;&#x3059;&#x308B;
+&#x305D;&#x306E;&#x53D6;&#x5F97;&#x3057;&#x305F;&#x70B9;&#x6570;&#x304C;&#x73FE;&#x5728;&#x4FDD;&#x6301;&#x3057;&#x3066;&#x3044;&#x308B;&#x4E00;&#x756A;&#x4F4E;&#x3044;&#x70B9;&#x6570;&#xFF08;&#x30D9;&#x30B9;&#x30C8;&#x30B9;&#x30B3;&#x30A2;&#xFF09;&#x3088;&#x308A;&#x3082;&#x4F4E;&#x3044;&#x5834;&#x5408;&#x306F;&#x3001;&#x305D;&#x306E;&#x70B9;&#x6570;&#x304C;&#x4FDD;&#x6301;&#x3055;&#x308C;&#x308B;&#x30D9;&#x30B9;&#x30C8;&#x30B9;&#x30B3;&#x30A2;&#x3068;&#x306A;&#x308B;</p>
+</div>
       </div>
     </td>
     <td>
@@ -129,13 +141,14 @@
         <p>
           
           
-          <span data-ice="name"><span><a href="class/src/miniMax.js~MiniMax.html#instance-method-makeCapableMoveArray">makeCapableMoveArray</a></span></span><span data-ice="signature">(board: <span>*</span>): <span>*</span></span>
+          <span data-ice="name"><span><a href="class/src/miniMax.js~MiniMax.html#instance-method-makeCapableMoveArray">makeCapableMoveArray</a></span></span><span data-ice="signature">(Board&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;: <span>board</span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>&#x73FE;&#x5728;&#x306E;&#x6253;&#x3061;&#x624B;&#x3092;&#x6253;&#x3064;&#x3053;&#x3068;&#x304C;&#x53EF;&#x80FD;&#x306A;&#x3059;&#x3079;&#x3066;&#x306E;&#x30B2;&#x30FC;&#x30E0;&#x76E4;&#x306E;&#x5834;&#x6240;&#x3092;&#x30EA;&#x30B9;&#x30C8;&#x5316;&#x3059;&#x308B;&#xFF08;NO_MOVE&#x304C;&#x5B58;&#x5728;&#x3057;&#x3066;&#x3044;&#x308B;GameBoard&#x306E;&#x5834;&#x6240;&#xFF09;</p>
+</div>
       </div>
     </td>
     <td>
@@ -163,18 +176,29 @@
     
     
     
-    <span data-ice="name">calcMiniMax</span><span data-ice="signature">(depth: <span>*</span>, board: <span>*</span>, playerSignal: <span>*</span>, alpha: <span>*</span>, beta: <span>*</span>): <span>*</span></span>
+    <span data-ice="name">calcMiniMax</span><span data-ice="signature">(&#x63A2;&#x7D22;&#x306E;&#x6DF1;&#x3055;: <span>depth</span>, Board&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;: <span>board</span>, Player&#x306E;&#x6253;&#x3061;&#x624B;: <span>playerSignal</span>, &#x3B1;: <span>alpha</span>, &#x3B2;: <span>beta</span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/miniMax.js.html#lineNumber8">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/miniMax.js.html#lineNumber30">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>&#x30DF;&#x30CB;&#x30DE;&#x30C3;&#x30AF;&#x30B9;&#x30A2;&#x30EB;&#x30B4;&#x30EA;&#x30BA;&#x30E0;&#x3B1;&#x3B2;&#x6CD5;&#x3092;&#x7528;&#x3044;&#x3001;&#x5F15;&#x6570;&#x3067;&#x6E21;&#x3055;&#x308C;&#x305F;&#x6253;&#x3061;&#x624B;&#x306E;&#x30D7;&#x30EC;&#x30A4;&#x30E4;&#x30FC;&#x306B;&#x53D6;&#x3063;&#x3066;&#x6700;&#x9069;&#x306A;&#x70B9;&#x6570;&#x3068;&#x30B2;&#x30FC;&#x30E0;&#x76E4;&#x306E;&#x5834;&#x6240;&#x3092;&#x8FD4;&#x3059;&#x30E1;&#x30BD;&#x30C3;&#x30C9;
+CPU&#x306E;&#x5834;&#x5408;&#x306F;&#x3001;&#x6700;&#x5927;&#x306E;&#x70B9;&#x6570;&#x3068;&#x305D;&#x306E;&#x70B9;&#x6570;&#x3092;&#x53D6;&#x308A;&#x5F97;&#x308B;&#x30B2;&#x30FC;&#x30E0;&#x76E4;&#x306E;&#x5834;&#x6240;&#x3092;&#x8FD4;&#x3057;&#x3001;USER&#x306E;&#x5834;&#x5408;&#x306F;&#x3001;&#x70B9;&#x6570;&#x3068;&#x305D;&#x306E;&#x70B9;&#x6570;&#x3092;&#x53D6;&#x308A;&#x5F97;&#x308B;&#x30B2;&#x30FC;&#x30E0;&#x76E4;&#x306E;&#x5834;&#x6240;&#x3092;&#x8FD4;&#x3059;</p>
+<p></p><p>
+&#x3053;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x30A2;&#x30EB;&#x30B4;&#x30EA;&#x30BA;&#x30E0;
+&#x3010;CPU&#x306E;&#x5834;&#x5408;&#x3011;
+&#x73FE;&#x5728;&#x306E;&#x30B2;&#x30FC;&#x30E0;&#x6728;&#x306E;&#x6DF1;&#x3055;&#x306E;1&#x500B;&#x4E0B;&#x306E;&#x968E;&#x5C64;&#x306E;&#x70B9;&#x6570;&#x3092;MinMax&#x3067;&#x53D6;&#x5F97;&#x3059;&#x308B;
+&#x305D;&#x306E;&#x53D6;&#x5F97;&#x3057;&#x305F;&#x70B9;&#x6570;&#x304C;&#x73FE;&#x5728;&#x4FDD;&#x6301;&#x3057;&#x3066;&#x3044;&#x308B;&#x4E00;&#x756A;&#x9AD8;&#x3044;&#x70B9;&#x6570;&#xFF08;&#x30D9;&#x30B9;&#x30C8;&#x30B9;&#x30B3;&#x30A2;&#xFF09;&#x3088;&#x308A;&#x3082;&#x9AD8;&#x3044;&#x5834;&#x5408;&#x306F;&#x3001;&#x305D;&#x306E;&#x70B9;&#x6570;&#x304C;&#x4FDD;&#x6301;&#x3055;&#x308C;&#x308B;&#x30D9;&#x30B9;&#x30C8;&#x30B9;&#x30B3;&#x30A2;&#x3068;&#x306A;&#x308B;</p>
+<p></p><p>
+&#x3010;USER&#x306E;&#x5834;&#x5408;&#x3011;
+&#x73FE;&#x5728;&#x306E;&#x30B2;&#x30FC;&#x30E0;&#x6728;&#x306E;&#x6DF1;&#x3055;&#x306E;1&#x500B;&#x4E0B;&#x306E;&#x968E;&#x5C64;&#x306E;&#x70B9;&#x6570;&#x3092;MinMax&#x3067;&#x53D6;&#x5F97;&#x3059;&#x308B;
+&#x305D;&#x306E;&#x53D6;&#x5F97;&#x3057;&#x305F;&#x70B9;&#x6570;&#x304C;&#x73FE;&#x5728;&#x4FDD;&#x6301;&#x3057;&#x3066;&#x3044;&#x308B;&#x4E00;&#x756A;&#x4F4E;&#x3044;&#x70B9;&#x6570;&#xFF08;&#x30D9;&#x30B9;&#x30C8;&#x30B9;&#x30B3;&#x30A2;&#xFF09;&#x3088;&#x308A;&#x3082;&#x4F4E;&#x3044;&#x5834;&#x5408;&#x306F;&#x3001;&#x305D;&#x306E;&#x70B9;&#x6570;&#x304C;&#x4FDD;&#x6301;&#x3055;&#x308C;&#x308B;&#x30D9;&#x30B9;&#x30C8;&#x30B9;&#x30B3;&#x30A2;&#x3068;&#x306A;&#x308B;</p>
+</div>
 
   
 
@@ -187,32 +211,32 @@
     <tbody>
     
     <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">depth</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="name" data-depth="0">&#x63A2;&#x7D22;&#x306E;&#x6DF1;&#x3055;</td>
+      <td data-ice="type"><span>depth</span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
 <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">board</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="name" data-depth="0">Board&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;</td>
+      <td data-ice="type"><span>board</span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
 <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">playerSignal</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="name" data-depth="0">Player&#x306E;&#x6253;&#x3061;&#x624B;</td>
+      <td data-ice="type"><span>playerSignal</span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
 <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">alpha</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="name" data-depth="0">&#x3B1;</td>
+      <td data-ice="type"><span>alpha</span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
 <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">beta</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="name" data-depth="0">&#x3B2;</td>
+      <td data-ice="type"><span>beta</span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -226,8 +250,9 @@
     <table>
       <tbody>
         <tr>
-          <td class="return-type" data-ice="returnType"><span>*</span></td>
-          
+          <td class="return-type" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></td>
+          <td class="return-desc" data-ice="returnDescription"><p>&#x6253;&#x3061;&#x624B;&#x3092;&#x6253;&#x3064;&#x306E;&#x306B;&#x6700;&#x9069;&#x306A;&#x5834;&#x6240;&#x3068;&#x305D;&#x3053;&#x306B;&#x6253;&#x3061;&#x624B;&#x3092;&#x6253;&#x3063;&#x305F;&#x5834;&#x5408;&#x306E;&#x70B9;&#x6570;&#x3092;&#x683C;&#x7D0D;&#x3057;&#x305F;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;</p>
+</td>
         </tr>
       </tbody>
     </table>
@@ -258,18 +283,19 @@
     
     
     
-    <span data-ice="name">makeCapableMoveArray</span><span data-ice="signature">(board: <span>*</span>): <span>*</span></span>
+    <span data-ice="name">makeCapableMoveArray</span><span data-ice="signature">(Board&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;: <span>board</span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/miniMax.js.html#lineNumber64">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/miniMax.js.html#lineNumber92">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>&#x73FE;&#x5728;&#x306E;&#x6253;&#x3061;&#x624B;&#x3092;&#x6253;&#x3064;&#x3053;&#x3068;&#x304C;&#x53EF;&#x80FD;&#x306A;&#x3059;&#x3079;&#x3066;&#x306E;&#x30B2;&#x30FC;&#x30E0;&#x76E4;&#x306E;&#x5834;&#x6240;&#x3092;&#x30EA;&#x30B9;&#x30C8;&#x5316;&#x3059;&#x308B;&#xFF08;NO_MOVE&#x304C;&#x5B58;&#x5728;&#x3057;&#x3066;&#x3044;&#x308B;GameBoard&#x306E;&#x5834;&#x6240;&#xFF09;</p>
+</div>
 
   
 
@@ -282,8 +308,8 @@
     <tbody>
     
     <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">board</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="name" data-depth="0">Board&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;</td>
+      <td data-ice="type"><span>board</span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -297,8 +323,9 @@
     <table>
       <tbody>
         <tr>
-          <td class="return-type" data-ice="returnType"><span>*</span></td>
-          
+          <td class="return-type" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></td>
+          <td class="return-desc" data-ice="returnDescription"><p>NO_MOVE&#x304C;&#x5B58;&#x5728;&#x3059;&#x308B;GameBoard&#x4E0A;&#x306E;&#x5834;&#x6240;&#x306E;&#x4E00;&#x89A7;&#x3092;&#x683C;&#x7D0D;&#x3057;&#x305F;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;</p>
+</td>
         </tr>
       </tbody>
     </table>

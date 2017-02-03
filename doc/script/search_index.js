@@ -372,28 +372,10 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/board.js~board#addmove",
-    "class/src/board.js~Board.html#instance-method-addMove",
-    "src/board.js~Board#addMove",
-    "method"
-  ],
-  [
-    "src/board.js~board#columnsize",
-    "class/src/board.js~Board.html#instance-member-columnSize",
-    "src/board.js~Board#columnSize",
-    "member"
-  ],
-  [
     "src/board.js~board#constructor",
     "class/src/board.js~Board.html#instance-constructor-constructor",
     "src/board.js~Board#constructor",
     "method"
-  ],
-  [
-    "src/board.js~board#gameboard",
-    "class/src/board.js~Board.html#instance-member-gameBoard",
-    "src/board.js~Board#gameBoard",
-    "member"
   ],
   [
     "src/board.js~board#getcolumnsize",
@@ -420,10 +402,10 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/board.js~board#rowsize",
-    "class/src/board.js~Board.html#instance-member-rowSize",
-    "src/board.js~Board#rowSize",
-    "member"
+    "src/board.js~board#putmove",
+    "class/src/board.js~Board.html#instance-method-putMove",
+    "src/board.js~Board#putMove",
+    "method"
   ],
   [
     "src/counter.js",
@@ -498,18 +480,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/judge.js~judge#columnmax",
-    "class/src/judge.js~Judge.html#instance-member-columnMax",
-    "src/judge.js~Judge#columnMax",
-    "member"
-  ],
-  [
-    "src/judge.js~judge#columnsize",
-    "class/src/judge.js~Judge.html#instance-member-columnSize",
-    "src/judge.js~Judge#columnSize",
-    "member"
-  ],
-  [
     "src/judge.js~judge#constructor",
     "class/src/judge.js~Judge.html#instance-constructor-constructor",
     "src/judge.js~Judge#constructor",
@@ -520,12 +490,6 @@ window.esdocSearchIndex = [
     "class/src/judge.js~Judge.html#instance-method-judgeColumn",
     "src/judge.js~Judge#judgeColumn",
     "method"
-  ],
-  [
-    "src/judge.js~judge#judgecriteriasequence",
-    "class/src/judge.js~Judge.html#instance-member-judgeCriteriaSequence",
-    "src/judge.js~Judge#judgeCriteriaSequence",
-    "member"
   ],
   [
     "src/judge.js~judge#judgedraw",
@@ -594,18 +558,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/judge.js~judge#rowmax",
-    "class/src/judge.js~Judge.html#instance-member-rowMax",
-    "src/judge.js~Judge#rowMax",
-    "member"
-  ],
-  [
-    "src/judge.js~judge#rowsize",
-    "class/src/judge.js~Judge.html#instance-member-rowSize",
-    "src/judge.js~Judge#rowSize",
-    "member"
-  ],
-  [
     "src/minimax.js",
     "file/src/miniMax.js.html",
     "src/miniMax.js",
@@ -630,69 +582,9 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/scorecalculator.js~scorecalculator#calccolumn",
-    "class/src/scoreCalculator.js~ScoreCalculator.html#instance-method-calcColumn",
-    "src/scoreCalculator.js~ScoreCalculator#calcColumn",
-    "method"
-  ],
-  [
-    "src/scorecalculator.js~scorecalculator#calcleftslanting",
-    "class/src/scoreCalculator.js~ScoreCalculator.html#instance-method-calcLeftSlanting",
-    "src/scoreCalculator.js~ScoreCalculator#calcLeftSlanting",
-    "method"
-  ],
-  [
-    "src/scorecalculator.js~scorecalculator#calcleftslantingcolumnslide",
-    "class/src/scoreCalculator.js~ScoreCalculator.html#instance-method-calcLeftSlantingColumnSlide",
-    "src/scoreCalculator.js~ScoreCalculator#calcLeftSlantingColumnSlide",
-    "method"
-  ],
-  [
-    "src/scorecalculator.js~scorecalculator#calcleftslantingrowslide",
-    "class/src/scoreCalculator.js~ScoreCalculator.html#instance-method-calcLeftSlantingRowSlide",
-    "src/scoreCalculator.js~ScoreCalculator#calcLeftSlantingRowSlide",
-    "method"
-  ],
-  [
-    "src/scorecalculator.js~scorecalculator#calcleftslantingslidehelper",
-    "class/src/scoreCalculator.js~ScoreCalculator.html#instance-method-calcLeftSlantingSlideHelper",
-    "src/scoreCalculator.js~ScoreCalculator#calcLeftSlantingSlideHelper",
-    "method"
-  ],
-  [
     "src/scorecalculator.js~scorecalculator#calclinescore",
     "class/src/scoreCalculator.js~ScoreCalculator.html#instance-method-calcLineScore",
     "src/scoreCalculator.js~ScoreCalculator#calcLineScore",
-    "method"
-  ],
-  [
-    "src/scorecalculator.js~scorecalculator#calcrightslanting",
-    "class/src/scoreCalculator.js~ScoreCalculator.html#instance-method-calcRightSlanting",
-    "src/scoreCalculator.js~ScoreCalculator#calcRightSlanting",
-    "method"
-  ],
-  [
-    "src/scorecalculator.js~scorecalculator#calcrightslantingcolumnslide",
-    "class/src/scoreCalculator.js~ScoreCalculator.html#instance-method-calcRightSlantingColumnSlide",
-    "src/scoreCalculator.js~ScoreCalculator#calcRightSlantingColumnSlide",
-    "method"
-  ],
-  [
-    "src/scorecalculator.js~scorecalculator#calcrightslantingrowslide",
-    "class/src/scoreCalculator.js~ScoreCalculator.html#instance-method-calcRightSlantingRowSlide",
-    "src/scoreCalculator.js~ScoreCalculator#calcRightSlantingRowSlide",
-    "method"
-  ],
-  [
-    "src/scorecalculator.js~scorecalculator#calcrightslantingslidehelper",
-    "class/src/scoreCalculator.js~ScoreCalculator.html#instance-method-calcRightSlantingSlideHelper",
-    "src/scoreCalculator.js~ScoreCalculator#calcRightSlantingSlideHelper",
-    "method"
-  ],
-  [
-    "src/scorecalculator.js~scorecalculator#calcrow",
-    "class/src/scoreCalculator.js~ScoreCalculator.html#instance-method-calcRow",
-    "src/scoreCalculator.js~ScoreCalculator#calcRow",
     "method"
   ],
   [
@@ -700,53 +592,5 @@ window.esdocSearchIndex = [
     "class/src/scoreCalculator.js~ScoreCalculator.html#instance-method-calcScore",
     "src/scoreCalculator.js~ScoreCalculator#calcScore",
     "method"
-  ],
-  [
-    "src/scorecalculator.js~scorecalculator#columnmax",
-    "class/src/scoreCalculator.js~ScoreCalculator.html#instance-member-columnMax",
-    "src/scoreCalculator.js~ScoreCalculator#columnMax",
-    "member"
-  ],
-  [
-    "src/scorecalculator.js~scorecalculator#columnsize",
-    "class/src/scoreCalculator.js~ScoreCalculator.html#instance-member-columnSize",
-    "src/scoreCalculator.js~ScoreCalculator#columnSize",
-    "member"
-  ],
-  [
-    "src/scorecalculator.js~scorecalculator#constructor",
-    "class/src/scoreCalculator.js~ScoreCalculator.html#instance-constructor-constructor",
-    "src/scoreCalculator.js~ScoreCalculator#constructor",
-    "method"
-  ],
-  [
-    "src/scorecalculator.js~scorecalculator#judgecriteriasequence",
-    "class/src/scoreCalculator.js~ScoreCalculator.html#instance-member-judgeCriteriaSequence",
-    "src/scoreCalculator.js~ScoreCalculator#judgeCriteriaSequence",
-    "member"
-  ],
-  [
-    "src/scorecalculator.js~scorecalculator#maxpoint",
-    "class/src/scoreCalculator.js~ScoreCalculator.html#instance-member-maxPoint",
-    "src/scoreCalculator.js~ScoreCalculator#maxPoint",
-    "member"
-  ],
-  [
-    "src/scorecalculator.js~scorecalculator#minpoint",
-    "class/src/scoreCalculator.js~ScoreCalculator.html#instance-member-minPoint",
-    "src/scoreCalculator.js~ScoreCalculator#minPoint",
-    "member"
-  ],
-  [
-    "src/scorecalculator.js~scorecalculator#rowmax",
-    "class/src/scoreCalculator.js~ScoreCalculator.html#instance-member-rowMax",
-    "src/scoreCalculator.js~ScoreCalculator#rowMax",
-    "member"
-  ],
-  [
-    "src/scorecalculator.js~scorecalculator#rowsize",
-    "class/src/scoreCalculator.js~ScoreCalculator.html#instance-member-rowSize",
-    "src/scoreCalculator.js~ScoreCalculator#rowSize",
-    "member"
   ]
 ]
