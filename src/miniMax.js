@@ -75,7 +75,7 @@ export default class MiniMax {
                 }
                 board.putMove(cell.rowValue, cell.columnValue, ' ');
 
-                if (alpha >= beta) break;
+                if (alpha >= beta) { break };
             }
 
             return (playerSignal === '×') ? { rowVal: row, columnVal: column, bestScore: alpha } : { rowVal: row, columnVal: column, bestScore: beta };

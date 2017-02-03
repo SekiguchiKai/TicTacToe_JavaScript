@@ -6,12 +6,12 @@ const board = new Board(3, 3);
 const cpu = new Cpu('cpu', '×', board);
 const judge = new Judge(3, 3, 3);
 
-let idArray = ['0-0', '0-1', '0-2', '1-0', '1-1', '1-2', '2-0', '2-1', '2-2'];
+const idArray = ['0-0', '0-1', '0-2', '1-0', '1-1', '1-2', '2-0', '2-1', '2-2'];
 
 for (let id of idArray) {
     let e = document.getElementById(id);
     e.addEventListener('click', () => {
-        let rowColumn = id.split('-');
+        const rowColumn = id.split('-');
         let row = Number(rowColumn[0]);
         let column = Number(rowColumn[1]);
 
@@ -29,13 +29,13 @@ for (let id of idArray) {
             } else if (result !== '未決') {
                 window.alert(result);
                 document.getElementById('table').innerHTML = '<p style="font-size:40px;">君の<span style="color:red;">' + result + '</span>だ</p>';
+            } else {
+                const depth = 3;
+                cpu.doMove(depth, board);
             }
 
             e.innerHTML = '<span style="font-size:70px; color:white;">' + board.getMove(row, column) + '</span>';
 
-            let depth = 3;
-
-            cpu.doMove(depth, board);
 
             let result2 = judge.judgeResult(board);
             console.log('result:' + result2);

@@ -4,6 +4,7 @@
   "description": "to play tictactoe",
   "main": "index.js",
   "scripts": {
+    "start": "open resources/index.html",
     "test": "test",
     "build": "webpack --config webpack.config.js"
   },
