@@ -33,7 +33,7 @@ for (let id of idArray) {
 
             e.innerHTML = '<span style="font-size:70px; color:white;">' + board.getMove(row, column) + '</span>';
 
-            let depth = 2;
+            let depth = 3;
 
             cpu.doMove(depth, board);
 

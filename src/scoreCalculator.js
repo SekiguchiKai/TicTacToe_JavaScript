@@ -6,53 +6,18 @@ export default class ScoreCalculator {
      * @param {gameBoard} ゲーム盤
      */
     calcScore(gameBoard) {
-
         let totalScore = 0;
-        const arraySize = 3;
-        let movesArray = new Array(arraySize);
 
-        const maxPoint = 30;
-        const minPoint = -30;
-        const maxLength = 3;
-
-
-        // row
-        for (let row = 0; row < maxLength; row++) {
-            for (let column = 0; column < maxLength; column++) {
-                movesArray[column] = gameBoard[row][column];
-            }
-            totalScore += this.calcLineScore(movesArray, maxPoint, minPoint);
-        }
-
-        // column
-        for (let column = 0; column < maxLength; column++) {
-            for (let row = 0; row < maxLength; row++) {
-                movesArray[row] = gameBoard[row][column];
-            }
-            totalScore += this.calcLineScore(movesArray, maxPoint, minPoint);
-        }
-
-
-        // 左斜め
-        for (let idx = 0; idx < maxLength; idx++) {
-            movesArray[idx] = gameBoard[idx][idx];
-        }
-        totalScore += this.calcLineScore(movesArray, maxPoint, minPoint);
-
-
-        // 右斜め
-        let column = 2;
-
-        for (let row = 0; row < maxLength; row++) {
-            movesArray[row] = gameBoard[row][column];
-
-            column--;
-        }
-
-        totalScore += this.calcLineScore(movesArray, maxPoint, minPoint);
-        Counter.resetCount();
-
+        totalScore += this.calcLineScore(gameBoard, 0, 0, 0, 1, 0, 2);  // row 0
+        totalScore += this.calcLineScore(gameBoard, 1, 0, 1, 1, 1, 2);  // row 1
+        totalScore += this.calcLineScore(gameBoard, 2, 0, 2, 1, 2, 2);  // row 2
+        totalScore += this.calcLineScore(gameBoard, 0, 0, 1, 0, 2, 0);  // col 0
+        totalScore += this.calcLineScore(gameBoard, 0, 1, 1, 1, 2, 1);  // col 1
+        totalScore += this.calcLineScore(gameBoard, 0, 2, 1, 2, 2, 2);  // col 2
+        totalScore += this.calcLineScore(gameBoard, 0, 0, 1, 1, 2, 2);  // diagonal
+        totalScore += this.calcLineScore(gameBoard, 0, 2, 1, 1, 2, 0);  // alternate diagonal
         return totalScore;
+
     }
 
 
@@ -62,40 +27,53 @@ export default class ScoreCalculator {
      * @param {maxPoint} 補正前の最高得点
      * @param {minPoint} 補正前の最低得点
      */
-    calcLineScore(movesArray, maxPoint, minPoint) {
-        console.log('calcLineScoreが呼ばれました');
-
+    calcLineScore(gameBoard, row1, col1, row2, col2, row3, col3) {
         let score = 0;
-        const perTernPoint = 10;
 
-        console.log(movesArray);
+        // 1つ目
+        if (gameBoard[row1][col1] === '×') {
+            score = 1;
+        } else if (gameBoard[row1][col1] === '○') {
+            score = -1;
+        }
 
-        for (let moves of movesArray) {
-
-            if (moves === '×') {
-                score += perTernPoint;
-            } else if (moves === '○') {
-                score -= perTernPoint;
+        // 2つ目
+        if (gameBoard[row2][col2] === '×') {
+            if (score === 1) {
+                score = 10;
+            } else if (score === -1) {
+                return 0;
+            } else {
+                score = 1;
+            }
+        } else if (gameBoard[row2][col2] === '○') {
+            if (score === -1) {
+                score = -10;
+            } else if (score === 1) {
+                return 0;
+            } else {
+                score = -1;
             }
         }
 
-        let counter = Counter.getCount();
-        const correctionValue = 100;
-
-        const counterCorrectionValue = counter * correctionValue;
-
-        const finalMaxPoint = 100000;
-        const finalMinPoint = -100000;
-
-
-        Counter.upCount();
-
-        if (score == maxPoint) {
-            score = finalMaxPoint;
-        } else if (score == minPoint) {
-            score = finalMinPoint;
+        // 3つ目
+        if (gameBoard[row3][col3] === '×') {
+            if (score > 0) {
+                score *= 10;
+            } else if (score < 0) {
+                return 0;
+            } else {
+                score = 1;
+            }
+        } else if (gameBoard[row3][col3] === '○') {
+            if (score < 0) {
+                score *= 10;
+            } else if (score > 1) {
+                return 0;
+            } else {
+                score = -1;
+            }
         }
-
         return score;
     }
 }
