@@ -54,8 +54,6 @@ const judge = new Judge(3, 3, 3);
 let idArray = [&apos;0-0&apos;, &apos;0-1&apos;, &apos;0-2&apos;, &apos;1-0&apos;, &apos;1-1&apos;, &apos;1-2&apos;, &apos;2-0&apos;, &apos;2-1&apos;, &apos;2-2&apos;];
 
 for (let id of idArray) {
-
-
     let e = document.getElementById(id);
     e.addEventListener(&apos;click&apos;, () =&gt; {
         let rowColumn = id.split(&apos;-&apos;);
@@ -65,25 +63,32 @@ for (let id of idArray) {
         let cellMove = board.getMove(row, column);
 
         if (cellMove === &apos; &apos;) {
-            board.addMove(row, column, &apos;&#x25CB;&apos;);
+            board.putMove(row, column, &apos;&#x25CB;&apos;);
 
             let result = judge.judgeResult(board);
             console.log(&apos;result:&apos; + result);
-            if (result !== &apos;&#x672A;&#x6C7A;&apos;) {
+
+            if (result === &apos;&#x5F15;&#x304D;&#x5206;&#x3051;&apos;) {
+                window.alert(result);
+                document.getElementById(&apos;table&apos;).innerHTML = &apos;&lt;p style=&quot;font-size:40px;&quot;&gt;&lt;span style=&quot;color:red;&quot;&gt;&apos; + result + &apos;&lt;/span&gt;&#x3060;&lt;/p&gt;&apos;;
+            } else if (result !== &apos;&#x672A;&#x6C7A;&apos;) {
                 window.alert(result);
                 document.getElementById(&apos;table&apos;).innerHTML = &apos;&lt;p style=&quot;font-size:40px;&quot;&gt;&#x541B;&#x306E;&lt;span style=&quot;color:red;&quot;&gt;&apos; + result + &apos;&lt;/span&gt;&#x3060;&lt;/p&gt;&apos;;
             }
 
-            e.textContent = board.getMove(row, column);
+            e.innerHTML = &apos;&lt;span style=&quot;font-size:70px; color:white;&quot;&gt;&apos; + board.getMove(row, column) + &apos;&lt;/span&gt;&apos;;
 
-            let depth = 2;
+            let depth = 3;
 
             cpu.doMove(depth, board);
 
             let result2 = judge.judgeResult(board);
             console.log(&apos;result:&apos; + result2);
 
-            if (result2 !== &apos;&#x672A;&#x6C7A;&apos;) {
+            if (result === &apos;&#x5F15;&#x304D;&#x5206;&#x3051;&apos;) {
+                window.alert(result);
+                document.getElementById(&apos;table&apos;).innerHTML = &apos;&lt;p style=&quot;font-size:40px;&quot;&gt;&lt;span style=&quot;color:red;&quot;&gt;&apos; + result2 + &apos;&lt;/span&gt;&#x3060;&lt;/p&gt;&apos;;
+            } else if (result2 !== &apos;&#x672A;&#x6C7A;&apos;) {
                 window.alert(result2);
                 document.getElementById(&apos;table&apos;).innerHTML = &apos;&lt;p style=&quot;font-size:40px;&quot;&gt;&#x541B;&#x306E;&lt;span style=&quot;color:red;&quot;&gt;&apos; + result2 + &apos;&lt;/span&gt;&#x3060;&lt;/p&gt;&apos;;
             }

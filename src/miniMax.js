@@ -25,7 +25,7 @@ export default class MiniMax {
      * @param {playerSignal} Playerの打ち手 
      * @param {alpha}      α
      * @param {beta}       β
-     * @return {Object} 打ち手を打つのに最適な場所とそこに打ち手を打った場合の点数を格納したオブジェクト
+     * @return {object} 打ち手を打つのに最適な場所とそこに打ち手を打った場合の点数を格納したオブジェクト
      */
     calcMiniMax(depth, board, playerSignal, alpha, beta) {
         console.log('calcMiniMaxメソッドが呼ばれました');
