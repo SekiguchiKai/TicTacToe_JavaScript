@@ -76,7 +76,19 @@ export default class MiniMax {
                 if (alpha >= beta) { break; }
             }
 
-            return (playerSignal === MOVE.CROSS) ? { rowVal: row, columnVal: column, bestScore: alpha } : { rowVal: row, columnVal: column, bestScore: beta };
+            const bestCellObj = new Object();
+            bestCellObj.rowVal = row;
+            bestCellObj.columnVal = column;
+
+            if (playerSignal === MOVE.CROSS) {
+                bestCellObj.bestScore = alpha;
+                return bestCellObj;
+            } else {
+                bestCellObj.bestScore = beta;
+                return bestCellObj;
+            }
+
+
         }
 
     }
