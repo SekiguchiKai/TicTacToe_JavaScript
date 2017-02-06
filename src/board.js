@@ -33,7 +33,7 @@ export default class Board {
      * rowSizeを取得するためのメソッド
      * @return {number} rowのサイズ
      */
-    getRowSize() {
+    get rowSize() {
         return this._rowSize;
     }
 
@@ -41,7 +41,7 @@ export default class Board {
      * columnSizeを取得するためのメソッド
      * @return {number} columnのサイズ
      */
-    getColumnSize() {
+    get columnSize() {
         return this._columnSize;
     }
 
