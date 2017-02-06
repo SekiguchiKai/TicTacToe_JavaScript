@@ -1,10 +1,7 @@
 import ScoreCalculator from './scoreCalculator.js';
 import { MOVE } from './index.js'
 
-
 const scoreCalculator = new ScoreCalculator();
-
-
 /**
  * ミニマックスアルゴリズムを表したクラス
  */
@@ -103,5 +100,4 @@ export default class MiniMax {
         }
         return capableMovesArray;
     }
-
 }

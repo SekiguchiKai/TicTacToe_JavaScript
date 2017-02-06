@@ -22,7 +22,7 @@ export default class Cpu {
 
         board.putMove(cellObj.rowVal, cellObj.columnVal, MOVE.CROSS);
 
-        const e = document.getElementById(`${cellObj.rowVal}-${cellObj.columnVal}`);
-        e.innerHTML = '<span style="font-size:100px; color:white;">×</span>'; // ここに書かないこと
+
+        return cellObj;
     }
 }

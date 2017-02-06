@@ -19,7 +19,6 @@ export const MOVE = {
     EMPTY: ' '
 };
 
-
 const board = new Board(rowSize, columnSize);
 const cpu = new Cpu('cpu', MOVE.CROSS, board);
 
@@ -41,6 +40,7 @@ for (const id of idArray) {
 
         if (cellMove === MOVE.EMPTY) {
             board.putMove(row, column, MOVE.CIRCLE);
+            e.innerHTML = `<span style="font-size:70px; color:white;">${board.getMove(row, column)}</span>`;
 
             const result = judge.judgeResult(board);
 
@@ -56,8 +56,9 @@ for (const id of idArray) {
 
             if (result === RESULT.PENNDING) {
                 const depth = 3;
-                cpu.doMove(depth, board);
-                e.innerHTML = `<span style="font-size:70px; color:white;">${board.getMove(row, column)}</span>`;
+                const cellObj = cpu.doMove(depth, board);
+                const e = document.getElementById(`${cellObj.rowVal}-${cellObj.columnVal}`);
+                e.innerHTML = `<span style="font-size:100px; color:white;">${board.getMove(cellObj.rowVal, cellObj.columnVal)}</span>`;
             }
 
             const result2 = judge.judgeResult(board);
