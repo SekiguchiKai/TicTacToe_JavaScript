@@ -1,8 +1,4 @@
-
-// フィールドをprivate化するための処理
-let _rowSize = new WeakMap();
-let _columnSize = new WeakMap();
-let _gameBoard = new WeakMap();
+import { MOVE } from './index.js'
 
 /**
  * ゲーム盤を表すためのクラス
@@ -16,18 +12,19 @@ export default class Board {
      */
     constructor(rowSize, columnSize) {
         // WeakMapに対応づけ
-        _rowSize.set(this, rowSize);
-        _columnSize.set(this, columnSize);
-        _gameBoard.set(this, new Array(3));
+        this._rowSize = rowSize;
+        this._columnSize = columnSize;
+        this._gameBoard = new Array(rowSize);
 
-        for (let row = 0; row < _gameBoard.get(this).length; row++) {
-            _gameBoard.get(this)[row] = new Array(3);
+        // 二次元配列化
+        for (let row = 0; row < this._gameBoard.length; row++) {
+            this._gameBoard[row] = new Array(columnSize);
         }
 
         // 二次元配列初期化
-        for (let row = 0; row < _rowSize.get(this); row++) {
-            for (let column = 0; column < _columnSize.get(this); column++) {
-                _gameBoard.get(this)[row][column] = ' ';
+        for (let row = 0; row < this._rowSize; row++) {
+            for (let column = 0; column < this._columnSize; column++) {
+                this._gameBoard[row][column] = MOVE.EMPTY;
             }
         }
     }
@@ -37,7 +34,7 @@ export default class Board {
      * @return {number} rowのサイズ
      */
     getRowSize() {
-        return _rowSize.get(this);
+        return this._rowSize;
     }
 
     /** 
@@ -45,7 +42,7 @@ export default class Board {
      * @return {number} columnのサイズ
      */
     getColumnSize() {
-        return _columnSize.get(this);
+        return this._columnSize;
     }
 
     /**
@@ -55,7 +52,7 @@ export default class Board {
      * @param {move} 打ち手
      */
     putMove(row, column, move) {
-        _gameBoard.get(this)[row][column] = move;
+        this._gameBoard[row][column] = move;
     }
 
     /**
@@ -65,7 +62,7 @@ export default class Board {
       * @return {string} 打ち手
       */
     getMove(row, column) {
-        return _gameBoard.get(this)[row][column];
+        return this._gameBoard[row][column];
     }
 
     /**
@@ -73,10 +70,7 @@ export default class Board {
       * @return {string} 打ち手
       */
     getGameBoardState() {
-        return _gameBoard.get(this).concat();
+        return this._gameBoard.concat();
     }
 
 }
-
-
-

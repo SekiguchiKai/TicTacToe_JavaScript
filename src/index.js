@@ -2,50 +2,71 @@ import Board from './board.js';
 import Cpu from './cpu.js';
 import Judge from './judge.js';
 
-const board = new Board(3, 3);
-const cpu = new Cpu('cpu', '×', board);
-const judge = new Judge(3, 3, 3);
+const rowSize = 3;
+const columnSize = 3;
+const judgeCriteriaSequence = 3;
 
-let idArray = ['0-0', '0-1', '0-2', '1-0', '1-1', '1-2', '2-0', '2-1', '2-2'];
+export const RESULT = {
+    WIN: '勝ち',
+    LOSE: '負け',
+    DRAW: '引き分け',
+    PENNDING: '未決'
+};
 
-for (let id of idArray) {
-    let e = document.getElementById(id);
+export const MOVE = {
+    CIRCLE: '○',
+    CROSS: '×',
+    EMPTY: ' '
+};
+
+const board = new Board(rowSize, columnSize);
+const cpu = new Cpu('cpu', MOVE.CROSS, board);
+
+const judge = new Judge(rowSize, columnSize, judgeCriteriaSequence);
+
+const idArray = ['0-0', '0-1', '0-2', '1-0', '1-1', '1-2', '2-0', '2-1', '2-2'];
+
+for (const id of idArray) {
+    const e = document.getElementById(id);
     e.addEventListener('click', () => {
-        let rowColumn = id.split('-');
-        let row = Number(rowColumn[0]);
-        let column = Number(rowColumn[1]);
+        const rowColumn = id.split('-');
 
-        let cellMove = board.getMove(row, column);
+        const firstIdx = 0;
+        const secondIdx = 1;
+        const row = Number(rowColumn[firstIdx]);
+        const column = Number(rowColumn[secondIdx]);
 
-        if (cellMove === ' ') {
-            board.putMove(row, column, '○');
+        const cellMove = board.getMove(row, column);
 
-            let result = judge.judgeResult(board);
-            console.log('result:' + result);
+        if (cellMove === MOVE.EMPTY) {
+            board.putMove(row, column, MOVE.CIRCLE);
+            e.innerHTML = `<span style="font-size:70px; color:white;">${board.getMove(row, column)}</span>`;
 
-            if (result === '引き分け') {
-                window.alert(result);
-                document.getElementById('table').innerHTML = '<p style="font-size:40px;"><span style="color:red;">' + result + '</span>だ</p>';
-            } else if (result !== '未決') {
-                window.alert(result);
-                document.getElementById('table').innerHTML = '<p style="font-size:40px;">君の<span style="color:red;">' + result + '</span>だ</p>';
+            const result = judge.judgeResult(board);
+
+            const changeElemnt = function (result) {
+                if (result === RESULT.DRAW) {
+                    document.getElementById('table').innerHTML = `<p style="font-size:40px;"><span style="color:red;">${result}</span>だ</p>`;
+                } else {
+                    document.getElementById('table').innerHTML = `<p style="font-size:40px;">君の<span style="color:red;">${result}</span>だ</p>`;
+                }
             }
 
-            e.innerHTML = '<span style="font-size:70px; color:white;">' + board.getMove(row, column) + '</span>';
+            const delayTime = 1000;
 
-            let depth = 3;
+            if (result === RESULT.PENNDING) {
+                const depth = 3;
+                const cellObj = cpu.doMove(depth, board);
+                const e = document.getElementById(`${cellObj.rowVal}-${cellObj.columnVal}`);
+                e.innerHTML = `<span style="font-size:100px; color:white;">${board.getMove(cellObj.rowVal, cellObj.columnVal)}</span>`;
+            }
 
-            cpu.doMove(depth, board);
+            const result2 = judge.judgeResult(board);
 
-            let result2 = judge.judgeResult(board);
-            console.log('result:' + result2);
-
-            if (result === '引き分け') {
-                window.alert(result);
-                document.getElementById('table').innerHTML = '<p style="font-size:40px;"><span style="color:red;">' + result2 + '</span>だ</p>';
-            } else if (result2 !== '未決') {
+            if (result2 !== RESULT.PENNDING) {
                 window.alert(result2);
-                document.getElementById('table').innerHTML = '<p style="font-size:40px;">君の<span style="color:red;">' + result2 + '</span>だ</p>';
+                e.innerHTML = `<span style="font-size:70px; color:white;">${board.getMove(row, column)}</span>`;
+                setTimeout(changeElemnt(result2), delayTime);
             }
 
         } else {
@@ -54,5 +75,3 @@ for (let id of idArray) {
     });
 
 }
-
-
