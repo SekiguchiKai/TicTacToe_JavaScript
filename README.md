@@ -1,5 +1,5 @@
 # TicTacToe_JavaScript
-To practice raw JavaScrpit.
+To practice raw JavaScript.
 
 ## Overview
 TicTacToeGame.
@@ -15,7 +15,7 @@ TicTacToeGame.
 1. clone
 2. Hit the command ```npm install``` at Application root directory.
 3. Hit the command ```npm run build``` at Application root directory.
-4. ``` open resources/index.html ```.
+4. ``` npm start ```.
  
 ### After run
 1. Start the game.
