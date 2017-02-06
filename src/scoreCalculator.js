@@ -1,4 +1,6 @@
 import Counter from './counter.js';
+import { MOVE } from './index.js'
+
 
 export default class ScoreCalculator {
     /**
@@ -10,10 +12,8 @@ export default class ScoreCalculator {
 
         let totalScore = 0;
         const arraySize = 3;
-        let movesArray = new Array(arraySize);
+        const movesArray = new Array(arraySize);
 
-        const maxPoint = 30;
-        const minPoint = -30;
         const maxLength = 3;
 
 
@@ -66,14 +66,14 @@ export default class ScoreCalculator {
         let score = 0;
 
         // 1つ目
-        if (movesArray[0] === '×') {
+        if (movesArray[0] === MOVE.CROSS) {
             score = 1;
-        } else if (movesArray[0] === '○') {
+        } else if (movesArray[0] === MOVE.CIRCLE) {
             score = -1;
         }
 
         // 2つ目
-        if (movesArray[1] === '×') {
+        if (movesArray[1] === MOVE.CROSS) {
             if (score === 1) {
                 score = 10;
             } else if (score === -1) {
@@ -81,7 +81,7 @@ export default class ScoreCalculator {
             } else {
                 score = 1;
             }
-        } else if (movesArray[1] === '○') {
+        } else if (movesArray[1] === MOVE.CIRCLE) {
             if (score === -1) {
                 score = -10;
             } else if (score === 1) {
@@ -92,7 +92,7 @@ export default class ScoreCalculator {
         }
 
         // 3つ目
-        if (movesArray[2] === '×') {
+        if (movesArray[2] === MOVE.CROSS) {
             if (score > 0) {
                 score *= 10;
             } else if (score < 0) {
@@ -100,7 +100,7 @@ export default class ScoreCalculator {
             } else {
                 score = 1;
             }
-        } else if (movesArray[2] === '○') {
+        } else if (movesArray[2] === MOVE.CIRCLE) {
             if (score < 0) {
                 score *= 10;
             } else if (score > 1) {
