@@ -44,28 +44,28 @@ for (const id of idArray) {
 
             const result = judge.judgeResult(board);
 
-            if (result === RESULT.DRAW) {
-                window.alert(result);
-                document.getElementById('table').innerHTML = `<p style="font-size:40px;"><span style="color:red;">${result}</span>だ</p>`;
-            } else if (result !== RESULT.PENNDING) {
-                window.alert(result);
-                document.getElementById('table').innerHTML = `<p style="font-size:40px;">君の<span style="color:red;">${result}</span>だ</p>`;
-            } else {
-                const depth = 3;
-                cpu.doMove(depth, board);
+            const changeElemnt = function (result) {
+                if (result === RESULT.DRAW) {
+                    document.getElementById('table').innerHTML = `<p style="font-size:40px;"><span style="color:red;">${result}</span>だ</p>`;
+                } else {
+                    document.getElementById('table').innerHTML = `<p style="font-size:40px;">君の<span style="color:red;">${result}</span>だ</p>`;
+                }
             }
 
-            e.innerHTML = `<span style="font-size:70px; color:white;">${board.getMove(row, column)}</span>`;
+            const delayTime = 1000;
 
+            if (result === RESULT.PENNDING) {
+                const depth = 3;
+                cpu.doMove(depth, board);
+                e.innerHTML = `<span style="font-size:70px; color:white;">${board.getMove(row, column)}</span>`;
+            }
 
             const result2 = judge.judgeResult(board);
 
-            if (result === RESULT.DRAW) {
-                window.alert(result);
-                document.getElementById('table').innerHTML = `<p style="font-size:40px;"><span style="color:red;">${result2}</span>だ</p>`;
-            } else if (result2 !== RESULT.PENNDING) {
+            if (result2 !== RESULT.PENNDING) {
                 window.alert(result2);
-                document.getElementById('table').innerHTML = `<p style="font-size:40px;">君の<span style="color:red;">${result2}</span>だ</p>`;
+                e.innerHTML = `<span style="font-size:70px; color:white;">${board.getMove(row, column)}</span>`;
+                setTimeout(changeElemnt(result2), delayTime);
             }
 
         } else {
