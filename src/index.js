@@ -2,9 +2,28 @@ import Board from './board.js';
 import Cpu from './cpu.js';
 import Judge from './judge.js';
 
-const board = new Board(3, 3);
-const cpu = new Cpu('cpu', '×', board);
-const judge = new Judge(3, 3, 3);
+const rowSize = 3;
+const columnSize = 3;
+const judgeCriteriaSequence = 3;
+
+export const RESULT = {
+    WIN: '勝ち',
+    LOSE: '負け',
+    DRAW: '引き分け',
+    PENNDING: '未決'
+};
+
+export const MOVE = {
+    CIRCLE: '○',
+    CROSS: '×',
+    EMPTY: ' '
+};
+
+
+const board = new Board(rowSize, columnSize);
+const cpu = new Cpu('cpu', MOVE.CROSS, board);
+
+const judge = new Judge(rowSize, columnSize, judgeCriteriaSequence);
 
 const idArray = ['0-0', '0-1', '0-2', '1-0', '1-1', '1-2', '2-0', '2-1', '2-2'];
 
@@ -12,37 +31,41 @@ for (const id of idArray) {
     const e = document.getElementById(id);
     e.addEventListener('click', () => {
         const rowColumn = id.split('-');
-        const row = Number(rowColumn[0]);
-        const column = Number(rowColumn[1]);
+
+        const firstIdx = 0;
+        const secondIdx = 1;
+        const row = Number(rowColumn[firstIdx]);
+        const column = Number(rowColumn[secondIdx]);
 
         const cellMove = board.getMove(row, column);
 
-        if (cellMove === ' ') {
-            board.putMove(row, column, '○');
+        if (cellMove === MOVE.EMPTY) {
+            board.putMove(row, column, MOVE.CIRCLE);
 
             const result = judge.judgeResult(board);
 
-            if (result === '引き分け') {
+            if (result === RESULT.DRAW) {
                 window.alert(result);
-                document.getElementById('table').innerHTML = `<p style="font-size:40px;"><span style="color:red;">' ${result} '</span>だ</p>`;
-            } else if (result !== '未決') {
+                document.getElementById('table').innerHTML = `<p style="font-size:40px;"><span style="color:red;">${result}</span>だ</p>`;
+            } else if (result !== RESULT.PENNDING) {
                 window.alert(result);
-                document.getElementById('table').innerHTML = `<p style="font-size:40px;">君の<span style="color:red;"> ${result}</span>だ</p>`;
+                document.getElementById('table').innerHTML = `<p style="font-size:40px;">君の<span style="color:red;">${result}</span>だ</p>`;
             } else {
                 const depth = 3;
                 cpu.doMove(depth, board);
             }
 
-            e.innerHTML = `<span style="font-size:70px; color:white;"> ${board.getMove(row, column)} </span>`;
+            e.innerHTML = `<span style="font-size:70px; color:white;">${board.getMove(row, column)}</span>`;
+
 
             const result2 = judge.judgeResult(board);
 
-            if (result === '引き分け') {
+            if (result === RESULT.DRAW) {
                 window.alert(result);
-                document.getElementById('table').innerHTML = `<p style="font-size:40px;"><span style="color:red;"> ${result2}</span>だ</p>`;
-            } else if (result2 !== '未決') {
+                document.getElementById('table').innerHTML = `<p style="font-size:40px;"><span style="color:red;">${result2}</span>だ</p>`;
+            } else if (result2 !== RESULT.PENNDING) {
                 window.alert(result2);
-                document.getElementById('table').innerHTML = `<p style="font-size:40px;">君の<span style="color:red;"> ${result2}</span>だ</p>`;
+                document.getElementById('table').innerHTML = `<p style="font-size:40px;">君の<span style="color:red;">${result2}</span>だ</p>`;
             }
 
         } else {
@@ -51,5 +74,3 @@ for (const id of idArray) {
     });
 
 }
-
-

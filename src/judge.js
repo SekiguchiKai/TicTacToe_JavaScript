@@ -1,4 +1,6 @@
 
+import { MOVE, RESULT } from './index.js'
+
 /**
  * 勝敗を審判するためのクラス
  */
@@ -13,8 +15,9 @@ export default class Judge {
         this._rowSize = rowSize;
         this._columnSize = columnSize;
         this._judgeCriteriaSequence = judgeCriteriaSequence;
-        this._rowMax = this._rowSize - this._judgeCriteriaSequence + 1;
-        this._columnMax = this._columnSize - this._judgeCriteriaSequence + 1;
+        const correctVal = 1;
+        this._rowMax = this._rowSize - this._judgeCriteriaSequence + correctVal;
+        this._columnMax = this._columnSize - this._judgeCriteriaSequence + correctVal;
     }
     /**
      * 勝敗はついているかを確認し、その結果を返すためのメソッド
@@ -25,13 +28,13 @@ export default class Judge {
         const gameBoard = board.getGameBoardState();
 
         if (this.judgeWin(gameBoard)) {
-            return '勝ち';
+            return RESULT.WIN;
         } else if (this.judgeLose(gameBoard)) {
-            return '負け';
+            return RESULT.LOSE;
         } else if (this.judgeDraw(gameBoard)) {
-            return '引き分け';
+            return RESULT.DRAW;
         }
-        return '未決';
+        return RESULT.PENNDING;
     }
 
     /**
@@ -41,10 +44,10 @@ export default class Judge {
      * @return {boolean} ユーザーが勝利したかどうかの真偽値
      */
     judgeWin(gameBoard) {
-        return this.judgeRow(gameBoard, '○')
-            || this.judgeColumn(gameBoard, '○')
-            || this.judgeLeftSlanting(gameBoard, '○')
-            || this.judgeRightSlanting(gameBoard, '○');
+        return this.judgeRow(gameBoard, MOVE.CIRCLE)
+            || this.judgeColumn(gameBoard, MOVE.CIRCLE)
+            || this.judgeLeftSlanting(gameBoard, MOVE.CIRCLE)
+            || this.judgeRightSlanting(gameBoard, MOVE.CIRCLE);
     }
     /**
      * ユーザーが敗北したかどうかを確認するためのメソッド
@@ -53,10 +56,10 @@ export default class Judge {
      * @return {boolean} ユーザーが敗北したかどうかの真偽値
      */
     judgeLose(gameBoard) {
-        return this.judgeRow(gameBoard, '×')
-            || this.judgeColumn(gameBoard, '×')
-            || this.judgeLeftSlanting(gameBoard, '×')
-            || this.judgeRightSlanting(gameBoard, '×');
+        return this.judgeRow(gameBoard, MOVE.CROSS)
+            || this.judgeColumn(gameBoard, MOVE.CROSS)
+            || this.judgeLeftSlanting(gameBoard, MOVE.CROSS)
+            || this.judgeRightSlanting(gameBoard, MOVE.CROSS);
     }
     /**
      * 引き分けかどうかを確認するためのメソッド
@@ -66,7 +69,7 @@ export default class Judge {
     judgeDraw(gameBoard) {
         for (let row = 0; row < this._rowSize; row++) {
             for (let column = 0; column < this._columnSize; column++) {
-                if (gameBoard[row][column] === ' ') {
+                if (gameBoard[row][column] === MOVE.EMPTY) {
                     return false;
                 }
             }
@@ -248,9 +251,10 @@ export default class Judge {
       * @return {boolean} 右斜めのラインにおいて、引数で受け取った打ち手が5連揃っているかどうかの真偽値を確認するためのメソッド
       */
     judgeRightSlanting(gameBoard, moves) {
+        const correctVal = 1;
 
         // centerAxis
-        let column = this._columnSize - 1;
+        let column = this._columnSize - correctVal;
 
         for (let row = 0; row < this._rowMax; row++) {
             // 1回あたりの5連
@@ -269,8 +273,8 @@ export default class Judge {
             }
         }
         // columnシフト
-        const start = gameBoard.length - 1;
-        for (let columnStart = start; columnStart > this._rowSize - this._judgeCriteriaSequence - 1; columnStart--) {
+        const start = gameBoard.length - correctVal;
+        for (let columnStart = start; columnStart > this._rowSize - this._judgeCriteriaSequence - correctVal; columnStart--) {
             const columnShiftCheck = this.rightSlantingColumnShift(gameBoard, moves, columnStart);
             if (columnShiftCheck) {
                 return true;
@@ -289,7 +293,8 @@ export default class Judge {
       * @return {boolean} 右斜めのラインがrowにおいてシフトする時(row1~row4)、引数で受け取った打ち手が5連揃っているかどうかの真偽値
       */
     rightSlantingRowShift(gameBoard, moves, rowStart) {
-        let column = this._columnSize - 1;
+        const correctVal = 1;
+        let column = this._columnSize - correctVal;
 
         for (let row = rowStart; row < this._rowMax; row++) {
             // 1回あたりの5連
@@ -311,8 +316,9 @@ export default class Judge {
       */
     rightSlantingColumnShift(gameBoard, moves, columnStart) {
         let row = 0;
+        const correctVal = 2;
 
-        const columnEnd = this._judgeCriteriaSequence - 2;
+        const columnEnd = this._judgeCriteriaSequence - correctVal;
         for (let column = columnStart; column > columnEnd; column--) {
             // 1回あたりの5連
             const oneTermCheck = this.checkOneTermRightSlanting(gameBoard, moves, row, column);

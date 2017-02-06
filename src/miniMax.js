@@ -1,6 +1,9 @@
 import ScoreCalculator from './scoreCalculator.js';
+import { MOVE } from './index.js'
 
-const scoreCalculator = new ScoreCalculator(3, 3, 3, 30, -30);
+
+const scoreCalculator = new ScoreCalculator();
+
 
 /**
  * ミニマックスアルゴリズムを表したクラス
@@ -35,9 +38,11 @@ export default class MiniMax {
         let row = -1;
         let column = -1;
 
+        const gameOverNum = 0
+
 
         // 試合が終了か、深さが0の場合は、スコアを
-        if (capableMovesArray.length === 0 || depth === 0) {
+        if (capableMovesArray.length === gameOverNum || depth === gameOverNum) {
 
             // ここ要変更
             score = scoreCalculator.calcScore(board.getGameBoardState());
@@ -50,28 +55,31 @@ export default class MiniMax {
 
                 board.putMove(cell.rowValue, cell.columnValue, playerSignal);
 
-                if (playerSignal === '×') {
-                    score = this.calcMiniMax(depth - 1, board, '○', alpha, beta).bestScore;
+                const correctVal = 1;
+
+                if (playerSignal === MOVE.CROSS) {
+
+                    score = this.calcMiniMax(depth - correctVal, board, MOVE.CIRCLE, alpha, beta).bestScore;
                     if (score > alpha) {
                         alpha = score;
                         row = cell.rowValue;
                         column = cell.columnValue;
 
                     }
-                } else if (playerSignal === '○') {
-                    score = this.calcMiniMax(depth - 1, board, '×', alpha, beta).bestScore;
+                } else if (playerSignal === MOVE.CIRCLE) {
+                    score = this.calcMiniMax(depth - correctVal, board, MOVE.CROSS, alpha, beta).bestScore;
                     if (score < beta) {
                         beta = score;
                         row = cell.rowValue;
                         column = cell.columnValue;
                     }
                 }
-                board.putMove(cell.rowValue, cell.columnValue, ' ');
+                board.putMove(cell.rowValue, cell.columnValue, MOVE.EMPTY);
 
                 if (alpha >= beta) { break; }
             }
 
-            return (playerSignal === '×') ? { rowVal: row, columnVal: column, bestScore: alpha } : { rowVal: row, columnVal: column, bestScore: beta };
+            return (playerSignal === MOVE.CROSS) ? { rowVal: row, columnVal: column, bestScore: alpha } : { rowVal: row, columnVal: column, bestScore: beta };
         }
 
     }
@@ -87,7 +95,7 @@ export default class MiniMax {
 
         for (let row = 0; row < board.getRowSize(); row++) {
             for (let column = 0; column < board.getColumnSize(); column++) {
-                if (board.getMove(row, column) === ' ') {
+                if (board.getMove(row, column) === MOVE.EMPTY) {
                     const cellObj = { rowValue: row, columnValue: column };
                     capableMovesArray.push(cellObj);
                 }

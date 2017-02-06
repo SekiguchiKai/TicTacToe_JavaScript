@@ -1,3 +1,4 @@
+import { MOVE } from './index.js'
 
 /**
  * ゲーム盤を表すためのクラス
@@ -23,7 +24,7 @@ export default class Board {
         // 二次元配列初期化
         for (let row = 0; row < this._rowSize; row++) {
             for (let column = 0; column < this._columnSize; column++) {
-                this._gameBoard[row][column] = ' ';
+                this._gameBoard[row][column] = MOVE.EMPTY;
             }
         }
     }
@@ -73,6 +74,3 @@ export default class Board {
     }
 
 }
-
-
-
