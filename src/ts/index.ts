@@ -1,3 +1,5 @@
+"use strict";
+
 import Board from './board';
 import Cpu from './cpu';
 import Judge from './judge';

@@ -1,3 +1,5 @@
+"use strict";
+
 import { MOVE } from './index';
 
 /**

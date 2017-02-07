@@ -1,3 +1,5 @@
+"use strict";
+
 import { MOVE, RESULT } from './index';
 import Board from './board';
 

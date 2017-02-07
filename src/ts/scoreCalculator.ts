@@ -1,3 +1,5 @@
+"use strict";
+
 import Counter from './counter';
 import { MOVE } from './index'
 

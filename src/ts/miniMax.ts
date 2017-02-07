@@ -1,3 +1,5 @@
+"use strict";
+
 import ScoreCalculator from './scoreCalculator';
 import { MOVE } from './index';
 import Board from './board';

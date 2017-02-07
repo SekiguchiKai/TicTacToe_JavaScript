@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "open resources/index.html",
-    "test": "mocha --compilers js:babel-register test/**/*.js",
+    "test": "mocha --compilers js:babel-register test/**/*.ts",
     "build": "webpack --config webpack.config.js"
   },
   "author": "",
@@ -19,6 +19,7 @@
     "babel-preset-power-assert": "^1.0.0",
     "babel-register": "^6.22.0",
     "babelify": "^7.3.0",
+    "browserify": "^14.0.0",
     "intelli-espower-loader": "^1.0.1",
     "karma": "^1.4.1",
     "karma-browserify": "^5.1.1",
@@ -29,6 +30,8 @@
     "power-assert": "^1.4.2",
     "ts-loader": "^2.0.0",
     "typescript": "^2.1.5",
+    "typings": "^2.1.0",
+    "watchify": "^3.9.0",
     "webpack": "^2.1.0-beta.21"
   },
   "dependencies": {
