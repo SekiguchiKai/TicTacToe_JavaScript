@@ -1,5 +1,6 @@
-import ScoreCalculator from './scoreCalculator.js';
-import { MOVE } from './index.js'
+import ScoreCalculator from './scoreCalculator';
+import { MOVE } from './index';
+import Board from './board';
 
 const scoreCalculator = new ScoreCalculator();
 /**
@@ -27,7 +28,7 @@ export default class MiniMax {
      * @param {beta}       β
      * @return {object} 打ち手を打つのに最適な場所とそこに打ち手を打った場合の点数を格納したオブジェクト
      */
-    calcMiniMax(depth, board, playerSignal, alpha, beta) {
+    public calcMiniMax(depth: number, board: Board, playerSignal: string, alpha: number, beta: number) {
 
         const capableMovesArray = this.makeCapableMoveArray(board);
 
@@ -37,6 +38,11 @@ export default class MiniMax {
 
         const gameOverNum = 0
 
+        let bestCellObj: {
+            rowVal: number;
+            columnVal: number;
+            bestScore: number;
+        };
 
         // 試合が終了か、深さが0の場合は、スコアを
         if (capableMovesArray.length === gameOverNum || depth === gameOverNum) {
@@ -75,31 +81,28 @@ export default class MiniMax {
 
                 if (alpha >= beta) { break; }
             }
-
-            const bestCellObj = new Object();
-            bestCellObj.rowVal = row;
-            bestCellObj.columnVal = column;
-
-            if (playerSignal === MOVE.CROSS) {
-                bestCellObj.bestScore = alpha;
-                return bestCellObj;
-            } else {
-                bestCellObj.bestScore = beta;
-                return bestCellObj;
-            }
+        };
 
 
+        bestCellObj.rowVal = row;
+        bestCellObj.columnVal = column;
+
+        if (playerSignal === MOVE.CROSS) {
+            bestCellObj.bestScore = alpha;
+            return bestCellObj;
+        } else {
+            bestCellObj.bestScore = beta;
+            return bestCellObj;
         }
-
     }
 
     /**
       * 現在の打ち手を打つことが可能なすべてのゲーム盤の場所をリスト化する（NO_MOVEが存在しているGameBoardの場所）
       *
       * @param {board} Boardクラスのインスタンス
-      * @return {Object} NO_MOVEが存在するGameBoard上の場所の一覧を格納したオブジェクト
+      * @return {Object[]} NO_MOVEが存在するGameBoard上の場所の一覧を格納したオブジェクト
       */
-    makeCapableMoveArray(board) {
+    private makeCapableMoveArray(board: Board) {
         const capableMovesArray = [];
 
         for (let row = 0; row < board.rowSize; row++) {

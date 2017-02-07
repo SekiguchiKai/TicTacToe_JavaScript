@@ -1,34 +1,25 @@
-import { MOVE } from './index.js'
-
+"use strict";
+const index_1 = require("./index");
 /**
  * ゲーム盤を表すためのクラス
  */
-export default class Board {
-
+class Board {
     /**
      * コンストラクタ
      * @param {rowSize} rowのサイズ
      * @param {columnSize} columnのサイズ
      */
-    constructor(rowSize, columnSize) {
-        // WeakMapに対応づけ
-        this._rowSize = rowSize;
-        this._columnSize = columnSize;
-        this._gameBoard = new Array(rowSize);
-
-        // 二次元配列化
-        for (let row = 0; row < this._gameBoard.length; row++) {
-            this._gameBoard[row] = new Array(columnSize);
-        }
-
+    constructor(_rowSize, _columnSize) {
+        this._rowSize = _rowSize;
+        this._columnSize = _columnSize;
+        this._gameBoard = new Array();
         // 二次元配列初期化
         for (let row = 0; row < this._rowSize; row++) {
             for (let column = 0; column < this._columnSize; column++) {
-                this._gameBoard[row][column] = MOVE.EMPTY;
+                this._gameBoard[row][column] = index_1.MOVE.EMPTY;
             }
         }
     }
-
     /**
      * rowSizeを取得するためのメソッド
      * @return {number} rowのサイズ
@@ -36,15 +27,13 @@ export default class Board {
     get rowSize() {
         return this._rowSize;
     }
-
-    /** 
+    /**
      * columnSizeを取得するためのメソッド
      * @return {number} columnのサイズ
      */
     get columnSize() {
         return this._columnSize;
     }
-
     /**
      * ゲーム盤の指定箇所に打ち手を加えるためのメソッド
      * @param {row} rowの値
@@ -54,7 +43,6 @@ export default class Board {
     putMove(row, column, move) {
         this._gameBoard[row][column] = move;
     }
-
     /**
       * ゲーム盤の指定箇所の打ち手を取得するためのメソッド
       * @param {row} rowの値
@@ -64,13 +52,13 @@ export default class Board {
     getMove(row, column) {
         return this._gameBoard[row][column];
     }
-
     /**
       * ゲーム盤を取得するためのメソッド
-      * @return {string} 打ち手
+      * @return {string[][]} 打ち手
       */
     getGameBoardState() {
         return this._gameBoard.concat();
     }
-
 }
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = Board;

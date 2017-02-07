@@ -1,28 +1,28 @@
-let count = 1;
+"use strict";
 /**
  * カウンターを表すためのクラス
  */
-export default class Counter {
-
+class Counter {
     /**
      * カウンターを1上げるためのメソッド
      */
     static upCount() {
-        count++;
+        this._count++;
     }
-
     /**
      * カウンターを取得するためのメソッド
      * @return {number} 現在のカウンターの値
      */
     static getCount() {
-        return count;
+        return this._count;
     }
-
     /**
      * カウンターをリセットするためのメソッド
      */
     static resetCount() {
-        Counter.count = 0;
+        this._count = 0;
     }
 }
+Counter._count = 1;
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = Counter;
