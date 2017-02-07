@@ -102,8 +102,8 @@ export default class MiniMax {
     makeCapableMoveArray(board) {
         const capableMovesArray = [];
 
-        for (let row = 0; row < board.getRowSize(); row++) {
-            for (let column = 0; column < board.getColumnSize(); column++) {
+        for (let row = 0; row < board.rowSize; row++) {
+            for (let column = 0; column < board.columnSize; column++) {
                 if (board.getMove(row, column) === MOVE.EMPTY) {
                     const cellObj = { rowValue: row, columnValue: column };
                     capableMovesArray.push(cellObj);
