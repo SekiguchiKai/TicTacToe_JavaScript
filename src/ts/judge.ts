@@ -10,11 +10,14 @@ export default class Judge {
     /**
      * rowの最大サイズ
      */
-    private _rowMax: number;
+    // private _rowMax: number;
     /**
      * columnの最大サイズ
      */
-    private _columnMax: number;
+    // private _columnMax: number;
+
+    private _rowMax = this._rowSize - this._judgeCriteriaSequence + 1;
+    private _columnMax = this._columnSize - this._judgeCriteriaSequence + 1;
 
     /**
       * コンストラクタ
@@ -27,9 +30,8 @@ export default class Judge {
         private _columnSize: number,
         private _judgeCriteriaSequence: number) {
 
-        const correctVal = 1;
-        this._rowMax = this._rowSize - this._judgeCriteriaSequence + correctVal;
-        this._columnMax = this._columnSize - this._judgeCriteriaSequence + correctVal;
+        // this._rowMax = _rowSize - _judgeCriteriaSequence + 1;
+        // this._columnMax = _columnSize - _judgeCriteriaSequence + 1;
     }
 
     /**

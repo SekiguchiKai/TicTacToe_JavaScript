@@ -1,16 +1,11 @@
-"use strict";
+import assert from 'assert';
+import Judge from '../src/ts/judge';
+import Board from '../src/ts/Board';
 
-import { assert } from 'power-assert';
-import Board from '../src/ts/board';
-
-describe('a', () => {
-
-    it('a', () => {
-        const board = new Board(3, 3);
-        const row = 1;
-        const column = 1;
-        const move = '○';
-        board.putMove(row, column, move);
-        assert(board.getMove(row, column) === 'あ');
+describe('', () => {
+    it('', () => {
+        const board = new Board(3, 3)
+        board.putMove(1, 1, '○');
+        assert(board.getMove(1, 1) === '○');
     })
 })

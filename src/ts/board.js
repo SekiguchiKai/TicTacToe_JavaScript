@@ -12,7 +12,11 @@ class Board {
     constructor(_rowSize, _columnSize) {
         this._rowSize = _rowSize;
         this._columnSize = _columnSize;
-        this._gameBoard = new Array();
+        this._gameBoard = new Array(3);
+        // 二次元配列化
+        for (let row = 0; row < this._gameBoard.length; row++) {
+            this._gameBoard[row] = new Array(_columnSize);
+        }
         // 二次元配列初期化
         for (let row = 0; row < this._rowSize; row++) {
             for (let column = 0; column < this._columnSize; column++) {

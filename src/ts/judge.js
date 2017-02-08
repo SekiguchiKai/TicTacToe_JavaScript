@@ -14,9 +14,18 @@ class Judge {
         this._rowSize = _rowSize;
         this._columnSize = _columnSize;
         this._judgeCriteriaSequence = _judgeCriteriaSequence;
-        const correctVal = 1;
-        this._rowMax = this._rowSize - this._judgeCriteriaSequence + correctVal;
-        this._columnMax = this._columnSize - this._judgeCriteriaSequence + correctVal;
+        /**
+         * rowの最大サイズ
+         */
+        // private _rowMax: number;
+        /**
+         * columnの最大サイズ
+         */
+        // private _columnMax: number;
+        this._rowMax = this._rowSize - this._judgeCriteriaSequence + 1;
+        this._columnMax = this._columnSize - this._judgeCriteriaSequence + 1;
+        // this._rowMax = _rowSize - _judgeCriteriaSequence + 1;
+        // this._columnMax = _columnSize - _judgeCriteriaSequence + 1;
     }
     /**
      * 勝敗はついているかを確認し、その結果を返すためのメソッド

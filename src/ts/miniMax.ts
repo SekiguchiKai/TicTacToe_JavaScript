@@ -40,11 +40,7 @@ export default class MiniMax {
 
         const gameOverNum = 0
 
-        let bestCellObj: {
-            rowVal: number;
-            columnVal: number;
-            bestScore: number;
-        };
+
 
         // 試合が終了か、深さが0の場合は、スコアを
         if (capableMovesArray.length === gameOverNum || depth === gameOverNum) {
@@ -64,7 +60,7 @@ export default class MiniMax {
 
                 if (playerSignal === MOVE.CROSS) {
 
-                    score = this.calcMiniMax(depth - correctVal, board, MOVE.CIRCLE, alpha, beta).bestScore;
+                    score = this.calcMiniMax(depth - correctVal, board, MOVE.CIRCLE, alpha, beta)['bestScore'];
                     if (score > alpha) {
                         alpha = score;
                         row = cell.rowValue;
@@ -72,7 +68,7 @@ export default class MiniMax {
 
                     }
                 } else if (playerSignal === MOVE.CIRCLE) {
-                    score = this.calcMiniMax(depth - correctVal, board, MOVE.CROSS, alpha, beta).bestScore;
+                    score = this.calcMiniMax(depth - correctVal, board, MOVE.CROSS, alpha, beta)['bestScore'];
                     if (score < beta) {
                         beta = score;
                         row = cell.rowValue;
@@ -83,17 +79,23 @@ export default class MiniMax {
 
                 if (alpha >= beta) { break; }
             }
-        };
-
-
-        bestCellObj.rowVal = row;
-        bestCellObj.columnVal = column;
+        }
+        let bestCellObj: { [index: string]: number; } = {};
 
         if (playerSignal === MOVE.CROSS) {
-            bestCellObj.bestScore = alpha;
+            bestCellObj = {
+                rowVal: row,
+                columnVal: column,
+                bestScore: alpha
+            };
+
             return bestCellObj;
         } else {
-            bestCellObj.bestScore = beta;
+            bestCellObj = {
+                rowVal: row,
+                columnVal: column,
+                bestScore: beta
+            };
             return bestCellObj;
         }
     }

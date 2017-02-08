@@ -20,16 +20,12 @@ export default class Cpu {
      * @param {depth} 読みの深さ
      * @param {board} Boardクラスのインスタンス
      */
-    public doMove(depth: number, board: Board): {
-        rowVal: number;
-        columnVal: number;
-        bestScore: number;
-    } {
+    public doMove(depth: number, board: Board) {
         const maxNum = 9999999999;
         const minNum = -9999999999;
         const cellObj = this._miniMax.calcMiniMax(depth, board, MOVE.CROSS, minNum, maxNum);
 
-        board.putMove(cellObj.rowVal, cellObj.columnVal, MOVE.CROSS);
+        board.putMove(cellObj['rowVal'], cellObj['columnVal'], MOVE.CROSS);
         return cellObj;
     }
 }

@@ -1,4 +1,3 @@
-"use strict";
 
 import Board from './board';
 import Cpu from './cpu';
@@ -59,8 +58,8 @@ for (const id of idArray) {
             if (result === RESULT.PENNDING) {
                 const depth = 3;
                 const cellObj = cpu.doMove(depth, board);
-                const e = document.getElementById(`${cellObj.rowVal}-${cellObj.columnVal}`);
-                e.innerHTML = `<span style="font-size:100px; color:white;">${board.getMove(cellObj.rowVal, cellObj.columnVal)}</span>`;
+                const e = document.getElementById(`${cellObj['rowVal']}-${cellObj['columnVal']}`);
+                e.innerHTML = `<span style="font-size:100px; color:white;">${board.getMove(cellObj['rowVal'], cellObj['columnVal'])}</span>`;
             }
 
             const result2 = judge.judgeResult(board);

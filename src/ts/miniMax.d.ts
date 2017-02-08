@@ -24,9 +24,7 @@ export default class MiniMax {
      * @return {object} 打ち手を打つのに最適な場所とそこに打ち手を打った場合の点数を格納したオブジェクト
      */
     calcMiniMax(depth: number, board: Board, playerSignal: string, alpha: number, beta: number): {
-        rowVal: number;
-        columnVal: number;
-        bestScore: number;
+        [index: string]: number;
     };
     /**
       * 現在の打ち手を打つことが可能なすべてのゲーム盤の場所をリスト化する（NO_MOVEが存在しているGameBoardの場所）

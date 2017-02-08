@@ -9,10 +9,10 @@ export default class Judge {
     /**
      * rowの最大サイズ
      */
-    private _rowMax;
     /**
      * columnの最大サイズ
      */
+    private _rowMax;
     private _columnMax;
     /**
       * コンストラクタ

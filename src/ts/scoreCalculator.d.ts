@@ -1,5 +1,3 @@
-"use strict";
-
 export default class ScoreCalculator {
     /**
      * 得点の計算を行うためのメソッド

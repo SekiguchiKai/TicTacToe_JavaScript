@@ -15,8 +15,6 @@ export default class Cpu {
      * @param {board} Boardクラスのインスタンス
      */
     doMove(depth: number, board: Board): {
-        rowVal: number;
-        columnVal: number;
-        bestScore: number;
+        [index: string]: number;
     };
 }

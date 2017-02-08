@@ -6,7 +6,7 @@ import { MOVE } from './index';
  * ゲーム盤を表すためのクラス
  */
 export default class Board {
-    private _gameBoard: Array<string>[] = new Array();
+    private _gameBoard: Array<string>[] = new Array(3);
 
     /**
      * コンストラクタ
@@ -16,6 +16,12 @@ export default class Board {
     constructor(
         private _rowSize: number,
         private _columnSize: number) {
+
+        // 二次元配列化
+        for (let row = 0; row < this._gameBoard.length; row++) {
+            this._gameBoard[row] = new Array(_columnSize);
+        }
+
 
         // 二次元配列初期化
         for (let row = 0; row < this._rowSize; row++) {
