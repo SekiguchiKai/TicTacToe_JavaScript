@@ -1,4 +1,4 @@
-"use strict";
+
 
 import { MOVE, RESULT } from './index';
 import Board from './board';
@@ -10,14 +10,19 @@ export default class Judge {
     /**
      * rowの最大サイズ
      */
-    // private _rowMax: number;
     /**
      * columnの最大サイズ
      */
-    // private _columnMax: number;
 
-    private _rowMax = this._rowSize - this._judgeCriteriaSequence + 1;
-    private _columnMax = this._columnSize - this._judgeCriteriaSequence + 1;
+    // private _rowMax = this._rowSize - this._judgeCriteriaSequence + 1;
+    // private _columnMax = this._columnSize - this._judgeCriteriaSequence + 1;
+
+    private _rowMax = 1;
+    private _columnMax = 1;
+    private _rowSize = 3;
+    private _columnSize = 3;
+    private _judgeCriteriaSequence = 3;
+
 
     /**
       * コンストラクタ
@@ -26,9 +31,7 @@ export default class Judge {
       * @param {judgeCriteriaSequence} 勝敗の基準となる数（何個同じ打ち手が一列に揃えば勝敗が決定するか）
       */
     constructor(
-        private _rowSize: number,
-        private _columnSize: number,
-        private _judgeCriteriaSequence: number) {
+    ) {
 
         // this._rowMax = _rowSize - _judgeCriteriaSequence + 1;
         // this._columnMax = _columnSize - _judgeCriteriaSequence + 1;

@@ -1,5 +1,3 @@
-"use strict";
-
 import MiniMax from './miniMax';
 import { MOVE } from './index';
 import Board from './board';

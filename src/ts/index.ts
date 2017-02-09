@@ -1,11 +1,10 @@
-
 import Board from './board';
 import Cpu from './cpu';
 import Judge from './judge';
 
-const rowSize = 3;
-const columnSize = 3;
-const judgeCriteriaSequence = 3;
+// const rowSize = 3;
+// const columnSize = 3;
+// const judgeCriteriaSequence = 3;
 
 export const RESULT = {
     WIN: '勝ち',
@@ -20,10 +19,10 @@ export const MOVE = {
     EMPTY: ' '
 };
 
-const board = new Board(rowSize, columnSize);
+const board = new Board();
 const cpu = new Cpu();
 
-const judge = new Judge(rowSize, columnSize, judgeCriteriaSequence);
+const judge = new Judge();
 
 const idArray = ['0-0', '0-1', '0-2', '1-0', '1-1', '1-2', '2-0', '2-1', '2-2'];
 

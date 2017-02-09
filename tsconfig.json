@@ -2,12 +2,14 @@
     "compilerOptions": {
         "module": "commonjs",
         "moduleResolution": "node",
-        "target": "es6",
+        "target": "es5",
         "declaration": true,
         "sourceMap": true,
+        "outDir": "./dist",
+        "sourceRoot": "../src",
         "lib": [
             "dom",
-            "es2017"
+            "es2015"
         ],
         "noImplicitAny": true,
         "strictNullChecks": false,
@@ -17,7 +19,6 @@
         "noUnusedLocals": true,
         "noUnusedParameters": true,
         "noImplicitUseStrict": false,
-        "sourceMap": false,
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "forceConsistentCasingInFileNames": true,
@@ -30,7 +31,11 @@
         "noEmitOnError": true
     },
     "include": [
-        "src/**/*.ts"
+        "src/**/*.ts",
+        "test/**/*.ts"
+    ],
+    "types": [
+        "mocha"
     ],
     "exclude": [
         "node_modules",

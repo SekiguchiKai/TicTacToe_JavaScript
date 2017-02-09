@@ -2,27 +2,30 @@
 /**
  * カウンターを表すためのクラス
  */
-class Counter {
+var Counter = (function () {
+    function Counter() {
+    }
     /**
      * カウンターを1上げるためのメソッド
      */
-    static upCount() {
+    Counter.upCount = function () {
         this._count++;
-    }
+    };
     /**
      * カウンターを取得するためのメソッド
      * @return {number} 現在のカウンターの値
      */
-    static getCount() {
+    Counter.getCount = function () {
         return this._count;
-    }
+    };
     /**
      * カウンターをリセットするためのメソッド
      */
-    static resetCount() {
+    Counter.resetCount = function () {
         this._count = 0;
-    }
-}
+    };
+    return Counter;
+}());
 Counter._count = 1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = Counter;

@@ -1,4 +1,4 @@
-"use strict";
+
 
 import ScoreCalculator from './scoreCalculator';
 import { MOVE } from './index';

@@ -1,53 +1,55 @@
 "use strict";
-const counter_1 = require("./counter");
-const index_1 = require("./index");
-class ScoreCalculator {
+var counter_1 = require("./counter");
+var index_1 = require("./index");
+var ScoreCalculator = (function () {
+    function ScoreCalculator() {
+    }
     /**
      * 得点の計算を行うためのメソッド
      * @param {gameBoard} ゲーム盤
      * @return {number} 合計得点
      */
-    calcScore(gameBoard) {
-        let totalScore = 0;
-        const arraySize = 3;
-        const movesArray = new Array(arraySize);
-        const maxLength = 3;
+    ScoreCalculator.prototype.calcScore = function (gameBoard) {
+        var totalScore = 0;
+        var arraySize = 3;
+        var movesArray = new Array(arraySize);
+        var maxLength = 3;
         // row
-        for (let row = 0; row < maxLength; row++) {
-            for (let column = 0; column < maxLength; column++) {
-                movesArray[column] = gameBoard[row][column];
+        for (var row = 0; row < maxLength; row++) {
+            for (var column_1 = 0; column_1 < maxLength; column_1++) {
+                movesArray[column_1] = gameBoard[row][column_1];
             }
             totalScore += this.calcLineScore(movesArray);
         }
         // column
-        for (let column = 0; column < maxLength; column++) {
-            for (let row = 0; row < maxLength; row++) {
-                movesArray[row] = gameBoard[row][column];
+        for (var column_2 = 0; column_2 < maxLength; column_2++) {
+            for (var row = 0; row < maxLength; row++) {
+                movesArray[row] = gameBoard[row][column_2];
             }
             totalScore += this.calcLineScore(movesArray);
         }
         // 左斜め
-        for (let idx = 0; idx < maxLength; idx++) {
+        for (var idx = 0; idx < maxLength; idx++) {
             movesArray[idx] = gameBoard[idx][idx];
         }
         totalScore += this.calcLineScore(movesArray);
         // 右斜め
-        let column = 2;
-        for (let row = 0; row < maxLength; row++) {
+        var column = 2;
+        for (var row = 0; row < maxLength; row++) {
             movesArray[row] = gameBoard[row][column];
             column--;
         }
         totalScore += this.calcLineScore(movesArray);
         counter_1.default.resetCount();
         return totalScore;
-    }
+    };
     /**
      * 1ラインの得点を計算するためのメソッッド
      * @param {movesArray} 打ち手を格納するための配列
      * @return {number} 得点
      */
-    calcLineScore(movesArray) {
-        let score = 0;
+    ScoreCalculator.prototype.calcLineScore = function (movesArray) {
+        var score = 0;
         // 1つ目
         if (movesArray[0] === index_1.MOVE.CROSS) {
             score = 1;
@@ -102,7 +104,8 @@ class ScoreCalculator {
             }
         }
         return score;
-    }
-}
+    };
+    return ScoreCalculator;
+}());
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = ScoreCalculator;

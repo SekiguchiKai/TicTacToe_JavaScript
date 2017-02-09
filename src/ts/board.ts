@@ -1,5 +1,3 @@
-"use strict";
-
 import { MOVE } from './index';
 
 /**
@@ -8,18 +6,20 @@ import { MOVE } from './index';
 export default class Board {
     private _gameBoard: Array<string>[] = new Array(3);
 
+    private _rowSize = 3;
+    private _columnSize = 3;
+
     /**
      * コンストラクタ
      * @param {rowSize} rowのサイズ
      * @param {columnSize} columnのサイズ
      */
     constructor(
-        private _rowSize: number,
-        private _columnSize: number) {
+    ) {
 
         // 二次元配列化
         for (let row = 0; row < this._gameBoard.length; row++) {
-            this._gameBoard[row] = new Array(_columnSize);
+            this._gameBoard[row] = new Array(this._columnSize);
         }
 
 
