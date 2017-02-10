@@ -14,3 +14,5 @@ npm-debug.log
 /dst
 src/js
 src/ts/**/*.js
+.idea
+coverage/Chrome 56.0.2924 (Mac OS X 10.11.4)
