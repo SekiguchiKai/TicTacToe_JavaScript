@@ -13,3 +13,4 @@ karma.conf.js
 npm-debug.log
 /dst
 src/js
+src/ts/**/*.js

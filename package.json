@@ -5,7 +5,7 @@
   "main": "./dist/index.js",
   "scripts": {
     "start": "open resources/index.html",
-    "build": "tsc -p ./",
+    "build": "webpack",
     "pretest": "npm run build",
     "test": "mocha"
   },
@@ -36,6 +36,7 @@
   },
   "dependencies": {
     "ts-loader": "^2.0.0",
-    "tslint": "^4.4.2"
+    "tslint": "^4.4.2",
+    "webpack-espower-loader": "^1.0.1"
   }
 }

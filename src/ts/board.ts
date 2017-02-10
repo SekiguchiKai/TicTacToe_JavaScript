@@ -15,7 +15,9 @@ export default class Board {
      * @param {columnSize} columnのサイズ
      */
     constructor(
-    ) {
+    ) { }
+
+    public init(): void {
 
         // 二次元配列化
         for (let row = 0; row < this._gameBoard.length; row++) {
