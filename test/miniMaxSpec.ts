@@ -1,44 +1,93 @@
 import * as assert from "power-assert";
-import MiniMax from '../src/ts/miniMax';
 import Board from '../src/ts/board';
+import MiniMax from '../src/ts/miniMax';
 import { MOVE } from '../src/ts/const';
 
 export function miniMaxSpec() {
     describe('miniMaxクラスのcalcMiniMaxメソッドが、適切なAIが打ち手を打つべき場所を返してくれる', () => {
-        let board = new Board();
-
-        // rowで勝ちに行く
-        board.putMove(0, 0, MOVE.CIRCLE);
-        board.putMove(0, 1, MOVE.CIRCLE);
-        testCalcMiniMax(board, 0, 2, -2, `[row: 0, column: 0, [row: 0, column: 1 [row: 0, column: 2] の時`);
+        checkRow();
+        checkColumn();
+        checkLeftSlantingLine();
+        checkRightSlantingLine();
 
 
-        board = new Board();
-        board.putMove(0, 0, MOVE.CIRCLE);
-        board.putMove(1, 0, MOVE.CIRCLE);
-        testCalcMiniMax(board, 2, 0, 10, `[row: 1, column: 0, [row: 1, column: 1 [row: 1, column: 2] の時`);
-        console.log(board.getGameBoardState());
-        board.clearGameBoard();
+        function checkRow() {
 
-        board = new Board();
-        board.putMove(2, 0, MOVE.CIRCLE);
-        board.putMove(2, 1, MOVE.CIRCLE);
-        testCalcMiniMax(board, 0, 2, 10, `[row: 2, column: 0, [row: 2, column: 1 [row: 2, column: 2] の時`);
-        console.log('あ' + board.getGameBoardState());
-        board.clearGameBoard();
+            let board = new Board();
+            let array = [];
+
+            for (let row = 0; row < 3; row++) {
+                for (let column = 0; column < 2; column++) {
+                    board.putMove(row, column, MOVE.CIRCLE);
+                    array.push(row, column);
+                }
+                const expectedRow = row;
+                const expectedColumn = 2;
+
+                A(board, expectedRow, expectedColumn, `rowのチェック[row: ${array[0]}, column: ${array[1]}] = ${MOVE.CIRCLE}, [row: ${array[2]}, column: ${array[3]}] = ${MOVE.CIRCLE} の時にAIは[row: ${expectedRow}, column: ${expectedColumn}]`);
+                array.length = 0;
+                board = new Board();
+            }
+        }
 
 
-        function testCalcMiniMax(board: Board, expectedRowVal: number, expectedColumnVal: number, expectedBestScore: number, comment: string) {
+
+        function checkColumn() {
+
+            let board = new Board();
+            let array = [];
+
+            for (let column = 0; column < 3; column++) {
+                for (let row = 0; row < 2; row++) {
+                    board.putMove(row, column, MOVE.CIRCLE);
+                    array.push(row, column);
+                }
+                const expectedRow = 2;
+                const expectedColumn = column;
+
+                A(board, expectedRow, expectedColumn, `rowのチェック[row: ${array[0]}, column: ${array[1]}] = ${MOVE.CIRCLE}, [row: ${array[2]}, column: ${array[3]}] = ${MOVE.CIRCLE} の時にAIは[row: ${expectedRow}, column: ${expectedColumn}]`);
+                array.length = 0;
+                board = new Board();
+            }
+        }
+
+
+        function checkLeftSlantingLine() {
+            const board = new Board();
+            board.putMove(0, 0, MOVE.CIRCLE);
+            board.putMove(1, 1, MOVE.CIRCLE);
+
+            const expectedRow = 2;
+            const expectedColumn = 2;
+
+            A(board, expectedRow, expectedColumn, `rowのチェック[row: 0, column: 0 = ${MOVE.CIRCLE}, [row: 1, column: 1 = ${MOVE.CIRCLE} の時にAIは[row: ${expectedRow}, column: ${expectedColumn}]`);
+
+        }
+
+        function checkRightSlantingLine() {
+            const board = new Board();
+            board.putMove(0, 2, MOVE.CIRCLE);
+            board.putMove(1, 1, MOVE.CIRCLE);
+
+            const expectedRow = 2;
+            const expectedColumn = 0;
+
+            A(board, expectedRow, expectedColumn, `rowのチェック[row: 0, column: 2 = ${MOVE.CIRCLE}, [row: 1, column: 1 = ${MOVE.CIRCLE} の時にAIは[row: ${expectedRow}, column: ${expectedColumn}]`);
+        }
+
+
+
+        function A(board: Board, expectedRow: number, expectedColumn: number, comment: string) {
             const miniMax = new MiniMax();
 
-            it(comment, () => {
-                const maxNum = 9999999999;
-                const minNum = -9999999999;
-                const bestCell = miniMax.calcMiniMax(3, board, MOVE.CIRCLE, minNum, maxNum);
+            const maxNum: number = 9999999999;
+            const minNum: number = -9999999999;
+            const bestCell = miniMax.calcMiniMax(4, board, MOVE.CROSS, minNum, maxNum);
 
-                assert(bestCell['rowVal'] === expectedRowVal);
-                assert(bestCell['columnVal'] === expectedColumnVal);
-                assert(bestCell['bestScore'] === expectedBestScore);
+            it(comment, () => {
+
+                assert(bestCell['rowVal'] === expectedRow);
+                assert(bestCell['columnVal'] === expectedColumn);
             })
         }
 

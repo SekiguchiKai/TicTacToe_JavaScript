@@ -7,7 +7,7 @@
     "start": "open resources/index.html",
     "build": "webpack",
     "pretest": "npm run build",
-    "test": "mocha"
+    "test": "karma start"
   },
   "author": "",
   "license": "MIT",
