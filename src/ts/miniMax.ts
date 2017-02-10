@@ -1,5 +1,6 @@
-import ScoreCalculator from './scoreCalculator.js';
-import { MOVE } from './index.js'
+import ScoreCalculator from './scoreCalculator';
+import { MOVE } from './const';
+import Board from './board';
 
 const scoreCalculator = new ScoreCalculator();
 /**
@@ -27,7 +28,7 @@ export default class MiniMax {
      * @param {beta}       β
      * @return {object} 打ち手を打つのに最適な場所とそこに打ち手を打った場合の点数を格納したオブジェクト
      */
-    calcMiniMax(depth, board, playerSignal, alpha, beta) {
+    public calcMiniMax(depth: number, board: Board, playerSignal: string, alpha: number, beta: number) {
 
         const capableMovesArray = this.makeCapableMoveArray(board);
 
@@ -36,6 +37,7 @@ export default class MiniMax {
         let column = -1;
 
         const gameOverNum = 0
+
 
 
         // 試合が終了か、深さが0の場合は、スコアを
@@ -56,7 +58,7 @@ export default class MiniMax {
 
                 if (playerSignal === MOVE.CROSS) {
 
-                    score = this.calcMiniMax(depth - correctVal, board, MOVE.CIRCLE, alpha, beta).bestScore;
+                    score = this.calcMiniMax(depth - correctVal, board, MOVE.CIRCLE, alpha, beta)['bestScore'];
                     if (score > alpha) {
                         alpha = score;
                         row = cell.rowValue;
@@ -64,7 +66,7 @@ export default class MiniMax {
 
                     }
                 } else if (playerSignal === MOVE.CIRCLE) {
-                    score = this.calcMiniMax(depth - correctVal, board, MOVE.CROSS, alpha, beta).bestScore;
+                    score = this.calcMiniMax(depth - correctVal, board, MOVE.CROSS, alpha, beta)['bestScore'];
                     if (score < beta) {
                         beta = score;
                         row = cell.rowValue;
@@ -75,31 +77,34 @@ export default class MiniMax {
 
                 if (alpha >= beta) { break; }
             }
-
-            const bestCellObj = new Object();
-            bestCellObj.rowVal = row;
-            bestCellObj.columnVal = column;
-
-            if (playerSignal === MOVE.CROSS) {
-                bestCellObj.bestScore = alpha;
-                return bestCellObj;
-            } else {
-                bestCellObj.bestScore = beta;
-                return bestCellObj;
-            }
-
-
         }
+        let bestCellObj: { [index: string]: number; } = {};
 
+        if (playerSignal === MOVE.CROSS) {
+            bestCellObj = {
+                rowVal: row,
+                columnVal: column,
+                bestScore: alpha
+            };
+
+            return bestCellObj;
+        } else {
+            bestCellObj = {
+                rowVal: row,
+                columnVal: column,
+                bestScore: beta
+            };
+            return bestCellObj;
+        }
     }
 
     /**
       * 現在の打ち手を打つことが可能なすべてのゲーム盤の場所をリスト化する（NO_MOVEが存在しているGameBoardの場所）
       *
       * @param {board} Boardクラスのインスタンス
-      * @return {Object} NO_MOVEが存在するGameBoard上の場所の一覧を格納したオブジェクト
+      * @return {Object[]} NO_MOVEが存在するGameBoard上の場所の一覧を格納したオブジェクト
       */
-    makeCapableMoveArray(board) {
+    private makeCapableMoveArray(board: Board) {
         const capableMovesArray = [];
 
         for (let row = 0; row < board.rowSize; row++) {

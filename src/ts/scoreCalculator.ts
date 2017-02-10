@@ -1,5 +1,5 @@
-import Counter from './counter.js';
-import { MOVE } from './index.js'
+"use strict";
+import { MOVE } from './const'
 
 
 export default class ScoreCalculator {
@@ -8,7 +8,7 @@ export default class ScoreCalculator {
      * @param {gameBoard} ゲーム盤
      * @return {number} 合計得点
      */
-    calcScore(gameBoard) {
+    calcScore(gameBoard: string[][]): number {
 
         let totalScore = 0;
         const arraySize = 3;
@@ -51,7 +51,6 @@ export default class ScoreCalculator {
         }
 
         totalScore += this.calcLineScore(movesArray);
-        Counter.resetCount();
 
         return totalScore;
     }
@@ -62,7 +61,7 @@ export default class ScoreCalculator {
      * @param {movesArray} 打ち手を格納するための配列
      * @return {number} 得点
      */
-    calcLineScore(movesArray) {
+    calcLineScore(movesArray: string[]): number {
         let score = 0;
 
         // 1つ目
