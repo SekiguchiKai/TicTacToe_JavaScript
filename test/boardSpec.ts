@@ -1,6 +1,6 @@
 import * as assert from "power-assert";
-
 import Board from '../src/ts/board';
+
 
 const board = new Board();
 

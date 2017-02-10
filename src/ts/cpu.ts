@@ -1,5 +1,5 @@
 import MiniMax from './miniMax';
-import { MOVE } from './index';
+import { MOVE } from './const';
 import Board from './board';
 
 /**

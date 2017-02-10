@@ -1,6 +1,4 @@
-
-
-import { MOVE, RESULT } from './index';
+import { MOVE, RESULT } from './const';
 import Board from './board';
 
 /**

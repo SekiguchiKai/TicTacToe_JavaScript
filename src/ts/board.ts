@@ -1,4 +1,4 @@
-import { MOVE } from './index';
+import { MOVE } from './const';
 
 /**
  * ゲーム盤を表すためのクラス

@@ -1,27 +1,13 @@
 import Board from './board';
 import Cpu from './cpu';
 import Judge from './judge';
+import { RESULT, MOVE } from './const';
 
 // const rowSize = 3;
 // const columnSize = 3;
 // const judgeCriteriaSequence = 3;
-
-export const RESULT = {
-    WIN: '勝ち',
-    LOSE: '負け',
-    DRAW: '引き分け',
-    PENNDING: '未決'
-};
-
-export const MOVE = {
-    CIRCLE: '○',
-    CROSS: '×',
-    EMPTY: ' '
-};
-
 const board = new Board();
 const cpu = new Cpu();
-
 const judge = new Judge();
 
 const idArray = ['0-0', '0-1', '0-2', '1-0', '1-1', '1-2', '2-0', '2-1', '2-2'];

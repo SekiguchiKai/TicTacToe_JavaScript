@@ -1,7 +1,5 @@
-
-
 import ScoreCalculator from './scoreCalculator';
-import { MOVE } from './index';
+import { MOVE } from './const';
 import Board from './board';
 
 const scoreCalculator = new ScoreCalculator();

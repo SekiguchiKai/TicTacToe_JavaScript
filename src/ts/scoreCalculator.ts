@@ -1,7 +1,6 @@
 "use strict";
-
 import Counter from './counter';
-import { MOVE } from './index'
+import { MOVE } from './const'
 
 
 export default class ScoreCalculator {

@@ -1,5 +1,4 @@
 import * as assert from "power-assert";
-
 import { hello } from "../src/ts/app";
 
 describe("lib", () => {

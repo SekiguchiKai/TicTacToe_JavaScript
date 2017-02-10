@@ -1,18 +1,21 @@
 module.exports = {
   entry: {
     "indexEntry": './src/ts/index.ts',
-    "testEntry": './test/boardSpec.ts',
+    "testEntry": './test/appSpec.ts',
   },
 
   output: {
-    filename: '[name].bundle.js',
-    path: './dist'
+    path: './dist',
+    filename: '[name].bundle.js'
   },
   module: {
     loaders: [
-      { test: /\.tsx?$/, loader: 'ts-loader' },
-      { test: /_test\.ts$/, loader: 'webpack-espower-loader' },
-    ],
+      // test: ビルド対象を指定, 
+      // include: ビルド対象に含める exclude: ビルド対象に含めない
+      // loader: 使用するローダー  
+      { test: /\.tsx?$/, exclude: /Spec\.ts$/, loader: 'ts-loader' },
+      { test: /Spec\.ts$/, use: ['webpack-espower-loader', 'ts-loader'] },
+    ]
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js"]
