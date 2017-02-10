@@ -1,7 +1,7 @@
 module.exports = {
   entry: {
     "indexEntry": './src/ts/index.ts',
-    "testEntry": './test/appSpec.ts',
+    "testEntry": './test/testEntry.ts',
   },
 
   output: {
