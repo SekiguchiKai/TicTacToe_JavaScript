@@ -4,7 +4,7 @@ import MiniMax from '../src/ts/miniMax';
 import { MOVE } from '../src/ts/const';
 
 export function miniMaxSpec() {
-    describe('miniMaxクラスのcalcMiniMaxメソッドが、適切なAIが打ち手を打つべき場所を返してくれる', () => {
+    describe('miniMaxクラスのcalcMiniMaxメソッドが、適切なcalcMiniMaxTestIが打ち手を打つべき場所を返してくれる', () => {
         checkRow();
         checkColumn();
         checkLeftSlantingLine();
@@ -24,7 +24,7 @@ export function miniMaxSpec() {
                 const expectedRow = row;
                 const expectedColumn = 2;
 
-                A(board, expectedRow, expectedColumn, `rowのチェック[row: ${array[0]}, column: ${array[1]}] = ${MOVE.CIRCLE}, [row: ${array[2]}, column: ${array[3]}] = ${MOVE.CIRCLE} の時にAIは[row: ${expectedRow}, column: ${expectedColumn}]`);
+                calcMiniMaxTest(board, expectedRow, expectedColumn, `rowのチェック[row: ${array[0]}, column: ${array[1]}] = ${MOVE.CIRCLE}, [row: ${array[2]}, column: ${array[3]}] = ${MOVE.CIRCLE} の時にcalcMiniMaxTestIは[row: ${expectedRow}, column: ${expectedColumn}]`);
                 array.length = 0;
                 board = new Board();
             }
@@ -45,7 +45,7 @@ export function miniMaxSpec() {
                 const expectedRow = 2;
                 const expectedColumn = column;
 
-                A(board, expectedRow, expectedColumn, `rowのチェック[row: ${array[0]}, column: ${array[1]}] = ${MOVE.CIRCLE}, [row: ${array[2]}, column: ${array[3]}] = ${MOVE.CIRCLE} の時にAIは[row: ${expectedRow}, column: ${expectedColumn}]`);
+                calcMiniMaxTest(board, expectedRow, expectedColumn, `rowのチェック[row: ${array[0]}, column: ${array[1]}] = ${MOVE.CIRCLE}, [row: ${array[2]}, column: ${array[3]}] = ${MOVE.CIRCLE} の時にcalcMiniMaxTestIは[row: ${expectedRow}, column: ${expectedColumn}]`);
                 array.length = 0;
                 board = new Board();
             }
@@ -60,7 +60,7 @@ export function miniMaxSpec() {
             const expectedRow = 2;
             const expectedColumn = 2;
 
-            A(board, expectedRow, expectedColumn, `rowのチェック[row: 0, column: 0 = ${MOVE.CIRCLE}, [row: 1, column: 1 = ${MOVE.CIRCLE} の時にAIは[row: ${expectedRow}, column: ${expectedColumn}]`);
+            calcMiniMaxTest(board, expectedRow, expectedColumn, `rowのチェック[row: 0, column: 0 = ${MOVE.CIRCLE}, [row: 1, column: 1 = ${MOVE.CIRCLE} の時にcalcMiniMaxTestIは[row: ${expectedRow}, column: ${expectedColumn}]`);
 
         }
 
@@ -72,12 +72,12 @@ export function miniMaxSpec() {
             const expectedRow = 2;
             const expectedColumn = 0;
 
-            A(board, expectedRow, expectedColumn, `rowのチェック[row: 0, column: 2 = ${MOVE.CIRCLE}, [row: 1, column: 1 = ${MOVE.CIRCLE} の時にAIは[row: ${expectedRow}, column: ${expectedColumn}]`);
+            calcMiniMaxTest(board, expectedRow, expectedColumn, `rowのチェック[row: 0, column: 2 = ${MOVE.CIRCLE}, [row: 1, column: 1 = ${MOVE.CIRCLE} の時にcalcMiniMaxTestIは[row: ${expectedRow}, column: ${expectedColumn}]`);
         }
 
 
 
-        function A(board: Board, expectedRow: number, expectedColumn: number, comment: string) {
+        function calcMiniMaxTest(board: Board, expectedRow: number, expectedColumn: number, comment: string) {
             const miniMax = new MiniMax();
 
             const maxNum: number = 9999999999;
