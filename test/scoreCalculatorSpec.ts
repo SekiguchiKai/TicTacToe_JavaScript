@@ -94,7 +94,5 @@ export function scoreCalculatorSpec() {
                 assert(scoreCalculator.calcScore(gameBoard) === expected);
             });
         };
-
     });
-
 }

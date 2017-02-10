@@ -14,3 +14,5 @@ npm-debug.log
 /dst
 src/js
 src/ts/**/*.js
+.idea
+coverage/
