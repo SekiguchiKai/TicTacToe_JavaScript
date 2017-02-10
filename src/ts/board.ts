@@ -21,11 +21,7 @@ export default class Board {
         }
 
         // 二次元配列初期化
-        for (let row = 0; row < this._rowSize; row++) {
-            for (let column = 0; column < this._columnSize; column++) {
-                this._gameBoard[row][column] = MOVE.EMPTY;
-            }
-        }
+        this.clearGameBoard();
     }
 
     /**
@@ -70,6 +66,18 @@ export default class Board {
       */
     public getGameBoardState(): string[][] {
         return this._gameBoard.concat();
+    }
+
+    /**
+    * ゲーム盤を初期化するためのメソッド
+    * @return {string[][]} 打ち手
+    */
+    public clearGameBoard(): void {
+        for (let row = 0; row < this._rowSize; row++) {
+            for (let column = 0; column < this._columnSize; column++) {
+                this._gameBoard[row][column] = MOVE.EMPTY;
+            }
+        }
     }
 
 }
