@@ -1,39 +1,34 @@
-import { MOVE } from './index.js'
+import { MOVE } from './const';
 
 /**
  * ゲーム盤を表すためのクラス
  */
 export default class Board {
+    private _gameBoard: Array<string>[] = new Array(3);
+
+    private _rowSize = 3;
+    private _columnSize = 3;
 
     /**
      * コンストラクタ
      * @param {rowSize} rowのサイズ
      * @param {columnSize} columnのサイズ
      */
-    constructor(rowSize, columnSize) {
-        // WeakMapに対応づけ
-        this._rowSize = rowSize;
-        this._columnSize = columnSize;
-        this._gameBoard = new Array(rowSize);
-
+    constructor() {
         // 二次元配列化
         for (let row = 0; row < this._gameBoard.length; row++) {
-            this._gameBoard[row] = new Array(columnSize);
+            this._gameBoard[row] = new Array(this._columnSize);
         }
 
         // 二次元配列初期化
-        for (let row = 0; row < this._rowSize; row++) {
-            for (let column = 0; column < this._columnSize; column++) {
-                this._gameBoard[row][column] = MOVE.EMPTY;
-            }
-        }
+        this.clearGameBoard();
     }
 
     /**
      * rowSizeを取得するためのメソッド
      * @return {number} rowのサイズ
      */
-    get rowSize() {
+    public get rowSize(): number {
         return this._rowSize;
     }
 
@@ -41,7 +36,7 @@ export default class Board {
      * columnSizeを取得するためのメソッド
      * @return {number} columnのサイズ
      */
-    get columnSize() {
+    public get columnSize(): number {
         return this._columnSize;
     }
 
@@ -51,7 +46,7 @@ export default class Board {
      * @param {column} columnの値
      * @param {move} 打ち手
      */
-    putMove(row, column, move) {
+    public putMove(row: number, column: number, move: string): void {
         this._gameBoard[row][column] = move;
     }
 
@@ -61,16 +56,28 @@ export default class Board {
       * @param {column} columnの値
       * @return {string} 打ち手
       */
-    getMove(row, column) {
+    public getMove(row: number, column: number): string {
         return this._gameBoard[row][column];
     }
 
     /**
       * ゲーム盤を取得するためのメソッド
-      * @return {string} 打ち手
+      * @return {string[][]} 打ち手
       */
-    getGameBoardState() {
+    public getGameBoardState(): string[][] {
         return this._gameBoard.concat();
+    }
+
+    /**
+    * ゲーム盤を初期化するためのメソッド
+    * @return {string[][]} 打ち手
+    */
+    public clearGameBoard(): void {
+        for (let row = 0; row < this._rowSize; row++) {
+            for (let column = 0; column < this._columnSize; column++) {
+                this._gameBoard[row][column] = MOVE.EMPTY;
+            }
+        }
     }
 
 }

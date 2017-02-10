@@ -1,7 +1,24 @@
 module.exports = {
-  entry: './src/index.js', // エントリポイント
+  entry: {
+    "indexEntry": './src/ts/index.ts',
+    "testEntry": './test/testEntry.ts',
+  },
+
   output: {
-    path: 'dist', // 出力先のディレクトリ
-    filename: 'bundle.js' // 出力するファイルの名前
-  }
+    path: './dist',
+    filename: '[name].bundle.js'
+  },
+  module: {
+    loaders: [
+      // test: ビルド対象を指定, 
+      // include: ビルド対象に含める exclude: ビルド対象に含めない
+      // loader: 使用するローダー  
+      { test: /\.tsx?$/, exclude: /Spec\.ts$/, loader: 'ts-loader' },
+      { test: /Spec\.ts$/, use: ['webpack-espower-loader', 'ts-loader'] },
+    ]
+  },
+  resolve: {
+    extensions: [".tsx", ".ts", ".js"]
+  },
+  devtool: 'inline-source-map',
 };

@@ -2,15 +2,41 @@
   "name": "tic_tac_toe_js",
   "version": "1.0.0",
   "description": "to play tictactoe",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "scripts": {
     "start": "open resources/index.html",
-    "test": "test",
-    "build": "webpack --config webpack.config.js"
+    "build": "webpack",
+    "pretest": "npm run build",
+    "test": "mocha"
   },
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "webpack": "^2.2.0"
+    "@types/empower": "^1.2.30",
+    "@types/mocha": "^2.2.39",
+    "@types/power-assert": "^1.4.29",
+    "@types/power-assert-formatter": "^1.4.28",
+    "intelli-espower-loader": "^1.0.1",
+    "json-loader": "^0.5.4",
+    "karma": "^1.4.1",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-coverage": "^1.1.1",
+    "karma-jasmine": "^1.1.0",
+    "karma-mocha": "^1.3.0",
+    "karma-mocha-reporter": "^2.2.2",
+    "karma-typescript-preprocessor": "^0.3.1",
+    "karma-webpack": "^2.0.2",
+    "mocha": "^3.2.0",
+    "power-assert": "^1.4.2",
+    "ts-loader": "^2.0.0",
+    "typescript": "^2.1.6",
+    "typings": "^2.1.0",
+    "webpack": "^2.2.1",
+    "webpack-espower-loader": "^1.0.1"
+  },
+  "dependencies": {
+    "ts-loader": "^2.0.0",
+    "tslint": "^4.4.2",
+    "webpack-espower-loader": "^1.0.1"
   }
 }

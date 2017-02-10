@@ -1,0 +1,54 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "target": "es5",
+        "declaration": true,
+        "sourceMap": true,
+        "outDir": "./dist",
+        "sourceRoot": "../src",
+        "lib": [
+            "dom",
+            "es5"
+        ],
+        "noImplicitAny": true,
+        "strictNullChecks": false,
+        "noFallthroughCasesInSwitch": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noImplicitUseStrict": false,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "forceConsistentCasingInFileNames": true,
+        "traceResolution": false,
+        "listFiles": false,
+        "stripInternal": true,
+        "skipDefaultLibCheck": true,
+        "skipLibCheck": false,
+        "pretty": false,
+        "noEmitOnError": true
+    },
+    "include": [
+        "src/**/*.ts",
+        "test/**/*.ts"
+    ],
+    "types": [
+        "mocha"
+    ],
+    "exclude": [
+        "node_modules",
+        "code/definition-file/usage/",
+        "code/definition-file/augmentGlobal/",
+        "code/definition-file/issue9831/",
+        "code/**/*-invalid.ts",
+        "code/**/*-invalid.d.ts",
+        "code/**/invalid.ts",
+        "code/**/invalid.d.ts",
+        "code/**/*-ignore.ts",
+        "code/**/*-ignore.d.ts",
+        "code/**/ignore.ts",
+        "code/**/ignore.d.ts"
+    ]
+}
