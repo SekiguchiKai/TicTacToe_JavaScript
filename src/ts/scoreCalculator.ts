@@ -1,5 +1,4 @@
 "use strict";
-import Counter from './counter';
 import { MOVE } from './const'
 
 
@@ -52,7 +51,6 @@ export default class ScoreCalculator {
         }
 
         totalScore += this.calcLineScore(movesArray);
-        Counter.resetCount();
 
         return totalScore;
     }
