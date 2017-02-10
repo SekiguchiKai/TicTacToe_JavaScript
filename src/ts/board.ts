@@ -14,16 +14,11 @@ export default class Board {
      * @param {rowSize} rowのサイズ
      * @param {columnSize} columnのサイズ
      */
-    constructor(
-    ) { }
-
-    public init(): void {
-
+    constructor() {
         // 二次元配列化
         for (let row = 0; row < this._gameBoard.length; row++) {
             this._gameBoard[row] = new Array(this._columnSize);
         }
-
 
         // 二次元配列初期化
         for (let row = 0; row < this._rowSize; row++) {

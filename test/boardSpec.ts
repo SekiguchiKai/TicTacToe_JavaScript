@@ -3,12 +3,12 @@ import Board from '../src/ts/board';
 
 export function boardSpec() {
     const board = new Board();
-    describe("lib", () => {
-        describe("hello function", () => {
-            it("generate string with default value", () => {
-                board.putMove(1, 1, '○');
-                assert(board.getMove(1, 1) === '○');
-            });
+    describe("あああ", () => {
+        it("generate string with default value", () => {
+            const row: number = 0;
+            const column: number = 0;
+            board.putMove(row, column, '○');
+            assert(board.getMove(row, column) === '○');
         });
     });
 }
