@@ -8,7 +8,7 @@ export function boardSpec() {
     let rowIdxArray = [0, 1, 2];
     let columnIdxArray = [0, 1, 2];
 
-    describe("bordクラスのgameBoard配列に対して、打ち手を格納すると正しく格納され、取得することができる", () => {
+    describe('bordクラスのgameBoard配列に対して、打ち手を格納すると正しく格納され、取得することができる', () => {
         // 二次元配列のforEach
         rowIdxArray.forEach((row) => {
             columnIdxArray.forEach((column) => {

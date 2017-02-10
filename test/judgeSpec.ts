@@ -26,8 +26,6 @@ export function judgeSpec() {
         checkRightSlantingLine(MOVE.CROSS, RESULT.LOSE);
         checkRightSlantingLine(MOVE.EMPTY, RESULT.PENNDING);
 
-
-
         /**
          * rowに対して、JudgeResultメソッドが適切に機能しているかを確認するためのメソッド
          */
