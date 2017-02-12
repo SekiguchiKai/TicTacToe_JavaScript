@@ -9,7 +9,6 @@ doc
 .esdoc.json
 .babelrc
 eslintrc.json
-karma.conf.js
 npm-debug.log
 /dst
 src/js
