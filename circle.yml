@@ -1,3 +1,2 @@
 test:
-  override:
     timeout: 99999999999999999
