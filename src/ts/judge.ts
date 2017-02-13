@@ -8,19 +8,23 @@ export default class Judge {
     /**
      * rowの最大サイズ
      */
+    private _rowMax: number;
     /**
-     * columnの最大サイズ
+    * columnの最大サイズ
+    */
+    private _columnMax: number;
+    /**
+    * ゲーム盤のrowのサイズ
+    */
+    private _rowSize: number;
+    /**
+     * ゲーム盤columnのサイズ
      */
-
-    // private _rowMax = this._rowSize - this._judgeCriteriaSequence + 1;
-    // private _columnMax = this._columnSize - this._judgeCriteriaSequence + 1;
-
-    private _rowMax = 1;
-    private _columnMax = 1;
-    private _rowSize = 3;
-    private _columnSize = 3;
+    private _columnSize: number;
+    /**
+     * 勝敗決定の基準値
+     */
     private _judgeCriteriaSequence = 3;
-
 
     /**
       * コンストラクタ
@@ -28,11 +32,13 @@ export default class Judge {
       * @param {columnSize} columnのサイズ
       * @param {judgeCriteriaSequence} 勝敗の基準となる数（何個同じ打ち手が一列に揃えば勝敗が決定するか）
       */
-    constructor(
-    ) {
+    constructor(rowSize: number, columnSize: number, judgeCriteriaSequence: number) {
+        this._rowSize = rowSize;
+        this._columnSize = columnSize;
+        this._judgeCriteriaSequence = judgeCriteriaSequence;
 
-        // this._rowMax = _rowSize - _judgeCriteriaSequence + 1;
-        // this._columnMax = _columnSize - _judgeCriteriaSequence + 1;
+        this._rowMax = this._rowSize - this._judgeCriteriaSequence + 1;
+        this._columnMax = this._columnSize - this._judgeCriteriaSequence + 1;
     }
 
     /**

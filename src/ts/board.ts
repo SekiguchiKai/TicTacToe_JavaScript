@@ -4,17 +4,29 @@ import { MOVE } from './const';
  * ゲーム盤を表すためのクラス
  */
 export default class Board {
+    /**
+     * ゲーム盤を表す
+     */
     private _gameBoard: Array<string>[] = new Array(3);
-
-    private _rowSize = 3;
-    private _columnSize = 3;
+    /**
+     * ゲーム盤のrowのサイズを表す
+     */
+    private _rowSize: number;
+    /**
+    * ゲーム盤のcolumnのサイズを表す
+    */
+    private _columnSize: number;
 
     /**
      * コンストラクタ
      * @param {rowSize} rowのサイズ
      * @param {columnSize} columnのサイズ
      */
-    constructor() {
+    constructor(rowSize: number, columnSize: number) {
+        this._rowSize = rowSize;
+        this._columnSize = columnSize;
+
+
         // 二次元配列化
         for (let row = 0; row < this._gameBoard.length; row++) {
             this._gameBoard[row] = new Array(this._columnSize);

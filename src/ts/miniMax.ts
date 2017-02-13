@@ -38,8 +38,6 @@ export default class MiniMax {
 
         const gameOverNum = 0
 
-
-
         // 試合が終了か、深さが0の場合は、スコアを
         if (capableMovesArray.length === gameOverNum || depth === gameOverNum) {
 

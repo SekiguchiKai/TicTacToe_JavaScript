@@ -27,10 +27,13 @@ export function judgeSpec() {
         checkRightSlantingLine(MOVE.EMPTY, RESULT.PENNDING);
 
         /**
-         * rowに対して、JudgeResultメソッドが適切に機能しているかを確認するためのメソッド
+         * rowに対して、JudgeResultメソッドが適切に機能しているかを確認するための関数
          */
         function checkRow(move: string, expected: string) {
-            const board = new Board();
+            const rowSize = 3;
+            const columnSize = 3;
+            let board = new Board(rowSize, columnSize);
+
             let cell = [];
             // rowを検査
             for (let row = 0; row < 3; row++) {
@@ -46,10 +49,13 @@ export function judgeSpec() {
         }
 
         /**
-          * columnに対して、JudgeResultメソッドが適切に機能しているかを確認するためのメソッド
+          * columnに対して、JudgeResultメソッドが適切に機能しているかを確認するための関数
           */
         function checkColumn(move: string, expected: string) {
-            const board = new Board();
+            const rowSize = 3;
+            const columnSize = 3;
+            let board = new Board(rowSize, columnSize);
+
             let cell = [];
 
             // columnを検査
@@ -66,10 +72,13 @@ export function judgeSpec() {
 
         }
         /**
-         * 左斜めのラインに対して、JudgeResultメソッドが適切に機能しているかを確認するためのメソッド
+         * 左斜めのラインに対して、JudgeResultメソッドが適切に機能しているかを確認するための関数
          */
         function checkLeftSlantingLine(move: string, expected: string) {
-            const board = new Board();
+            const rowSize = 3;
+            const columnSize = 3;
+            const board = new Board(rowSize, columnSize);
+
             board.putMove(0, 0, move);
             board.putMove(1, 1, move);
             board.putMove(2, 2, move);
@@ -78,20 +87,29 @@ export function judgeSpec() {
         }
 
         /**
-         * 左斜めのラインに対して、JudgeResultメソッドが適切に機能しているかを確認するためのメソッド
+         * 左斜めのラインに対して、JudgeResultメソッドが適切に機能しているかを確認するための関数
          */
         function checkRightSlantingLine(move: string, expected: string) {
-            const board = new Board();
+            const rowSize = 3;
+            const columnSize = 3;
+            const board = new Board(rowSize, columnSize);
+
             board.putMove(0, 2, move);
             board.putMove(1, 1, move);
             board.putMove(2, 0, move);
 
             testJudgeResult(board, expected, `右斜めのラインのチェック[row: 0, column: 0 = ${move}, [row: 1, column: 1 = ${move}, [row: 2, column: 2 = ${move} の時に、${expected}`);
         }
-
+        /**
+         * JudgeResultメソッドが適切に機能しているかを確認するための関数
+         */
         function testJudgeResult(board: Board, expected: string, comment: string) {
             it(comment, () => {
-                const judge = new Judge();
+                const rowSize = 3;
+                const columnSize = 3;
+                const judgeCriteriaSequence = 3;
+
+                const judge = new Judge(rowSize, columnSize, judgeCriteriaSequence);
                 assert(judge.judgeResult(board) === expected);
             });
         };
