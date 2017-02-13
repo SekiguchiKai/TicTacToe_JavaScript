@@ -28,7 +28,7 @@ export default class MiniMax {
      * @param {beta}       β
      * @return {object} 打ち手を打つのに最適な場所とそこに打ち手を打った場合の点数を格納したオブジェクト
      */
-    public calcMiniMax(depth: number, board: Board, playerSignal: string, alpha: number, beta: number) {
+    public calcMiniMax(depth: number, board: Board, playerSignal: string, alpha: number, beta: number): { [index: string]: number; } {
 
         const capableMovesArray = this.makeCapableMoveArray(board);
 
