@@ -11,9 +11,15 @@ export function cpuSpec() {
         checkRightSlantingLine(MOVE.CIRCLE);
 
 
+        /**
+         * rowに対して、doMoveメソッドが適切に機能しているかを確認するための関数
+         */
         function checkRow(move: string) {
 
-            let board = new Board();
+            const rowSize = 3;
+            const columnSize = 3;
+
+            let board = new Board(rowSize, columnSize);
             let array = [];
 
             for (let row = 0; row < 3; row++) {
@@ -24,17 +30,22 @@ export function cpuSpec() {
                 const expectedRow = row;
                 const expectedColumn = 2;
 
-                A(board, expectedRow, expectedColumn, `rowのチェック[row: ${array[0]}, column: ${array[1]}] = ${move}, [row: ${array[2]}, column: ${array[3]}] = ${move} の時にAIは[row: ${expectedRow}, column: ${expectedColumn}]`);
+                testdoMove(board, expectedRow, expectedColumn, `rowのチェック[row: ${array[0]}, column: ${array[1]}] = ${move}, [row: ${array[2]}, column: ${array[3]}] = ${move} の時にtestdoMoveIは[row: ${expectedRow}, column: ${expectedColumn}]`);
                 array.length = 0;
-                board = new Board();
+                board = new Board(rowSize, columnSize);
             }
         }
 
 
-
+        /**
+         * columnに対して、doMoveメソッドが適切に機能しているかを確認するための関数
+         */
         function checkColumn(move: string) {
 
-            let board = new Board();
+            const rowSize = 3;
+            const columnSize = 3;
+
+            let board = new Board(rowSize, columnSize);
             let array = [];
 
             for (let column = 0; column < 3; column++) {
@@ -45,39 +56,51 @@ export function cpuSpec() {
                 const expectedRow = 2;
                 const expectedColumn = column;
 
-                A(board, expectedRow, expectedColumn, `rowのチェック[row: ${array[0]}, column: ${array[1]}] = ${move}, [row: ${array[2]}, column: ${array[3]}] = ${move} の時にAIは[row: ${expectedRow}, column: ${expectedColumn}]`);
+                testdoMove(board, expectedRow, expectedColumn, `rowのチェック[row: ${array[0]}, column: ${array[1]}] = ${move}, [row: ${array[2]}, column: ${array[3]}] = ${move} の時にtestdoMoveIは[row: ${expectedRow}, column: ${expectedColumn}]`);
                 array.length = 0;
-                board = new Board();
+                board = board = new Board(rowSize, columnSize);
             }
         }
 
-
+        /**
+         * 左斜めのラインに対して、doMoveメソッドが適切に機能しているかを確認するための関数
+         */
         function checkLeftSlantingLine(move: string) {
-            const board = new Board();
+            const rowSize = 3;
+            const columnSize = 3;
+            let board = new Board(rowSize, columnSize);
+
             board.putMove(0, 0, move);
             board.putMove(1, 1, move);
 
             const expectedRow = 2;
             const expectedColumn = 2;
 
-            A(board, expectedRow, expectedColumn, `rowのチェック[row: 0, column: 0 = ${move}, [row: 1, column: 1 = ${move} の時にAIは[row: ${expectedRow}, column: ${expectedColumn}]`);
+            testdoMove(board, expectedRow, expectedColumn, `rowのチェック[row: 0, column: 0 = ${move}, [row: 1, column: 1 = ${move} の時にtestdoMoveIは[row: ${expectedRow}, column: ${expectedColumn}]`);
 
         }
-
+        /**
+         * 右斜めのラインに対して、doMoveメソッドが適切に機能しているかを確認するための関数
+         */
         function checkRightSlantingLine(move: string) {
-            const board = new Board();
+            const rowSize = 3;
+            const columnSize = 3;
+            let board = new Board(rowSize, columnSize);
+
             board.putMove(0, 2, move);
             board.putMove(1, 1, move);
 
             const expectedRow = 2;
             const expectedColumn = 0;
 
-            A(board, expectedRow, expectedColumn, `rowのチェック[row: 0, column: 2 = ${move}, [row: 1, column: 1 = ${move} の時にAIは[row: ${expectedRow}, column: ${expectedColumn}]`);
+            testdoMove(board, expectedRow, expectedColumn, `rowのチェック[row: 0, column: 2 = ${move}, [row: 1, column: 1 = ${move} の時にtestdoMoveIは[row: ${expectedRow}, column: ${expectedColumn}]`);
         }
 
 
-
-        function A(board: Board, expectedRow: number, expectedColumn: number, comment: string) {
+        /**
+         * doMoveメソッドが適切に機能しているかを確認するための関数
+         */
+        function testdoMove(board: Board, expectedRow: number, expectedColumn: number, comment: string) {
             const cpu = new Cpu();
             const bestCell = cpu.doMove(4, board);
 
@@ -85,7 +108,6 @@ export function cpuSpec() {
 
                 assert(bestCell['rowVal'] === expectedRow);
                 assert(bestCell['columnVal'] === expectedColumn);
-                // assert(bestCell['bestScore'] === expectedBestScore);
             })
         }
 
