@@ -26,13 +26,16 @@ export function scoreCalculatorSpec() {
         calcRightSlantingLine(MOVE.EMPTY, 0);
 
         /**
-         * rowに対して、JudgeResultメソッドが適切に機能しているかを確認するためのメソッド
+         * rowに対して、JudgeResultメソッドが適切に機能しているかを確認するための関数
          */
         function calcRow(move: string, expected: number) {
             let cell = [];
             // rowを検査
             for (let row = 0; row < 3; row++) {
-                const board = new Board();
+                const rowSize = 3;
+                const columnSize = 3;
+                let board = new Board(rowSize, columnSize);
+
                 for (let column = 0; column < 3; column++) {
                     board.putMove(row, column, move);
                     cell.push(row, column);
@@ -45,14 +48,17 @@ export function scoreCalculatorSpec() {
         }
 
         /**
-          * columnに対して、JudgeResultメソッドが適切に機能しているかを確認するためのメソッド
+          * columnに対して、JudgeResultメソッドが適切に機能しているかを確認するための関数
           */
         function calcColumn(move: string, expected: number) {
             let cell = [];
 
             // columnを検査
             for (let column = 0; column < 3; column++) {
-                const board = new Board();
+                const rowSize = 3;
+                const columnSize = 3;
+                let board = new Board(rowSize, columnSize);
+
                 for (let row = 0; row < 3; row++) {
                     board.putMove(row, column, move);
                     cell.push(row, column);
@@ -65,10 +71,13 @@ export function scoreCalculatorSpec() {
 
         }
         /**
-         * 左斜めのラインに対して、JudgeResultメソッドが適切に機能しているかを確認するためのメソッド
+         * 左斜めのラインに対して、JudgeResultメソッドが適切に機能しているかを確認するための関数
          */
         function calcLeftSlantingLine(move: string, expected: number) {
-            const board = new Board();
+            const rowSize = 3;
+            const columnSize = 3;
+            let board = new Board(rowSize, columnSize);
+
             board.putMove(0, 0, move);
             board.putMove(1, 1, move);
             board.putMove(2, 2, move);
@@ -77,17 +86,22 @@ export function scoreCalculatorSpec() {
         }
 
         /**
-         * 左斜めのラインに対して、JudgeResultメソッドが適切に機能しているかを確認するためのメソッド
+         * 左斜めのラインに対して、JudgeResultメソッドが適切に機能しているかを確認するための関数
          */
         function calcRightSlantingLine(move: string, expected: number) {
-            const board = new Board();
+            const rowSize = 3;
+            const columnSize = 3;
+            let board = new Board(rowSize, columnSize);
+
             board.putMove(0, 2, move);
             board.putMove(1, 1, move);
             board.putMove(2, 0, move);
 
             testJudgeResult(board.getGameBoardState(), expected, `${board.getGameBoardState()}右斜めのラインの計算[row: 0, column: 0 = ${move}, [row: 1, column: 1 = ${move}, [row: 2, column: 2 = ${move} の時に、${expected}`);
         }
-
+        /**
+         * judgeResultメソッドが適切に機能しているかを確認するための関数
+         */
         function testJudgeResult(gameBoard: string[][], expected: number, comment: string) {
             it(comment, () => {
                 const scoreCalculator = new ScoreCalculator();

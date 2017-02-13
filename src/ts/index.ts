@@ -3,12 +3,13 @@ import Cpu from './cpu';
 import Judge from './judge';
 import { RESULT, MOVE } from './const';
 
-// const rowSize = 3;
-// const columnSize = 3;
-// const judgeCriteriaSequence = 3;
-const board = new Board();
+const rowSize = 3;
+const columnSize = 3;
+const judgeCriteriaSequence = 3;
+
+const board = new Board(rowSize, columnSize);
 const cpu = new Cpu();
-const judge = new Judge();
+const judge = new Judge(rowSize, columnSize, judgeCriteriaSequence);
 
 const idArray = ['0-0', '0-1', '0-2', '1-0', '1-1', '1-2', '2-0', '2-1', '2-2'];
 
@@ -29,14 +30,6 @@ for (const id of idArray) {
             e.innerHTML = `<span style="font-size:70px; color:white;">${board.getMove(row, column)}</span>`;
 
             const result = judge.judgeResult(board);
-
-            // const changeElemnt = (result: string) => {
-            //     if (result === RESULT.DRAW) {
-            //         document.getElementById('table').innerHTML = `<p style="font-size:40px;"><span style="color:red;">${result}</span>だ</p>`;
-            //     } else {
-            //         document.getElementById('table').innerHTML = `<p style="font-size:40px;">君の<span style="color:red;">${result}</span>だ</p>`;
-            //     }
-            // }
 
             const delayTime = 1000;
 
