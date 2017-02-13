@@ -1,5 +1,6 @@
 # TicTacToe_JavaScript
 To practice raw JavaScript.
+[![CircleCI](https://circleci.com/gh/SekiguchiKai/TicTacToe_JavaScript.svg?style=svg)](https://circleci.com/gh/SekiguchiKai/TicTacToe_JavaScript)
 
 ## Overview
 TicTacToeGame.
