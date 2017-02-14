@@ -34,7 +34,7 @@ for (const id of idArray) {
             const delayTime = 1000;
 
             if (result === RESULT.PENNDING) {
-                const depth = 4;
+                const depth = 2;
                 const cellObj = cpu.doMove(depth, board);
                 const e = document.getElementById(`${cellObj['rowVal']}-${cellObj['columnVal']}`);
                 e.innerHTML = `<span style="font-size:100px; color:white;">${board.getMove(cellObj['rowVal'], cellObj['columnVal'])}</span>`;
@@ -44,7 +44,6 @@ for (const id of idArray) {
 
             if (result2 !== RESULT.PENNDING) {
                 window.alert(result2);
-                // e.innerHTML = `<span style="font-size:70px; color:white;">${board.getMove(row, column)}</span>`;
                 window.setTimeout(() => {
                     if (result === RESULT.DRAW) {
                         document.getElementById('table').innerHTML = `<p style="font-size:40px;"><span style="color:red;">${judge.judgeResult(board)}</span>だ</p>`;

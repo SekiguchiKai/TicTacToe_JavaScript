@@ -7,16 +7,17 @@ import Board from './board';
  */
 export default class Cpu {
 
-
     /**
      * コンストラクタ
+     * @param {MiniMax} miniMax - MiniMaxクラスのインスタンス
      */
     constructor(private _miniMax = new MiniMax()) { }
 
     /**
      * 打ち手を打つためのメソッド
-     * @param {depth} 読みの深さ
-     * @param {board} Boardクラスのインスタンス
+     * @param {number} depth -  読みの深さ
+     * @param {Board} board -  Boardクラスのインスタンス
+     * @return {[index: string]: number;} 打ち手を置くのに最適なセルの場所とそこに打ち手を置いた場合の点数
      */
     public doMove(depth: number, board: Board): { [index: string]: number; } {
         const maxNum = 9999999999;
