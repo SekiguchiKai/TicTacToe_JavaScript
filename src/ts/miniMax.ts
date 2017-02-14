@@ -28,7 +28,7 @@ export default class MiniMax {
      * @param {beta}       β
      * @return {object} 打ち手を打つのに最適な場所とそこに打ち手を打った場合の点数を格納したオブジェクト
      */
-    public calcMiniMax(depth: number, board: Board, playerSignal: string, alpha: number, beta: number) {
+    public calcMiniMax(depth: number, board: Board, playerSignal: string, alpha: number, beta: number): { [index: string]: number; } {
 
         const capableMovesArray = this.makeCapableMoveArray(board);
 
@@ -50,7 +50,7 @@ export default class MiniMax {
             // CPUの点数であるαの方が、βよりも大きい場合、それ以上探索しなくても良い(その時のαが最大なので)ので、探索を打ち切る
             for (const cell of capableMovesArray) {
 
-                board.putMove(cell.rowValue, cell.columnValue, playerSignal);
+                board.putMove(cell['rowValue'], cell['columnValue'], playerSignal);
 
                 const correctVal = 1;
 
@@ -59,19 +59,19 @@ export default class MiniMax {
                     score = this.calcMiniMax(depth - correctVal, board, MOVE.CIRCLE, alpha, beta)['bestScore'];
                     if (score > alpha) {
                         alpha = score;
-                        row = cell.rowValue;
-                        column = cell.columnValue;
+                        row = cell['rowValue'];
+                        column = cell['columnValue'];
 
                     }
                 } else if (playerSignal === MOVE.CIRCLE) {
                     score = this.calcMiniMax(depth - correctVal, board, MOVE.CROSS, alpha, beta)['bestScore'];
                     if (score < beta) {
                         beta = score;
-                        row = cell.rowValue;
-                        column = cell.columnValue;
+                        row = cell['rowValue'];
+                        column = cell['columnValue'];
                     }
                 }
-                board.putMove(cell.rowValue, cell.columnValue, MOVE.EMPTY);
+                board.putMove(cell['rowValue'], cell['columnValue'], MOVE.EMPTY);
 
                 if (alpha >= beta) { break; }
             }
@@ -102,13 +102,13 @@ export default class MiniMax {
       * @param {board} Boardクラスのインスタンス
       * @return {Object[]} NO_MOVEが存在するGameBoard上の場所の一覧を格納したオブジェクト
       */
-    private makeCapableMoveArray(board: Board) {
+    private makeCapableMoveArray(board: Board): { [index: string]: number; }[] {
         const capableMovesArray = [];
 
         for (let row = 0; row < board.rowSize; row++) {
             for (let column = 0; column < board.columnSize; column++) {
                 if (board.getMove(row, column) === MOVE.EMPTY) {
-                    const cellObj = { rowValue: row, columnValue: column };
+                    const cellObj = { 'rowValue': row, 'columnValue': column };
                     capableMovesArray.push(cellObj);
                 }
             }

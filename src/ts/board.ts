@@ -5,10 +5,6 @@ import { MOVE } from './const';
  */
 export default class Board {
     /**
-     * ゲーム盤を表す
-     */
-    private _gameBoard: Array<string>[] = new Array(3);
-    /**
      * ゲーム盤のrowのサイズを表す
      */
     private _rowSize: number;
@@ -16,6 +12,11 @@ export default class Board {
     * ゲーム盤のcolumnのサイズを表す
     */
     private _columnSize: number;
+
+    /**
+     * ゲーム盤を表す
+     */
+    private _gameBoard: string[][];
 
     /**
      * コンストラクタ
@@ -26,9 +27,9 @@ export default class Board {
         this._rowSize = rowSize;
         this._columnSize = columnSize;
 
-
         // 二次元配列化
-        for (let row = 0; row < this._gameBoard.length; row++) {
+        this._gameBoard = new Array(this._rowSize);
+        for (let row = 0; row < this._rowSize; row++) {
             this._gameBoard[row] = new Array(this._columnSize);
         }
 
