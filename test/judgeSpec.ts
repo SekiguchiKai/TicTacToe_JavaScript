@@ -19,6 +19,7 @@ export function judgeSpec() {
                 });
 
                 it('「○」が3つ揃うと、勝利が決定する', () => {
+
                     for (let row = 0; row < 3; row++) {
                         for (let column = 0; column < 3; column++) {
                             board.putMove(row, column, MOVE.CIRCLE);
@@ -29,6 +30,7 @@ export function judgeSpec() {
                 });
 
                 it('「×」が3つ揃うと、敗北が決定する', () => {
+
                     for (let row = 0; row < 3; row++) {
                         for (let column = 0; column < 3; column++) {
                             board.putMove(row, column, MOVE.CROSS);
@@ -52,6 +54,7 @@ export function judgeSpec() {
                 });
 
                 it('「○」が3つ揃うと、勝利が決定する', () => {
+
                     for (let column = 0; column < 3; column++) {
                         for (let row = 0; row < 3; row++) {
                             board.putMove(row, column, MOVE.CIRCLE);
@@ -60,7 +63,9 @@ export function judgeSpec() {
 
                     }
                 });
+
                 it('「×」が3つ揃うと、敗北が決定する', () => {
+
                     for (let column = 0; column < 3; column++) {
                         for (let row = 0; row < 3; row++) {
                             board.putMove(row, column, MOVE.CROSS);
@@ -85,6 +90,7 @@ export function judgeSpec() {
                 });
 
                 it('「○」が3つ揃うと、勝利が決定する', () => {
+
                     board.putMove(0, 0, MOVE.CIRCLE);
                     board.putMove(1, 1, MOVE.CIRCLE);
                     board.putMove(2, 2, MOVE.CIRCLE);
@@ -93,6 +99,7 @@ export function judgeSpec() {
                 });
 
                 it('「×」が3つ揃うと、敗北が決定する', () => {
+
                     board.putMove(0, 0, MOVE.CROSS);
                     board.putMove(1, 1, MOVE.CROSS);
                     board.putMove(2, 2, MOVE.CROSS);
@@ -114,7 +121,9 @@ export function judgeSpec() {
                     judge = new Judge(rowSize, columnSize, judgeCriteriaSequence);
                 });
 
+
                 it('「○」が3つ揃うと、勝利が決定する', () => {
+
                     board.putMove(0, 2, MOVE.CIRCLE);
                     board.putMove(1, 1, MOVE.CIRCLE);
                     board.putMove(2, 0, MOVE.CIRCLE);
@@ -122,7 +131,9 @@ export function judgeSpec() {
 
                 });
 
+
                 it('「×」が3つ揃うと、敗北が決定する', () => {
+
                     board.putMove(0, 2, MOVE.CROSS);
                     board.putMove(1, 1, MOVE.CROSS);
                     board.putMove(2, 0, MOVE.CROSS);

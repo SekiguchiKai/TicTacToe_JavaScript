@@ -18,7 +18,7 @@ export default class Cpu {
      * @param {depth} 読みの深さ
      * @param {board} Boardクラスのインスタンス
      */
-    public doMove(depth: number, board: Board) {
+    public doMove(depth: number, board: Board): { [index: string]: number; } {
         const maxNum = 9999999999;
         const minNum = -9999999999;
         const cellObj = this._miniMax.calcMiniMax(depth, board, MOVE.CROSS, minNum, maxNum);
