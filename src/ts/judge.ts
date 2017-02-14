@@ -13,37 +13,22 @@ export default class Judge {
     * columnの最大サイズ
     */
     private _columnMax: number;
-    /**
-    * ゲーム盤のrowのサイズ
-    */
-    private _rowSize: number;
-    /**
-     * ゲーム盤columnのサイズ
-     */
-    private _columnSize: number;
-    /**
-     * 勝敗決定の基準値
-     */
-    private _judgeCriteriaSequence = 3;
+
 
     /**
       * コンストラクタ
-      * @param {rowSize} rowのサイズ
-      * @param {columnSize} columnのサイズ
-      * @param {judgeCriteriaSequence} 勝敗の基準となる数（何個同じ打ち手が一列に揃えば勝敗が決定するか）
+      * @param {number} rowSize - rowのサイズ
+      * @param {number} columnSize -  columnのサイズ
+      * @param {number} judgeCriteriaSequence - 勝敗の基準となる数（何個同じ打ち手が一列に揃えば勝敗が決定するか）
       */
-    constructor(rowSize: number, columnSize: number, judgeCriteriaSequence: number) {
-        this._rowSize = rowSize;
-        this._columnSize = columnSize;
-        this._judgeCriteriaSequence = judgeCriteriaSequence;
-
+    constructor(private _rowSize: number, private _columnSize: number, private _judgeCriteriaSequence: number) {
         this._rowMax = this._rowSize - this._judgeCriteriaSequence + 1;
         this._columnMax = this._columnSize - this._judgeCriteriaSequence + 1;
     }
 
     /**
      * 勝敗はついているかを確認し、その結果を返すためのメソッド
-     * @param {board} Boardクラスのインスタンス
+     * @param {Board} board - Boardクラスのインスタンス
      * @return {string} 勝敗の結果
      */
     public judgeResult(board: Board): string {
@@ -62,7 +47,7 @@ export default class Judge {
     /**
      * ユーザーが勝利したかどうかを確認するためのメソッド
      * 縦、横、左斜め、右斜めを走査する
-     * @param {gameBoard} ゲーム盤
+     * @param {string[][]} gameBoard - ゲーム盤
      * @return {boolean} ユーザーが勝利したかどうかの真偽値
      */
     private judgeWin(gameBoard: string[][]): boolean {
@@ -74,7 +59,7 @@ export default class Judge {
     /**
      * ユーザーが敗北したかどうかを確認するためのメソッド
      * 縦、横、左斜め、右斜めを走査する
-     * @param {gameBoard} ゲーム盤
+     * @param {string[][]} gameBoard - ゲーム盤
      * @return {boolean} ユーザーが敗北したかどうかの真偽値
      */
     private judgeLose(gameBoard: string[][]): boolean {
@@ -85,7 +70,7 @@ export default class Judge {
     }
     /**
      * 引き分けかどうかを確認するためのメソッド
-     * @param {gameBoard} ゲーム盤
+     * @param {string[][]} gameBoard - ゲーム盤
      * @return {boolean} 引き分けかどうかの真偽値
      */
     private judgeDraw(gameBoard: string[][]): boolean {
@@ -100,8 +85,8 @@ export default class Judge {
     }
     /**
      * row(横のライン)が引数で指定された打ち手で5連が達成されているか確認するためのメソッド
-     * @param {gameBoard} ゲーム盤
-     * @param {moves} 打ち手
+     * @param {string[][]} gameBoard -  ゲーム盤
+     * @param {string} moves - 打ち手
      * @return {boolean} 勝敗が決定したか真偽値
      */
     private judgeRow(gameBoard: string[][], moves: string): boolean {
@@ -116,8 +101,10 @@ export default class Judge {
     }
     /**
      * rowにおいて指定された打ち手が、ゲーム盤上の指定された範囲内で勝敗を決定する数分連続しているかの真偽値を返すメソッド
-     * @param {gameBoard} ゲーム盤
-     * @param {moves} 打ち手
+     * @param {string[][]} gameBoard - ゲーム盤
+     * @param {string} moves - 打ち手
+     * @param {number} row - rowのインデックス
+     * @param {number} column - columnのインデックス
      * @return {boolean} 指定された打ち手が、ゲーム盤上の指定された範囲内で勝敗を決定する数分連続しているかの真偽値
      */
     private checkARow(gameBoard: string[][], moves: string, row: number, column: number): boolean {
@@ -130,8 +117,8 @@ export default class Judge {
     }
     /**
      * column(縦のライン)が引数で指定されたMoveで5連が達成されているか確認するためのメソッド
-     * @param {gameBoard} ゲーム盤
-     * @param {moves} 打ち手
+     * @param {string[][]} gameBoard - ゲーム盤
+     * @param {string} moves - 打ち手
      * @return {boolean} 勝敗が決定したか真偽値
      */
     private judgeColumn(gameBoard: string[][], moves: string): boolean {
@@ -146,10 +133,10 @@ export default class Judge {
     }
     /**
      * columnにおいて指定された打ち手が、ゲーム盤上の指定された範囲内で勝敗を決定する数分連続しているかの真偽値を返すメソッド
-     * @param {gameBoard} ゲーム盤
-     * @param {moves} 打ち手
-     * @param {row}       rowのインデックス
-     * @param {column}    columnのインデックス
+     * @param {string[][]} gameBoard - ゲーム盤
+     * @param {string} moves - 打ち手
+     * @param {number} row - rowのインデックス
+     * @param {number} column - columnのインデックス
      * @return {boolean} 指定された打ち手が、ゲーム盤上の指定された範囲内で勝敗を決定する数分連続しているかの真偽値
      */
     private checkAColumn(gameBoard: string[][], moves: string, row: number, column: number): boolean {
@@ -163,8 +150,8 @@ export default class Judge {
 
     /**
      * 左斜めのラインにおいて、引数で受け取った打ち手が5連揃っているかどうかの真偽値を確認するためのメソッド
-     * @param {gameBoard} ゲーム盤
-     * @param {moves} 打ち手
+     * @param {string[][]} gameBoard - ゲーム盤
+     * @param {string} moves - 打ち手
      * @return {boolean} 右斜めのラインにおいて、引数で受け取った打ち手が5連揃っているかどうかの真偽値を確認するためのメソッド
      */
     private judgeLeftSlanting(gameBoard: string[][], moves: string): boolean {
@@ -206,8 +193,9 @@ export default class Judge {
     /**
      * 左ラインのROWがスライドした時の審査を行うためのメソッド
      *
-     * @param {gameBoard} ゲーム盤
-     * @param {moves}     検査対象のプレーヤーの打ち手
+     * @param {string[][]} gameBoard - ゲーム盤
+     * @param {string} moves - 打ち手
+     * @param {number} rowStart - rowの始まりの値
      * @return  {boolean} 勝敗が決定したか真偽値
      */
     private leftSlantingRowShift(gameBoard: string[][], moves: string, rowStart: number): boolean {
@@ -228,8 +216,9 @@ export default class Judge {
     /**
       * 左ラインのROWがスライドした時の審査を行うためのメソッド
       *
-      * @param {gameBoard} ゲーム盤
-      * @param {moves}     検査対象のプレーヤーの打ち手
+      * @param {string[][]} gameBoard - ゲーム盤
+      * @param {string} moves - 打ち手
+      * @param {number} columnStart - columnの始まりの値
       * @return  {boolean} 勝敗が決定したか真偽値
       */
     private leftSlantingColumnShift(gameBoard: string[][], moves: string, columnStart: number): boolean {
@@ -249,10 +238,10 @@ export default class Judge {
     /**
       * 左斜めのラインの1回あたりおいて、引数で受け取った打ち手が5連揃っているかどうかの真偽値を確認するためのメソッド
       *
-      * @param {gameBoard} ゲーム盤
-      * @param {moves}     打ち手
-      * @param {row}      rowのインデックス
-      * @param {column}    columnのインデックス
+      * @param {string[][]} gameBoard - ゲーム盤
+      * @param {string} moves - 打ち手
+      * @param {number} row - rowのインデックス
+      * @param {number} column - columnのインデックス
       * @return {boolean}  1回あたりおいて、引数で受け取った打ち手が5連揃っているかどうかの真偽値
       */
     private checkOneTermLeftSlanting(gameBoard: string[][], moves: string, row: number, column: number): boolean {
@@ -268,8 +257,8 @@ export default class Judge {
     /**
       * 右斜めのラインにおいて、引数で受け取った打ち手が5連揃っているかどうかの真偽値を確認するためのメソッド
       *
-      * @param {gameBoard} ゲーム盤
-      * @param {moves}     打ち手
+      * @param {string[][]} gameBoard - ゲーム盤
+      * @param {string} moves - 打ち手
       * @return {boolean} 右斜めのラインにおいて、引数で受け取った打ち手が5連揃っているかどうかの真偽値を確認するためのメソッド
       */
     private judgeRightSlanting(gameBoard: string[][], moves: string): boolean {
@@ -309,9 +298,9 @@ export default class Judge {
     /**
       * 右斜めのラインがrowにおいてシフトする時(row1~row4)、引数で受け取った打ち手が5連揃っているかどうかの真偽値を確認するためのメソッド
       *
-      * @param {gameBoard} ゲーム盤
-      * @param {moves}     打ち手
-      * @param {rowStart}  rowの調査開始値
+      * @param {string[][]} gameBoard - ゲーム盤
+      * @param {string} moves - 打ち手
+      * @param {number} rowStart -  rowの調査開始値
       * @return {boolean} 右斜めのラインがrowにおいてシフトする時(row1~row4)、引数で受け取った打ち手が5連揃っているかどうかの真偽値
       */
     private rightSlantingRowShift(gameBoard: string[][], moves: string, rowStart: number): boolean {
@@ -331,10 +320,10 @@ export default class Judge {
     /**
       * 右斜めのラインがrowにおいてシフトする時(row1~row4)、引数で受け取った打ち手が5連揃っているかどうかの真偽値を確認するためのメソッド
       *
-      * @param {gameBoard}   ゲーム盤
-      * @param {moves}       打ち手
-      * @param {columnStart} rowの調査開始値
-      * @return {boolean} 右斜めのラインがrowにおいてシフトする時(row1~row4)、引数で受け取った打ち手が5連揃っているかどうかの真偽値
+      * @param {string[][]} gameBoard - ゲーム盤
+      * @param {string} moves - 打ち手
+      * @param {number} columnStart -  columnの調査開始値
+      * @return {boolean} 右斜めのラインがcolumnにおいてシフトする時(column1~column4)、引数で受け取った打ち手が5連揃っているかどうかの真偽値
       */
     private rightSlantingColumnShift(gameBoard: string[][], moves: string, columnStart: number): boolean {
         let row = 0;
@@ -354,10 +343,10 @@ export default class Judge {
     /**
       * 右斜めのライン1回あたりおいて、引数で受け取った打ち手が5連揃っているかどうかの真偽値を確認するためのメソッド
       *
-      * @param {gameBoard} ゲーム盤
-      * @param {moves}     打ち手
-      * @param {row}       rowのインデックス
-      * @param {column}    columnのインデックス
+      * @param {string[][]} gameBoard - ゲーム盤
+      * @param {string} moves - 打ち手
+      * @param {number} row - rowのインデックス
+      * @param {number} column - columnのインデックス
       * @return {boolean} 1回あたりおいて、引数で受け取った打ち手が5連揃っているかどうかの真偽値
       */
     private checkOneTermRightSlanting(gameBoard: string[][], moves: string, row: number, column: number): boolean {

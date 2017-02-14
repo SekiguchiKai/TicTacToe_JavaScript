@@ -44,7 +44,6 @@ for (const id of idArray) {
 
             if (result2 !== RESULT.PENNDING) {
                 window.alert(result2);
-                // e.innerHTML = `<span style="font-size:70px; color:white;">${board.getMove(row, column)}</span>`;
                 window.setTimeout(() => {
                     if (result === RESULT.DRAW) {
                         document.getElementById('table').innerHTML = `<p style="font-size:40px;"><span style="color:red;">${judge.judgeResult(board)}</span>だ</p>`;
