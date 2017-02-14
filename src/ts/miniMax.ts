@@ -21,12 +21,12 @@ export default class MiniMax {
      * 現在のゲーム木の深さの1個下の階層の点数をMinMaxで取得する
      * その取得した点数が現在保持している一番低い点数（ベストスコア）よりも低い場合は、その点数が保持されるベストスコアとなる
      *
-     * @param {depth}      探索の深さ
-     * @param {board} Boardクラスのインスタンス
-     * @param {playerSignal} Playerの打ち手 
-     * @param {alpha}      α
-     * @param {beta}       β
-     * @return {object} 打ち手を打つのに最適な場所とそこに打ち手を打った場合の点数を格納したオブジェクト
+     * @param {number} depth -探索の深さ
+     * @param {Board} board - Boardクラスのインスタンス
+     * @param {string} playerSignal - Playerの打ち手 
+     * @param {number} alpha - α値
+     * @param {number} beta - β値
+     * @return {[index: string]: number;} 打ち手を打つのに最適な場所とそこに打ち手を打った場合の点数を格納したオブジェクト
      */
     public calcMiniMax(depth: number, board: Board, playerSignal: string, alpha: number, beta: number): { [index: string]: number; } {
 
@@ -99,8 +99,8 @@ export default class MiniMax {
     /**
       * 現在の打ち手を打つことが可能なすべてのゲーム盤の場所をリスト化する（NO_MOVEが存在しているGameBoardの場所）
       *
-      * @param {board} Boardクラスのインスタンス
-      * @return {Object[]} NO_MOVEが存在するGameBoard上の場所の一覧を格納したオブジェクト
+      * @param {Board} board - Boardクラスのインスタンス
+      * @return {{ [index: string]: number; }[]} NO_MOVEが存在するGameBoard上の場所の一覧を格納したオブジェクト
       */
     private makeCapableMoveArray(board: Board): { [index: string]: number; }[] {
         const capableMovesArray = [];
