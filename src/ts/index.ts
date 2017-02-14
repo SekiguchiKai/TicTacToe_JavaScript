@@ -34,7 +34,7 @@ for (const id of idArray) {
             const delayTime = 1000;
 
             if (result === RESULT.PENNDING) {
-                const depth = 4;
+                const depth = 2;
                 const cellObj = cpu.doMove(depth, board);
                 const e = document.getElementById(`${cellObj['rowVal']}-${cellObj['columnVal']}`);
                 e.innerHTML = `<span style="font-size:100px; color:white;">${board.getMove(cellObj['rowVal'], cellObj['columnVal'])}</span>`;
