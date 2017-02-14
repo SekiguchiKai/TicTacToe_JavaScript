@@ -10,6 +10,7 @@ export function boardSpec() {
     let rowIdxArray = [0, 1, 2];
     let columnIdxArray = [0, 1, 2];
 
+
     describe('bordクラスのgameBoard配列', () => {
         // 二次元配列のforEach
         rowIdxArray.forEach((row) => {
