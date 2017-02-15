@@ -111,7 +111,7 @@ export default class MiniMax {
       * @param {Board} board - Boardクラスのインスタンス
       * @return {capableMovesArrays[]} NO_MOVEが存在するGameBoard上の場所の一覧を格納したオブジェクト型リテラル
       */
-    private makeCapableMoveArray(board: Board): capableMoves[] {
+    private makeCapableMoveArray(board: Board): CapableMoves[] {
         const capableMovesArray = [];
 
         for (let row = 0; row < board.rowSize; row++) {
