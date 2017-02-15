@@ -10,9 +10,9 @@ border-collapse: collapse;
 }
 td {
 	border: solid 1px;
-	width:150px;
-    height:150px;
-	text-align:center;
-	vertical-align:center;
-	background-color: 	#008000;
+	width: 150px;
+    height: 150px;
+	text-align: center;
+	vertical-align: center;
+	background-color:#008000;
 }

@@ -1,56 +1,45 @@
 // Karma configuration
-// Generated on Thu Feb 09 2017 15:23:25 GMT+0900 (JST)
-
 module.exports = function (config) {
   config.set({
 
-    // base path that will be used to resolve all patterns (eg. files, exclude)
+    // ベースパス
     basePath: '',
-    // frameworks to use
+    // 使用するテスティングフレームワーク
     frameworks: ['mocha'],
-    // list of files / patterns to load in the browser
     // karmaでブラウザで読み込むファイル(ここでts->js->bundle後のテストのファイルを指定する)
     files: [
       './dist/testEntry.bundle.js',
     ],
-
     // list of files to exclude
     exclude: [
     ],
-
-    // test results reporter to use
-    // possible values: 'dots', 'progress'
-    // available reporters: https://npmjs.org/browse/keyword/karma-reporter
+    // テスト結果を装飾するreporterの種類
     reporters: ['mocha'],
 
-    // web server port
+    // 使用するポート番号
     port: 9876,
 
-    // enable / disable colors in the output (reporters and logs)
+    // 表示する結果をカラーで表示
     colors: true,
 
 
-    // level of logging
+    // logのレベル
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
     logLevel: config.LOG_DEBUG,
 
 
-    // enable / disable watching file and executing tests whenever any file changes
+    // テストファイルの変更を自動で監視
     autoWatch: true,
 
-
-    // start these browsers
-    // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
+    // テストを実行するブラウザを設定
     browsers: ['Chrome'],
-
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    // trueでCircleCi用になる
+    // CIモードにするかどうか、Circle CIでテストを通したかったら、ここをtrueに
     singleRun: true,
 
-    // Concurrency level
-    // how many browser should be started simultaneous
+    // 同時にいくつのブラウザで実行可能にするかどうかの設定
     concurrency: Infinity
   })
 }
