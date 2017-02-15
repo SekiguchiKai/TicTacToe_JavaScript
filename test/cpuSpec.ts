@@ -27,8 +27,8 @@ export function cpuSpec() {
                                 const expectedColumn = 2;
 
                                 const bestCell = cpu.doMove(4, board);
-                                assert(bestCell['rowVal'] === expectedRow);
-                                assert(bestCell['columnVal'] === expectedColumn);
+                                assert(bestCell.rowValue === expectedRow);
+                                assert(bestCell.columnValue === expectedColumn);
                                 array.length = 0;
                                 board = new Board(rowSize, columnSize);
                         }
@@ -46,8 +46,8 @@ export function cpuSpec() {
                                 const expectedColumn = column;
 
                                 const bestCell = cpu.doMove(4, board);
-                                assert(bestCell['rowVal'] === expectedRow);
-                                assert(bestCell['columnVal'] === expectedColumn);
+                                assert(bestCell.rowValue === expectedRow);
+                                assert(bestCell.columnValue === expectedColumn);
 
                                 array.length = 0;
                                 board = board = new Board(rowSize, columnSize);
@@ -62,8 +62,8 @@ export function cpuSpec() {
                         const expectedColumn = 2;
 
                         const bestCell = cpu.doMove(4, board);
-                        assert(bestCell['rowVal'] === expectedRow);
-                        assert(bestCell['columnVal'] === expectedColumn);
+                        assert(bestCell.rowValue === expectedRow);
+                        assert(bestCell.columnValue === expectedColumn);
 
                 });
 
@@ -81,8 +81,8 @@ export function cpuSpec() {
 
 
                         const bestCell = cpu.doMove(4, board);
-                        assert(bestCell['rowVal'] === expectedRow);
-                        assert(bestCell['columnVal'] === expectedColumn);
+                        assert(bestCell.rowValue === expectedRow);
+                        assert(bestCell.columnValue === expectedColumn);
                 });
         });
 }

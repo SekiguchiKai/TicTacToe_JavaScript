@@ -53,8 +53,6 @@ export default class ScoreCalculator {
 
         return totalScore;
     }
-
-
     /**
      * 1ラインの得点を計算するためのメソッッド
      * @param {string[]} movesArray - 打ち手を格納するための配列
