@@ -36,8 +36,8 @@ for (const id of idArray) {
             if (result === RESULT.PENNDING) {
                 const depth = 2;
                 const cellObj = cpu.doMove(depth, board);
-                const e = document.getElementById(`${cellObj['rowVal']}-${cellObj['columnVal']}`);
-                e.innerHTML = `<span style="font-size:100px; color:white;">${board.getMove(cellObj['rowVal'], cellObj['columnVal'])}</span>`;
+                const e = document.getElementById(`${cellObj.rowValue}-${cellObj.columnValue}`);
+                e.innerHTML = `<span style="font-size:100px; color:white;">${board.getMove(cellObj.rowValue, cellObj.columnValue)}</span>`;
             }
 
             const result2 = judge.judgeResult(board);

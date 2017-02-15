@@ -23,8 +23,8 @@ export function miniMaxSpec() {
                             board.putMove(row, column, MOVE.CIRCLE);
                         }
                         const bestCell = miniMax.calcMiniMax(4, board, MOVE.CROSS, minNum, maxNum);
-                        assert(bestCell['rowVal'] === row);
-                        assert(bestCell['columnVal'] === 2);
+                        assert(bestCell.rowValue === row);
+                        assert(bestCell.columnValue === 2);
                         board = new Board(rowSize, columnSize);
                     }
                 });
@@ -47,8 +47,8 @@ export function miniMaxSpec() {
                             board.putMove(row, column, MOVE.CIRCLE);
                         }
                         const bestCell = miniMax.calcMiniMax(4, board, MOVE.CROSS, minNum, maxNum);
-                        assert(bestCell['rowVal'] === 2);
-                        assert(bestCell['columnVal'] === column);
+                        assert(bestCell.rowValue === 2);
+                        assert(bestCell.columnValue === column);
                         board = new Board(rowSize, columnSize);
                     }
                 });
@@ -71,8 +71,8 @@ export function miniMaxSpec() {
                     board.putMove(1, 1, MOVE.CIRCLE);
 
                     const bestCell = miniMax.calcMiniMax(4, board, MOVE.CROSS, minNum, maxNum);
-                    assert(bestCell['rowVal'] === 2);
-                    assert(bestCell['columnVal'] === 2);
+                    assert(bestCell.rowValue === 2);
+                    assert(bestCell.columnValue === 2);
                 });
             });
 
@@ -92,8 +92,8 @@ export function miniMaxSpec() {
                     board.putMove(1, 1, MOVE.CIRCLE);
 
                     const bestCell = miniMax.calcMiniMax(4, board, MOVE.CROSS, minNum, maxNum);
-                    assert(bestCell['rowVal'] === 2);
-                    assert(bestCell['columnVal'] === 0);
+                    assert(bestCell.rowValue === 2);
+                    assert(bestCell.columnValue === 0);
                 });
             });
         });

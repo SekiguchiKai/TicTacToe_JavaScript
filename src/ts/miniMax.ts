@@ -3,6 +3,19 @@ import { MOVE } from './const';
 import Board from './board';
 
 const scoreCalculator = new ScoreCalculator();
+// インターフェース
+export interface MiniMaxResult {
+    rowValue: number;
+    columnValue: number;
+    bestScore: number;
+}
+
+// インターフェース
+export interface capableMovesArrays {
+    rowValue: number;
+    columnValue: number;
+}
+
 /**
  * ミニマックスアルゴリズムを表したクラス
  */
@@ -26,9 +39,9 @@ export default class MiniMax {
      * @param {string} playerSignal - Playerの打ち手 
      * @param {number} alpha - α値
      * @param {number} beta - β値
-     * @return {[index: string]: number;} 打ち手を打つのに最適な場所とそこに打ち手を打った場合の点数を格納したオブジェクト
+     * @return {MiniMaxResult} 打ち手を打つのに最適な場所とそこに打ち手を打った場合の点数を格納したオブジェクト型リテラル
      */
-    public calcMiniMax(depth: number, board: Board, playerSignal: string, alpha: number, beta: number): { [index: string]: number; } {
+    public calcMiniMax(depth: number, board: Board, playerSignal: string, alpha: number, beta: number): MiniMaxResult {
 
         const capableMovesArray = this.makeCapableMoveArray(board);
 
@@ -45,54 +58,50 @@ export default class MiniMax {
             score = scoreCalculator.calcScore(board.getGameBoardState());
 
 
-            return { rowVal: row, columnVal: column, bestScore: score };
+            return { rowValue: row, columnValue: column, bestScore: score };
         } else {
             // CPUの点数であるαの方が、βよりも大きい場合、それ以上探索しなくても良い(その時のαが最大なので)ので、探索を打ち切る
             for (const cell of capableMovesArray) {
 
-                board.putMove(cell['rowValue'], cell['columnValue'], playerSignal);
+                board.putMove(cell.rowValue, cell.columnValue, playerSignal);
 
                 const correctVal = 1;
 
                 if (playerSignal === MOVE.CROSS) {
 
-                    score = this.calcMiniMax(depth - correctVal, board, MOVE.CIRCLE, alpha, beta)['bestScore'];
+                    score = this.calcMiniMax(depth - correctVal, board, MOVE.CIRCLE, alpha, beta).bestScore;
                     if (score > alpha) {
                         alpha = score;
-                        row = cell['rowValue'];
-                        column = cell['columnValue'];
+                        row = cell.rowValue;
+                        column = cell.columnValue;
 
                     }
                 } else if (playerSignal === MOVE.CIRCLE) {
-                    score = this.calcMiniMax(depth - correctVal, board, MOVE.CROSS, alpha, beta)['bestScore'];
+                    score = this.calcMiniMax(depth - correctVal, board, MOVE.CROSS, alpha, beta).bestScore;
                     if (score < beta) {
                         beta = score;
-                        row = cell['rowValue'];
-                        column = cell['columnValue'];
+                        row = cell.rowValue;
+                        column = cell.columnValue;
                     }
                 }
-                board.putMove(cell['rowValue'], cell['columnValue'], MOVE.EMPTY);
+                board.putMove(cell.rowValue, cell.columnValue, MOVE.EMPTY);
 
                 if (alpha >= beta) { break; }
             }
         }
-        let bestCellObj: { [index: string]: number; } = {};
 
         if (playerSignal === MOVE.CROSS) {
-            bestCellObj = {
-                rowVal: row,
-                columnVal: column,
+            return {
+                rowValue: row,
+                columnValue: column,
                 bestScore: alpha
             };
-
-            return bestCellObj;
         } else {
-            bestCellObj = {
-                rowVal: row,
-                columnVal: column,
+            return {
+                rowValue: row,
+                columnValue: column,
                 bestScore: beta
             };
-            return bestCellObj;
         }
     }
 
@@ -100,15 +109,15 @@ export default class MiniMax {
       * 現在の打ち手を打つことが可能なすべてのゲーム盤の場所をリスト化する（NO_MOVEが存在しているGameBoardの場所）
       *
       * @param {Board} board - Boardクラスのインスタンス
-      * @return {{ [index: string]: number; }[]} NO_MOVEが存在するGameBoard上の場所の一覧を格納したオブジェクト
+      * @return {capableMovesArrays[]} NO_MOVEが存在するGameBoard上の場所の一覧を格納したオブジェクト型リテラル
       */
-    private makeCapableMoveArray(board: Board): { [index: string]: number; }[] {
+    private makeCapableMoveArray(board: Board): capableMovesArrays[] {
         const capableMovesArray = [];
 
         for (let row = 0; row < board.rowSize; row++) {
             for (let column = 0; column < board.columnSize; column++) {
                 if (board.getMove(row, column) === MOVE.EMPTY) {
-                    const cellObj = { 'rowValue': row, 'columnValue': column };
+                    const cellObj = { rowValue: row, columnValue: column };
                     capableMovesArray.push(cellObj);
                 }
             }
