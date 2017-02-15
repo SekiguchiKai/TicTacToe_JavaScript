@@ -11,7 +11,7 @@ export interface MiniMaxResult {
 }
 
 // インターフェース
-export interface capableMoves {
+export interface CapableMoves {
     rowValue: number;
     columnValue: number;
 }
