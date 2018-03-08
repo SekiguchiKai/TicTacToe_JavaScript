@@ -9,7 +9,7 @@ module.exports = {
   // 出力先
   output: {
     // 出力先のパス
-    path: './dist',
+    path: `${__dirname}/dist`,
     // 出力するファイルの名前
     // nameには、entryでkeyに指定したエントリーポイントの名前が入る
     filename: '[name].bundle.js'
